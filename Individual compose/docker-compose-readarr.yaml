@@ -1,0 +1,26 @@
+###########################################################################
+###########################################################################
+##
+##  Docker Compose File: Readarr (LinuxServer.io)
+##  Function: Book Library Manager
+##
+##  Documentation: https://docs.linuxserver.io/images/docker-readarr
+##
+###########################################################################
+###########################################################################
+services:
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA:?err}/readarr:/config
+      - ${MEDIA:?err}:/data
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:readarr
+      - TP_THEME=${TP_THEME:?err}
+    ports:
+      - ${WEBUI_PORT_READARR:?err}:8787
