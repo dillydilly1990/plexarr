@@ -7,10 +7,10 @@ services:
 #      - /dev/dri/renderD128:/dev/dri/renderD128
 #      - /dev/dri/card0:/dev/dri/card0
     volumes:
-      - ${APPDATA:?err}/plex:/config/library:/config
-      - ${MEDIA:?err}/transcode:/transcode
-      - ${MEDIA:?err}/DMB/Zurg:/data            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-      - ${MEDIA:?err}/DMB/Riven:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - ${APPDATA}/plex:/config/library:/config
+      - ${MEDIA}/transcode:/transcode
+      - ${ZURG}:/data            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - ${RIVEN}:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
     ports:
       - 32400:32400
       - 1900:1900/udp
