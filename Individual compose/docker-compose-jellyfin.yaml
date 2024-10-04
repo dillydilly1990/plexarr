@@ -10,6 +10,8 @@ services:
     volumes:
       - ${APPDATA:?err}/jellyfin:/config
       - ${MEDIA:?err}:/data/media
+      - ${ZURG}:/data/media            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - ${RIVEN}:/data/media            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
