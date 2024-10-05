@@ -28,6 +28,14 @@ services:
       - PGID=${PGID:?err}
       - TZ=${TIMEZONE:?err}
       - PLEX_CLAIM=${PLEX_CLAIM}
+      - DOCKER_MODS=${DOCKER_MODS}
+      - TAILSCALE_SERVE_PORT=8686
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=plex
+      - TAILSCALE_AUTHKEY=${TS_KEY}
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
     healthcheck:
       test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
       interval: 1m00s
