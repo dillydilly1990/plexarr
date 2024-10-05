@@ -22,7 +22,7 @@ services:
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
     labels:
       - net.unraid.docker.managed=dockerman
-      - net.unraid.docker.webui=http://${SERVER_IP}:8686
+      - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr-logo.png    
     ports:
       - "${WEBUI_PORT_LIDARR:?err}:8686
