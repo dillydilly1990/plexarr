@@ -35,7 +35,7 @@ services:
       - 3000:3000
     labels:
       - net.unraid.docker.webui=http://${SERVER_IP}:3000
-      - net.unraid.docker.icon=https://github.com/rivenmedia/riven/blob/main/assets/riven-light.png
+      - net.unraid.docker.icon=https://github.com/rivenmedia/riven/blob/main/assets/riven-light.png?raw=true
     devices:
       - /dev/fuse:/dev/fuse:rwm
     cap_add:
