@@ -45,8 +45,4 @@ services:
    # depends_on:                                            ## Used to delay the startup of plex to ensure the rclone mount is available.
     #  DMB:                                                 ## set to the name of the container running rclone
     #    condition: service_healthy
-networks:
-  default:
-    name: plexarr
-    external: true
 
