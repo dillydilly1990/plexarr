@@ -27,9 +27,9 @@ services:
       - 32414:32414/udp
       - 32469:32469
     environment:
-      - PUID=${PUID:?err}
-      - PGID=${PGID:?err}
-      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
       - PLEX_CLAIM=${PLEX_CLAIM}
       - DOCKER_MODS=${DOCKER_MODS}
       - TAILSCALE_SERVE_PORT=8686
