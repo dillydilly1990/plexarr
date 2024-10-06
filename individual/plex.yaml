@@ -38,6 +38,10 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:32400
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/plexinc/pms-docker/master/img/plex-server.png
     healthcheck:
       test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
       interval: 1m00s
