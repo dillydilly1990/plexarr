@@ -13,4 +13,4 @@ services:
       - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr
       - TP_THEME=${TP_THEME}
     ports:
-      - "${WEBUI_PORT_RADARR:?err}:7878"             # Configured in Gluetun VPN container
+      - "${WEBUI_PORT_RADARR:?err}:7878"      
