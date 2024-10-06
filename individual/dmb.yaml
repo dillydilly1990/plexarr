@@ -29,7 +29,7 @@ services:
       - RCLONE_MOUNT_NAME=DMB
       - ZILEAN_ENABLED=true
       - RIVEN_ENABLED=true
-      - ORIGIN={SERVER_IP}:3000                                  ## See Riven documentation for more details
+      - ORIGIN=${SERVER_IP}:3000                                  ## See Riven documentation for more details
     # network_mode: container:gluetun                            ## Example to attach to gluetun vpn container if realdebrid blocks IP address
     ports:
       - 3000:3000
