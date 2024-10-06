@@ -40,3 +40,49 @@ services:
     security_opt:
       - apparmor:unconfined
       - no-new-privileges
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+# Add Configurations for GPU Hardware Rendering Here:
+#    devices:
+#      - /dev/dri/renderD128:/dev/dri/renderD128
+#      - /dev/dri/card0:/dev/dri/card0
+    volumes:
+      - ${APPDATA}/plex/library:/config
+      - ${MEDIA}/tv:/mnt/tv
+      - ${MEDIA}/movies:/mnt/movies
+      - ${MEDIA}/transcode:/mnt/transcode
+      - ${ZURG}:/mnt/zurg            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - ${RIVEN}:/mnt/riven            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+    ports:
+      - 32400:32400
+      - 1900:1900/udp
+     # - 5353:5353/udp
+      - 8324:8324
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+      - 32469:32469
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - DOCKER_MODS=${DOCKER_MODS}
+      - TAILSCALE_SERVE_PORT=8686
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=plex
+      - TAILSCALE_AUTHKEY=${TS_KEY}
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+    healthcheck:
+      test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
+      interval: 1m00s
+      timeout: 15s
+      retries: 3
+      start_period: 1m00s
+   # depends_on:                                            ## Used to delay the startup of plex to ensure the rclone mount is available.
+    #  DMB:                                                 ## set to the name of the container running rclone
+    #    condition: service_healthy
