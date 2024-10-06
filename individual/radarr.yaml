@@ -12,5 +12,9 @@ services:
       - TZ=${TIMEZONE}
       - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr
       - TP_THEME=${TP_THEME}
+     labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:7878
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
     ports:
       - "${WEBUI_PORT_RADARR:?err}:7878"      
