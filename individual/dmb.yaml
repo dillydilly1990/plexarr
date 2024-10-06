@@ -36,7 +36,7 @@ services:
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://192.168.50.69:3000
-      - net.unraid.docker.icon=https://github.com/rivenmedia/riven/blob/main/assets/riven-light.png
+      - net.unraid.docker.icon=https://github.com/rivenmedia/riven/blob/main/assets/riven-light.png?raw=true
     devices:
       - /dev/fuse:/dev/fuse:rwm
     cap_add:
