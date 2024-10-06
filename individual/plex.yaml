@@ -1,3 +1,5 @@
+volumes:
+  ts-state-plex: null
 services:
   plex:
     image: lscr.io/linuxserver/plex:latest
