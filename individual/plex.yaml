@@ -15,6 +15,7 @@ services:
       - ${MEDIA}/transcode:/mnt/transcode
       - ${ZURG}:/mnt/zurg            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
       - ${RIVEN}:/mnt/riven            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - ts-state-plex:/var/lib/tailscale
     ports:
       - 32400:32400
       - 1900:1900/udp
