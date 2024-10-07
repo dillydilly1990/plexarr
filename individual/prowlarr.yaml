@@ -6,7 +6,6 @@ services:
     volumes:
       - ${APPDATA}/prowlarr:/config
       - ${APPDATA}/prowlarr/Custom:/config/Definitions/Custom
-      
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
