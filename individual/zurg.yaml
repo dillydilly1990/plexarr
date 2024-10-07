@@ -8,17 +8,17 @@ services:
     tty: true        # docker run -t    
     volumes:
       ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup. 
-      - ${ZURG}/pd_zurg/config:/config
+      - ${APPDATA}/pd_zurg/config:/config
       ## Location for logs
-      - ${ZURG}/pd_zurg/log:/log
+      - ${APPDATA}/pd_zurg/log:/log
       ## Location for rclone cache if enabled
-      - ${ZURG}/pd_zurg/cache:/cache
+      - ${APPDATA}/pd_zurg/cache:/cache
       ## Location for Zurg RealDebrid active configuration
-      - ${ZURG}/pd_zurg/RD:/zurg/RD
+      - ${APPDATA}/pd_zurg/RD:/zurg/RD
       ## Location for Zurg AllDebrid active configuration -- when supported by Zurg     
    #   - /pd_zurg/AD:/zurg/AD   
       ## Location for rclone mount to host
-      - ${MEDIA}:/data:shared       
+      - ${DATA}:/data:shared       
     environment:
       - TZ=${TIMEZONE}
       ## Zurg Required Settings
@@ -34,7 +34,7 @@ services:
      # - ZURG_PASS=
       - ZURG_PORT=8800
       ## Rclone Required Settings
-      - RCLONE_MOUNT_NAME=RD
+      - RCLONE_MOUNT_NAME=RealDebrid
       ## Rclone Optional Settings - See rclone docs for full list
      # - NFS_ENABLED=true
      # - NFS_PORT=8000
