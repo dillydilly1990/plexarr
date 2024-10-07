@@ -1,20 +1,12 @@
-###########################################################################
-###########################################################################
-##
-##  Docker Compose File: Prowlarr (LinuxServer.io)
-##  Function: Indexer and Search Manager
-##
-##  Documentation: https://docs.linuxserver.io/images/docker-prowlarr
-##
-###########################################################################
-###########################################################################
 services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
     restart: unless-stopped
     volumes:
-      - ${FOLDER_FOR_DATA:?err}/prowlarr:/config
+      - ${APPDATA}/prowlarr:/config
+      - ${APPDATA}/prowlarr/Custom:/config/Definitions/Custom
+      
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
@@ -22,4 +14,5 @@ services:
       - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:prowlarr
       - TP_THEME=${TP_THEME:?err}
     ports:
-      - "${WEBUI_PORT_PROWLARR:?err}:9696" 
+      - "${WEBUI_PORT_PROWLARR:?err}:9696"
+  
