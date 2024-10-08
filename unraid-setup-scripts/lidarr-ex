@@ -1,1 +1,5 @@
-
+#!/bin/bash
+mkdir -p /mnt/user/appdata/radarr/custom-cont-init.d
+mkdir -p /mnt/user/appdata/radarr/custom-services.d
+cd /mnt/user/appdata/radarr/custom-cont-init.d
+wget https://raw.githubusercontent.com/RandomNinjaAtk/arr-scripts/main/radarr/scripts_init.bash
