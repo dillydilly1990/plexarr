@@ -1,1 +1,1 @@
-mkdir -p /mnt/user/data/{torrents/{tv,movies,music},media/{tv,movies,music},symlinks/{radarr/{completed},sonarr/{completed},lidarr/{completed}}}
+mkdir -p /mnt/user/data/{torrents/{tv,movies,music},media/{tv,movies,music},symlinks/{radarr/completed,sonarr/completed,lidarr/completed}}
