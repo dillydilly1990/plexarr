@@ -1,0 +1,2 @@
+mkdir /mnt/user/data/symlinks/radarr && mkdir /mnt/user/data/symlinks/radarr/completed
+mkdir /mnt/user/data/symlinks/sonarr && mkdir /mnt/user/data/symlinks/sonarr/completed
