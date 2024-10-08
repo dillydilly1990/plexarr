@@ -8,6 +8,7 @@ services:
     volumes:
       - ${APPDATA:?err}/radarr:/config
       - ${MEDIA}:/data
+      - ts-state-radarr:/var/lib/tailscale
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
