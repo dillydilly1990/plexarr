@@ -28,6 +28,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
+      - 8800 # Zurg port
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
@@ -131,7 +132,7 @@ services:
       - HTTP_CONTROL_SERVER_LOG=on
     labels:
       - net.unraid.docker.managed=dockerman
-      - net.unraid.docker.webui=http://192.168.0.69:8000
+      - net.unraid.docker.webui=http://${SERVER_IP}:8000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png
     # NOTE: Gluetun VPN container MUST ONLY connect to the "gluetunVPN" network
     networks:
@@ -169,7 +170,7 @@ services:
      # - PLEX_MOUNT_DIR=/pd_zurg 
      # - ZURG_USER=
      # - ZURG_PASS=
-      - ZURG_PORT=8800
+     # - ZURG_PORT=8800
       ## Rclone Required Settings
       - RCLONE_MOUNT_NAME=RD
       ## Rclone Optional Settings - See rclone docs for full list
@@ -207,7 +208,7 @@ services:
       - PDZURG_LOG_LEVEL=DEBUG
       - PDZURG_LOG_COUNT=2
     # Example to attach to gluetun vpn container if realdebrid blocks IP address 
-    network_mode: service:gluetunVPN  
+    network_mode: "service:gluetunVPN" 
     devices:
       - /dev/fuse:/dev/fuse:rwm
     cap_add:
