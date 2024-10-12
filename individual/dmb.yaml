@@ -14,8 +14,8 @@ services:
       - ${APPDATA}/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data if using Riven
       - ${APPDATA}/DMB/Riven/data:/riven/backend/data     ## Location for Riven backend data
     # media dirs
-      - ${ZURG}:/data:shared           ## Location for rclone mount to host
-      - ${RIVEN}:/mnt                  ## Location for Riven symlinks
+      - ${RCLONE}:/data:shared           ## Location for rclone mount to host
+      - ${SYMLINKS}:/mnt                  ## Location for Riven symlinks
 
     environment:
       - TZ=${TIMEZONE:?err}
