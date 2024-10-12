@@ -207,7 +207,7 @@ services:
       - PDZURG_LOG_LEVEL=DEBUG
       - PDZURG_LOG_COUNT=2
     # Example to attach to gluetun vpn container if realdebrid blocks IP address 
-    # network_mode: container:gluetun  
+    # network_mode: service:gluetunVPN  
     devices:
       - /dev/fuse:/dev/fuse:rwm
     cap_add:
