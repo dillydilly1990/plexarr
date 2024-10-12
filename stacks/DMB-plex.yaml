@@ -1,3 +1,7 @@
+networks:
+  plexarr:
+    name: plexarr
+    driver: bridge
 volumes:
   ts-state-plex: null
 services:
