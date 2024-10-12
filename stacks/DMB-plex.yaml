@@ -1,3 +1,5 @@
+volumes:
+  ts-state-plex: null
 services:
   DMB:
     container_name: DMB
@@ -14,8 +16,8 @@ services:
       - ${APPDATA}/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data if using Riven
       - ${APPDATA}/DMB/Riven/data:/riven/backend/data     ## Location for Riven backend data
     # media dirs
-      - ${ZURG}:/data:shared           ## Location for rclone mount to host
-      - ${RIVEN}:/mnt                  ## Location for Riven symlinks
+      - ${RCLONE}:/data:shared           ## Location for rclone mount to host
+      - ${SYMLINKS}:/mnt                  ## Location for Riven symlinks
 
     environment:
       - TZ=${TIMEZONE:?err}
@@ -52,8 +54,9 @@ services:
       - ${MEDIA}/tv:/mnt/tv
       - ${MEDIA}/movies:/mnt/movies
       - ${MEDIA}/transcode:/mnt/transcode
-      - ${ZURG}:/mnt/zurg            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-      - ${RIVEN}:/mnt/riven            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - ${RCLONE}:/mnt/zurg            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - ${SYMLINKS}:/mnt/riven            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - ts-state-plex:/var/lib/tailscale
     ports:
       - 32400:32400
       - 1900:1900/udp
@@ -65,9 +68,9 @@ services:
       - 32414:32414/udp
       - 32469:32469
     environment:
-      - PUID=${PUID:?err}
-      - PGID=${PGID:?err}
-      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
       - PLEX_CLAIM=${PLEX_CLAIM}
       - DOCKER_MODS=${DOCKER_MODS}
       - TAILSCALE_SERVE_PORT=8686
@@ -77,6 +80,10 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:32400
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/plexinc/pms-docker/master/img/plex-server.png
     healthcheck:
       test: curl --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity
       interval: 1m00s
