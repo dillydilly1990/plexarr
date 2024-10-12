@@ -9,7 +9,7 @@ services:
     environment:
       - PUID=100
       - PGID=99
-      - ORIGIN=http://192.168.50.69:3000  # Set to IP or FQDN of the server
+      - ORIGIN=http://${SERVER_IP}:3000  # Set to IP or FQDN of the server
       - BACKEND_URL=http://riven:8080
       - DIALECT=postgres
       - DATABASE_URL=postgres://postgres:postgres@riven-db/riven
