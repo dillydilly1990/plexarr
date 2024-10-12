@@ -1,5 +1,5 @@
 networks:
-    plexarr:
+  plexarr:
     name: plexarr
     driver: default
   gluetunVPN:
