@@ -18,7 +18,7 @@ services:
       ## Location for Zurg AllDebrid active configuration -- when supported by Zurg     
    #   - /pd_zurg/AD:/zurg/AD   
       ## Location for rclone mount to host
-      - ${DATA}:/data:shared       
+      - ${RCLONE}:/data:shared       
     environment:
       - TZ=${TIMEZONE}
       ## Zurg Required Settings
@@ -34,7 +34,7 @@ services:
      # - ZURG_PASS=
       - ZURG_PORT=8800
       ## Rclone Required Settings
-      - RCLONE_MOUNT_NAME=RealDebrid
+      - RCLONE_MOUNT_NAME=RD
       ## Rclone Optional Settings - See rclone docs for full list
      # - NFS_ENABLED=true
      # - NFS_PORT=8000
