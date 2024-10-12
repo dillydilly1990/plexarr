@@ -1,7 +1,4 @@
 networks:
-  plexarr:
-    name: plexarr
-    driver: default
   gluetunVPN:
     name: gluetunVPN
     driver: bridge
@@ -135,7 +132,6 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://192.168.0.69:8000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png
-    # NOTE: Gluetun VPN container MUST ONLY connect to the "plexarr" network
+    # NOTE: Gluetun VPN container MUST ONLY connect to the "gluetunVPN" network
     networks:
-      - plexarr
-
+      - gluetunVPN
