@@ -22,7 +22,7 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
-    network_mode: "container:vpn"      
+    network_mode: "container:gluetunVPN"      
 #    ports:
 #      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in VPN
   
