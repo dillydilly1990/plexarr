@@ -70,8 +70,8 @@ services:
     image: spoked/riven-frontend:latest
     container_name: riven-frontend
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+#    ports:
+#      - "3000:3000"
     tty: true
     environment:
       - PUID=${PUID}
