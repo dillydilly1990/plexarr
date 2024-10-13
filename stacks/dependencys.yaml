@@ -19,7 +19,7 @@ services:
   ###########################################################################
   ########################################################################
   ###
-  vpn:
+  gluetunVPN:
     image: qmcgaw/gluetun:latest
     container_name: gluetunVPN
     restart: always
