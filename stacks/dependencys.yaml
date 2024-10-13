@@ -170,7 +170,7 @@ services:
      # - PLEX_MOUNT_DIR=/pd_zurg 
      # - ZURG_USER=
      # - ZURG_PASS=
-     # - ZURG_PORT=8800
+     # - ZURG_PORT=8800   #configured in VPN
       ## Rclone Required Settings
       - RCLONE_MOUNT_NAME=RD
       ## Rclone Optional Settings - See rclone docs for full list
