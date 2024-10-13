@@ -1,3 +1,7 @@
+networks:
+  VPN:
+    name: VPN
+    external: true
 services:
   riven-frontend:
     image: spoked/riven-frontend:latest
