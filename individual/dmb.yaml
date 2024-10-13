@@ -24,10 +24,10 @@ services:
       - COLOR_LOG_ENABLED=true
       - PLEX_TOKEN=${PLEX_CLAIM}
       - PLEX_ADDRESS=${SERVER_IP}:32400
-      - ZURG_ENABLED=true
+      - ZURG_ENABLED=false
       - RD_API_KEY=${REALDEBRID_API}
       - RCLONE_MOUNT_NAME=DMB
-      - ZILEAN_ENABLED=true
+      - ZILEAN_ENABLED=false
       - RIVEN_ENABLED=true
       - ORIGIN=${SERVER_IP}:3000                                  ## See Riven documentation for more details
     # network_mode: container:gluetun                            ## Example to attach to gluetun vpn container if realdebrid blocks IP address
