@@ -70,8 +70,8 @@ services:
     image: spoked/riven-frontend:latest
     container_name: riven-frontend
     restart: unless-stopped
-#    ports:
-#      - "3000:3000"
+    ports:
+      - "3000:3000"
     tty: true
     environment:
       - PUID=${PUID}
@@ -81,7 +81,7 @@ services:
       - BACKEND_URL=http://${SERVER_IP}:8080
       - DIALECT=postgres
       - DATABASE_URL=postgres://postgres:postgres@riven-db/riven
-    network_mode: "container:gluetunVPN"
+#    network_mode: "container:gluetunVPN"
     depends_on:
       riven:
         condition: service_healthy
@@ -90,8 +90,8 @@ services:
     image: spoked/riven:latest
     container_name: riven
     restart: unless-stopped
-#    ports:
-#      - "8080:8080"
+    ports:
+      - "8080:8080"
     tty: true
     environment:
       - PUID=${PUID}
@@ -107,7 +107,7 @@ services:
     volumes:
       - ${APPDATA}/riven/data:/riven/data
       - ${DATA}:/mnt
-    network_mode: "container:gluetunVPN"
+#    network_mode: "container:gluetunVPN"
     depends_on:
       riven_postgres:
         condition: service_healthy
@@ -122,7 +122,7 @@ services:
       POSTGRES_DB: riven
     volumes:
       - ${APPDATA}/riven-db:/var/lib/postgresql/data/pgdata
-    network_mode: "container:gluetunVPN"
+#    network_mode: "container:gluetunVPN"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
