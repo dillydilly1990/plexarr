@@ -32,9 +32,9 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
-      - 8080:8080      # RIVEN BACKEND
+    #  - 8080:8080      # RIVEN BACKEND
     #  - ${WEBUI_PORT_RIVEN}:3000 # WebUI Portal: Riven
-    #  - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
+      - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
       - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Bazarr
       - ${WEBUI_PORT_LIDARR:?err}:8686 # WebUI Portal: Lidarr
