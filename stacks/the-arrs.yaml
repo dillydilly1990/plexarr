@@ -1,1 +1,28 @@
-
+volumes:
+  ts-state-prowlarr: null
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA}/prowlarr:/config
+      - ${APPDATA}/prowlarr/Custom:/config/Definitions/Custom
+      - ts-state-prowlarr:/var/lib/tailscale
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/themepark-dev/theme.park:prowlarr
+      - TP_THEME=${TP_THEME:?err}
+      - TAILSCALE_SERVE_PORT=8686
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=Prowlarr
+      - TAILSCALE_AUTHKEY=${TS_KEY}
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+    network_mode: "container:vpn"      
+    ports:
+      #- "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in VPN
+  
