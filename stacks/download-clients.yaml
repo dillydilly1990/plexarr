@@ -78,7 +78,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
       - ORIGIN=http://${SERVER_IP}:3000 # set to the url or ip where the frontend is hosted
-      - BACKEND_URL=http://riven:8080
+      - BACKEND_URL=http://${SERVER_IP}:8080
       - DIALECT=postgres
       - DATABASE_URL=postgres://postgres:postgres@riven-db/riven
     network_mode: "container:gluetunVPN"
