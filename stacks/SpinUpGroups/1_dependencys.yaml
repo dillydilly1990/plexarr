@@ -187,7 +187,7 @@ services:
       - ORIGIN=http://192.168.50.69:3000   ## See Riven documentation for more details
       - PGADMIN_SETUP_EMAIL=
       - PGADMIN_SETUP_PASSWORD=                                  
-      - HARD_RESET=false    
+      - HARD_RESET=true    
     ports:
       - 3000:3000/tcp
       - 5050:5050/tcp
