@@ -23,6 +23,6 @@ services:
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
     network_mode: "container:vpn"      
-    ports:
-      #- "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in VPN
+#    ports:
+#      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in VPN
   
