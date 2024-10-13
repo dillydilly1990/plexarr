@@ -1,5 +1,6 @@
 volumes:
   ts-state-prowlarr: null
+  ts-state-radarr: null
 services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -24,8 +25,39 @@ services:
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
     network_mode: "container:gluetunVPN"      
 #    ports:
-#      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in VPN
+#      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in gluetunVPN
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:9696
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA:?err}/radarr:/config
+      - ${APPDATA}/radarr/custom-cont-init.d:/custom-cont-init.d
+      - ${APPDATA}/radarr/custom-services.d:/custom-services.d
+      - ${DATA}:/data:rw
+      - ts-state-radarr:/var/lib/tailscale
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=022
+      - TZ=${TIMEZONE}
+      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/themepark-dev/theme.park:radarr
+      - TP_THEME=${TP_THEME}
+      - TAILSCALE_SERVE_PORT=8686
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=Radarr
+      - TAILSCALE_AUTHKEY=${TS_KEY}
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+    network_mode: "container:gluetunVPN"       
+#    ports:
+#      - "${WEBUI_PORT_RADARR:?err}:7878"      # configured in gluetunVPN    
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
