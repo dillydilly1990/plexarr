@@ -25,4 +25,7 @@ services:
     network_mode: "container:gluetunVPN"      
 #    ports:
 #      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in VPN
-  
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:9696
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
