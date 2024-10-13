@@ -1,6 +1,7 @@
 volumes:
   ts-state-prowlarr: null
   ts-state-radarr: null
+  ts-state-sonarr: null
 services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -61,3 +62,32 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA:?err}/sonarr:/config
+      - ${APPDATA}/sonarr/custom-cont-init.d:/custom-cont-init.d
+      - ${APPDATA}/sonarr/custom-services.d:/custom-services.d
+      - ${MEDIA:?err}:/data
+      - ts-state-sonarr:/var/lib/tailscale
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/themepark-dev/theme.park:sonarr
+      - TP_THEME=${TP_THEME}
+      - TAILSCALE_SERVE_PORT=8989
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=Sonarr
+      - TAILSCALE_AUTHKEY=${TS_KEY}
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_SONARR}
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-logo.png
+    ports:
+      - "${WEBUI_PORT_SONARR:?err}:8989"                   
