@@ -4,17 +4,18 @@ services:
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
+    network_mode: host
 # Add Configurations for GPU Hardware Rendering Here:
 #    devices:
 #      - /dev/dri/renderD128:/dev/dri/renderD128
 #      - /dev/dri/card0:/dev/dri/card0
     volumes:
-      - ${APPDATA}/plex/library:/config
-      - ${MEDIA}/tv:/mnt/tv
-      - ${MEDIA}/movies:/mnt/movies
-      - ${MEDIA}/transcode:/mnt/transcode
-      - ${ZURG}:/mnt/zurg            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-      - ${RIVEN}:/mnt/riven            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - ${APPDATA}/plex/library:/config:rw
+      - ${MEDIA}/tv:/tv:rw
+      - ${MEDIA}/movies:/movies:rw
+      - ${MEDIA}/transcode:/transcode:rw
+      - ${ZURG}:/zurg:rw           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - ${RIVEN}:/riven:rw            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
       - ts-state-plex:/var/lib/tailscale
     ports:
       - 32400:32400
@@ -29,7 +30,12 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - UMASK=022
       - TZ=${TIMEZONE}
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=plex
+      - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
       - DOCKER_MODS=${DOCKER_MODS}
       - TAILSCALE_SERVE_PORT=8686
