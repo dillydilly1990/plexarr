@@ -1,6 +1,6 @@
 networks:
-  gluetunVPN:
-    name: gluetunVPN
+  VPN:
+    name: VPN
     driver: bridge
     ipam:
       driver: default
@@ -134,9 +134,9 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:8000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png
-    # NOTE: Gluetun VPN container MUST ONLY connect to the "gluetunVPN" network
+    # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
     networks:
-      - gluetunVPN
+      - VPN
   pd_zurg:
     container_name: pd_zurg
     image: iampuid0/pd_zurg:latest
@@ -188,11 +188,11 @@ services:
       - RCLONE_VFS_READ_CHUNK_SIZE_LIMIT=1G
      # - RCLONE_TRANSFERS=8
       ## Plex Debrid Required Settings
-      - PD_ENABLED=false
+      - PD_ENABLED=true
       ## To utilize plex_debrid with Plex, the following environment variables are required
-      #- PLEX_USER=
-      #- PLEX_TOKEN=
-      #- PLEX_ADDRESS=
+      - PLEX_USER=
+      - PLEX_TOKEN=
+      - PLEX_ADDRESS=
       ## To utilize plex_debrid with Jellyfin, the following environment variables are required - Note that plex_debrid will require addtional setup befor use with Jellyfin
      # - JF_ADDRESS
      # - JF_API_KEY
