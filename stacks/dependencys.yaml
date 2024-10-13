@@ -28,7 +28,7 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
-      - 8800 # Zurg port
+      - 8800:8800 # Zurg port
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
