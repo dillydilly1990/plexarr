@@ -184,7 +184,7 @@ services:
       - PGADMIN_SETUP_EMAIL=
       - PGADMIN_SETUP_PASSWORD=                                  
       - HARD_RESET=false    
-    ports:
+#    ports:
 #      - 3000:3000/tcp
 #      - 5050:5050/tcp
     labels:
