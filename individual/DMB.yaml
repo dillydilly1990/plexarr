@@ -38,13 +38,13 @@ services:
       - RD_API_KEY=${REALDEBRID_API}
       - RCLONE_MOUNT_NAME=DMB
       - ZILEAN_ENABLED=true
-      - RIVEN_ENABLED=true
+     # - RIVEN_ENABLED=true
       - RIVEN_FRONTEND_ENABLED=true
       - RIVEN_FRONTEND_UPDATE=true
       - FRONTEND_LOGS=ON
       - RIVEN_BACKEND_ENABLED=true
       - RIVEN_BACKEND_UPDATE=true
-      - ORIGIN=http://192.168.50.69:3000   ## See Riven documentation for more details
+      - ORIGIN=http://${SERVER_IP}:3000   ## See Riven documentation for more details
       - PGADMIN_SETUP_EMAIL=
       - PGADMIN_SETUP_PASSWORD=                                  
       - HARD_RESET=false    
