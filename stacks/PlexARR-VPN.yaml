@@ -320,7 +320,7 @@ services:
       - net.unraid.docker.webui=http://${SERVER_IP}:9696
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
     depends_on:
-      - DMB
+      DMB:
         condition: service_healthy
         restart: true
   radarr:
@@ -355,7 +355,7 @@ services:
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
     depends_on:
-      - DMB
+      DMB:
         condition: service_healthy
         restart: true
   sonarr:
@@ -389,7 +389,7 @@ services:
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_SONARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-logo.png
     depends_on:
-      - DMB
+      DMB:
         condition: service_healthy
         restart: true
   lidarr:
@@ -429,7 +429,7 @@ services:
       - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_LIDARR:?err}
       - homepage.widget.key=4d6a35e4e34244849b7e8b50ebc27a66
     depends_on:
-      - DMB
+      DMB:
         condition: service_healthy
         restart: true
 
