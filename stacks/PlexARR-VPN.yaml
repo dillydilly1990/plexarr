@@ -192,7 +192,7 @@ services:
       - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
     restart: always
     depends_on:
-       - VPN
+      VPN:
         condition: service_healthy
         restart: true
   homepage:
@@ -218,7 +218,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:rw
     image: ghcr.io/gethomepage/homepage:latest
     depends_on:
-      - VPN
+      VPN:
         condition: service_healthy
         restart: true
   qbittorrent:
@@ -252,7 +252,7 @@ services:
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/qbittorrent-logo.png
     network_mode: service:VPN
     depends_on:
-      - VPN
+      VPN:
         condition: service_healthy
         restart: true
   rdtclient:
