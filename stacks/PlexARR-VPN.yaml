@@ -361,7 +361,7 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_SONARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-logo.png
-            - homepage.group=Media
+      - homepage.group=Media
       - homepage.name=sonarr
       - homepage.icon=sonarr.png
       - homepage.href=http://${SERVER_IP}:${WEBUI_PORT_SONARR:?err}
