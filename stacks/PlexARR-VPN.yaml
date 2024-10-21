@@ -9,10 +9,10 @@ networks:
           gateway: ${DOCKER_GATEWAY:?err}
 volumes:
   ts-state-qbittorrent: null
-  ts-state-rdtclient: null      
+  ts-state-rdtclient: null
   ts-state-prowlarr: null
   ts-state-radarr: null
-  ts-state-sonarr: null 
+  ts-state-sonarr: null
   ts-state-lidarr: null
 services:
   VPN:
@@ -28,7 +28,6 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
-    #  - 8080:8080      
       - 5050:5050/tcp # RIVEN BACKEND
       - 3000:3000/tcp # WebUI Portal: Riven
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
@@ -138,8 +137,8 @@ services:
       - VPN
   DMB:
     container_name: DMB
-    image: iampuid0/dmb:latest    ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0
-    network_mode: "service:VPN"  #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
+    image: iampuid0/dmb:latest ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0
+    network_mode: service:VPN #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
     stdin_open: true
     tty: true
     devices:
@@ -150,16 +149,15 @@ services:
       - apparmor:unconfined
       - no-new-privileges
     volumes:
-    # config dirs
-      - ${APPDATA}/DMB/config:/config:rw                     ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup.
-      - ${APPDATA}/DMB/log:/log:rw                           ## Location for logs
-      - ${APPDATA}/DMB/Zurg/RD:/zurg/RD:rw                   ## Location for Zurg RealDebrid active configuration
-      - ${APPDATA}/DMB/PostgreSQL/data:/postgres_data:rw     ## Location for PostgreSQL database if using Riven
-      - ${APPDATA}/DMB/Riven/data:/riven/backend/data        ## Location for Riven backend data
-    # media dirs
-      - /mnt/user/DMB/Zurg/mnt:/data:rw,shared               ## Location for rclone mount to host
-      - /mnt/user/DMB/Riven/mnt:/mnt:rw                      ## Location for Riven symlinks
-      - /mnt/user/DMB/zilean/data:/zilean/app/data:rw        ## Location for Zilean data if using Riven
+      # config dirs
+      - ${APPDATA}/DMB/config:/config:rw ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup.
+      - ${APPDATA}/DMB/log:/log:rw ## Location for logs
+      - ${APPDATA}/DMB/Zurg/RD:/zurg/RD:rw ## Location for Zurg RealDebrid active configuration
+      - ${APPDATA}/DMB/PostgreSQL/data:/postgres_data:rw ## Location for PostgreSQL database if using Riven
+      - ${APPDATA}/DMB/Riven/data:/riven/backend/data ## Location for Riven backend data
+      - /mnt/user/DMB/Zurg/mnt:/data:rw,shared ## Location for rclone mount to host
+      - /mnt/user/DMB/Riven/mnt:/mnt:rw ## Location for Riven symlinks
+      - /mnt/user/DMB/zilean/data:/zilean/app/data:rw ## Location for Zilean data if using Riven
     environment:
       - TZ=${TIMEZONE:?err}
       - PUID=${PUID:?err}
@@ -175,23 +173,44 @@ services:
       - RD_API_KEY=${REALDEBRID_API}
       - RCLONE_MOUNT_NAME=DMB
       - ZILEAN_ENABLED=true
-     # - RIVEN_ENABLED=true
       - RIVEN_FRONTEND_ENABLED=true
       - RIVEN_FRONTEND_UPDATE=true
       - FRONTEND_LOGS=ON
       - RIVEN_BACKEND_ENABLED=true
       - RIVEN_BACKEND_UPDATE=true
-      - ORIGIN=http://${SERVER_IP}:3000   ## See Riven documentation for more details
+      - ORIGIN=http://${SERVER_IP}:3000 ## See Riven documentation for more details
       - PGADMIN_SETUP_EMAIL=
-      - PGADMIN_SETUP_PASSWORD=                                  
-      - HARD_RESET=false    
-#    ports:
-#      - 3000:3000/tcp
-#      - 5050:5050/tcp
+      - PGADMIN_SETUP_PASSWORD=
+      - HARD_RESET=false
+    #    ports:
+    #      - 3000:3000/tcp
+    #      - 5050:5050/tcp
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:3000
       - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
+  homepage:
+    container_name: homepage
+    network_mode: service:VPN
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=homepage
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:3001
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png
+    ports:
+      - 3001:3000/tcp
+    volumes:
+      - /mnt/user/appdata/homepage:/app/config:rw
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    image: ghcr.io/gethomepage/homepage:latest
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -215,15 +234,13 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
-
-## Do Not Change Network for qBittorrent
-## qBittorrent MUST always use a VPN / Secure Internet connection
+    ## Do Not Change Network for qBittorrent
+    ## qBittorrent MUST always use a VPN / Secure Internet connection
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:8088
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/qbittorrent-logo.png
-    network_mode: "service:VPN"
-
+    network_mode: service:VPN
   rdtclient:
     image: rogerfar/rdtclient:latest
     container_name: rdt-client
@@ -249,13 +266,13 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY:?err}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
-    # ports:
+      # ports:
       # - 6500:6500/tcp
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:6500
       - net.unraid.docker.icon=https://raw.githubusercontent.com/fizzyfrys/unraid-templates/main/icons/premrealldebrid.png
-    network_mode: "service:VPN"
+    network_mode: service:VPN
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
@@ -277,9 +294,9 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
-    network_mode: "service:VPN"      
-#    ports:
-#      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in gluetunVPN
+    network_mode: service:VPN
+    #    ports:
+    #      - "${WEBUI_PORT_PROWLARR:?err}:9696" # configured in gluetunVPN
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:9696
@@ -308,9 +325,9 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
-    network_mode: "service:VPN"       
-#    ports:
-#      - "${WEBUI_PORT_RADARR:?err}:7878"      # configured in gluetunVPN    
+    network_mode: service:VPN
+    #    ports:
+    #      - "${WEBUI_PORT_RADARR:?err}:7878"      # configured in gluetunVPN    
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
@@ -338,18 +355,18 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
-    network_mode: "service:VPN" 
-#     ports:
-#      - "${WEBUI_PORT_SONARR:?err}:8989"    # configured in gluetunVPN  
+    network_mode: service:VPN
+    #     ports:
+    #      - "${WEBUI_PORT_SONARR:?err}:8989"    # configured in gluetunVPN  
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_SONARR}
-      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-logo.png               
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-logo.png
   lidarr:
     image: lscr.io/linuxserver/lidarr:latest
     container_name: lidarr
     restart: unless-stopped
-    network_mode: "service:VPN"    
+    network_mode: service:VPN
     volumes:
       - ${APPDATA:?err}/lidarr:/config
       - ${APPDATA}/lidarr/custom-cont-init.d:/custom-cont-init.d
@@ -372,6 +389,15 @@ services:
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}
-      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr-logo.png    
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr-logo.png
+      - homepage.group=Media
+      - homepage.name=lidarr
+      - homepage.icon=lidarr.png
+      - homepage.href=http://${SERVER_IP}:${WEBUI_PORT_LIDARR:?err}
+      - homepage.description=Media server
+      - homepage.widget.type=lidarr
+      - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_LIDARR:?err}
+      - homepage.widget.key=4d6a35e4e34244849b7e8b50ebc27a66
+
 #    ports:
 #      - ${WEBUI_PORT_LIDARR:?err}:8686
