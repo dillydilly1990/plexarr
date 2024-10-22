@@ -34,7 +34,6 @@ services:
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
       - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Bazarr
       - ${WEBUI_PORT_LIDARR:?err}:8686 # WebUI Portal: Lidarr
-      - ${WEBUI_PORT_DEEMIX:?err}:6595 # WebUI Portal Deemix Gui
       - ${WEBUI_PORT_RADARR:?err}:7878 # WebUI Portal: Radarr
       - ${WEBUI_PORT_READARR:?err}:8787 # WebUI Portal: Readarr
       - ${WEBUI_PORT_MYLAR3:?err}:8090 # WebUI Portal: Mylar3
