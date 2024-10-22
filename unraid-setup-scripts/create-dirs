@@ -1,4 +1,3 @@
 mkdir -p /mnt/user/data/{downloads/torrents/{tv,movies,music},media/{tv,movies,music,}}
-mkdir -p /mnt/user/data/downloads/symlinks/{tv,movies,music}
-mkdir -p /mnt/user/data/Rclone
+
 
