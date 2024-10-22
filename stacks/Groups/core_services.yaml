@@ -1,0 +1,196 @@
+networks:
+  VPN:
+    name: VPN
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${DOCKER_SUBNET:?err}
+          gateway: ${DOCKER_GATEWAY:?err}
+volumes:
+  ts-state-qbittorrent: null
+  ts-state-rdtclient: null
+  ts-state-prowlarr: null
+  ts-state-radarr: null
+  ts-state-sonarr: null
+  ts-state-lidarr: null
+services:
+  VPN:
+    image: qmcgaw/gluetun:latest
+    container_name: VPN
+    restart: always
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8800:8800 # Zurg port
+      - 8888:8888/tcp # Gluetun Local Network HTTP proxy
+      - 8388:8388/tcp # Gluetun Local Network Shadowsocks
+      - 8388:8388/udp # Gluetun Local Network Shadowsocks
+      - 5050:5050/tcp # Homepage
+      - 3000:3000 # RIVEN BACKEND
+      - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: Riven
+      - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: RDTClient
+      - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Prowlarr
+      - ${WEBUI_PORT_LIDARR:?err}:8686 # WebUI Portal: Bazarr
+      - ${WEBUI_PORT_DEEMIX:?err}:6595 # WebUI Portal: Lidarr
+      - ${WEBUI_PORT_RADARR:?err}:7878 # WebUI Portal Deemix Gui
+      - ${WEBUI_PORT_READARR:?err}:8787 # WebUI Portal: Radarr
+      - ${WEBUI_PORT_MYLAR3:?err}:8090 # WebUI Portal: Readarr
+      - ${WEBUI_PORT_SONARR:?err}:8989 # WebUI Portal: Mylar3
+      - ${WEBUI_PORT_WHISPARR:?err}:6969 # WebUI Portal: Sonarr
+      - ${WEBUI_PORT_JELLYFIN:?err}:8096 # WebUI Portal: Whisparr
+      - ${WEBUI_PORT_JELLYSEERR:?err}:5055 # WebUI Portal: Jellyfin
+      - ${WEBUI_PORT_QBITTORRENT:?err}:${WEBUI_PORT_QBITTORRENT:?err} # WebUI Portal: Jellyseerr
+      - ${QBIT_PORT_TCP:?err}:6881/tcp # WebUI Portal: qBittorrent
+      - ${QBIT_PORT_UDP:?err}:6881/udp # Transmission Torrent Port TCP
+      - ${FLARESOLVERR_PORT:?err}:8191 # Transmission Torrent Port UDP
+      - ${TDARR_SERVER_PORT:?err}:${TDARR_SERVER_PORT:?err} # Service Port: FlareSolverr
+      - ${WEBUI_PORT_TDARR:?err}:${WEBUI_PORT_TDARR:?err} # Tdarr: Server Port
+      - ${WEBUI_PORT_PLEX:?err}:32400 # Tdarr: WebUI Portal
+      - 1900:1900/udp # WebUI Portal: Plex
+      - 5343:5343/udp # DNLA Service
+      - 8324:8324 # Plex Network Port
+      - 32410:32410/udp # Plex Network Port
+      - 32412:32412/udp # Plex Network Port
+      - 32413:32413/udp # Plex Network Port
+      - 32414:32414/udp # Plex Network Port
+      - 32469:32469 # Plex Network Port
+    volumes:
+      - ${APPDATA:?err}/gluetun:/gluetun:rw
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
+      - LOG_LEVEL=info
+      - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER:?err}
+      - VPN_TYPE=${VPN_TYPE}
+      - WIREGUARD_IMPLEMENTATION=auto
+      - WIREGUARD_ENDPOINT_IP=${WIREGUARD_ENDPOINT_IP}
+      - WIREGUARD_ENDPOINT_PORT=${WIREGUARD_ENDPOINT_PORT}
+      - WIREGUARD_PUBLIC_KEY=${WIREGUARD_PUBLIC_KEY}
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - WIREGUARD_PRESHARED_KEY=${WIREGUARD_PRESHARED_KEY}
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+      - OPENVPN_ENDPOINT_IP=
+      - OPENVPN_ENDPOINT_PORT=
+      - OPENVPN_USER=${VPN_USERNAME:?err}
+      - OPENVPN_PASSWORD=${VPN_PASSWORD:?err}
+      - OPENVPN_CUSTOM_CONFIG=${OPENVPN_CUSTOM_CONFIG}
+      - OPENVPN_VERSION=2.5
+      - OPENVPN_VERBOSITY=1
+      - OPENVPN_FLAGS=
+      - OPENVPN_CIPHERS=
+      - OPENVPN_AUTH=
+      - OPENVPN_PROCESS_USER=
+      - OPENVPN_IPV6=
+      - SERVER_COUNTRIES=${SERVER_COUNTRIES}
+      - SERVER_REGIONS=${SERVER_REGIONS}
+      - SERVER_CITIES=${SERVER_CITIES}
+      - SERVER_HOSTNAMES=${SERVER_HOSTNAMES}
+      - SERVER_CATEGORIES=${SERVER_CATEGORIES}
+      - FIREWALL=on
+      - FIREWALL_VPN_INPUT_PORTS=
+      - FIREWALL_INPUT_PORTS=
+      - FIREWALL_DEBUG=off
+      - FIREWALL_OUTBOUND_SUBNETS=${LOCAL_SUBNET:?err}
+      - DOT=off
+      - DOT_PROVIDERS=cloudflare
+      - DOT_PRIVATE_ADDRESS=127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,169.254.0.0/16,::1/128,fc00::/7,fe80::/10,::ffff:7f00:1/104,::ffff:a00:0/104,::ffff:a9fe:0/112,::ffff:ac10:0/108,::ffff:c0a8:0/112
+      - DOT_VERBOSITY=1
+      - DOT_VERBOSITY_DETAILS=0
+      - DOT_VALIDATION_LOGLEVEL=0
+      - DOT_CACHING=on
+      - DOT_IPV6=off
+      - BLOCK_MALICIOUS=on
+      - BLOCK_SURVEILLANCE=off
+      - BLOCK_ADS=off
+      - UNBLOCK=
+      - DNS_UPDATE_PERIOD=24h
+      - DNS_ADDRESS=
+      - DNS_KEEP_NAMESERVER=off
+      - HTTPPROXY=on
+      - HTTPPROXY_LOG=off
+      - HTTPPROXY_USER=
+      - HTTPPROXY_PASSWORD=
+      - HTTPPROXY_STEALTH=off
+      - SHADOWSOCKS=on
+      - SHADOWSOCKS_LOG=off
+      - SHADOWSOCKS_PASSWORD=
+      - SHADOWSOCKS_CIPHER=chacha20-ietf-poly1305
+      - HEALTH_SERVER_ADDRESS=127.0.0.1:9999
+      - HEALTH_TARGET_ADDRESS=github.com:443
+      - HEALTH_VPN_DURATION_INITIAL=6s
+      - HEALTH_VPN_DURATION_ADDITION=5s
+      - UPDATER_PERIOD=0
+      - PUBLICIP_FILE=/gluetun/ip
+      - PUBLICIP_PERIOD=12h
+      - VERSION_INFORMATION=on
+      - HTTP_CONTROL_SERVER_LOG=on
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:8000
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png
+    # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
+    networks:
+      - VPN
+  DMB:
+    container_name: DMB
+    image: iampuid0/dmb:latest ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0
+    network_mode: service:VPN #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
+    stdin_open: true
+    tty: true
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+      - no-new-privileges
+    volumes:
+      # config dirs
+      - ${APPDATA}/DMB/config:/config:rw ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup.
+      - ${APPDATA}/DMB/log:/log:rw ## Location for logs
+      - ${APPDATA}/DMB/Zurg/RD:/zurg/RD:rw ## Location for Zurg RealDebrid active configuration
+      - ${APPDATA}/DMB/PostgreSQL/data:/postgres_data:rw ## Location for PostgreSQL database if using Riven
+      - ${APPDATA}/DMB/Riven/data:/riven/backend/data ## Location for Riven backend data
+      - /mnt/user/DMB/Zurg/mnt:/data:rw,shared ## Location for rclone mount to host
+      - /mnt/user/DMB/Riven/mnt:/mnt:rw ## Location for Riven symlinks
+      - /mnt/user/DMB/zilean/data:/zilean/app/data:rw ## Location for Zilean data if using Riven
+    environment:
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=DMB
+      - COLOR_LOG_ENABLED=true
+      - PLEX_TOKEN=${PLEX_CLAIM}
+      - PLEX_ADDRESS=${SERVER_IP}:32400
+      - ZURG_ENABLED=true
+      - ZURG_UPDATE=true
+      - RD_API_KEY=${REALDEBRID_API}
+      - RCLONE_MOUNT_NAME=DMB
+      - ZILEAN_ENABLED=true
+      - RIVEN_FRONTEND_ENABLED=true
+      - RIVEN_FRONTEND_UPDATE=true
+      - FRONTEND_LOGS=ON
+      - RIVEN_BACKEND_ENABLED=true
+      - RIVEN_BACKEND_UPDATE=true
+      - ORIGIN=http://${SERVER_IP}:3000 ## See Riven documentation for more details
+      - PGADMIN_SETUP_EMAIL=
+      - PGADMIN_SETUP_PASSWORD=
+      - HARD_RESET=false
+    #    ports:
+    #      - 3000:3000/tcp
+    #      - 5050:5050/tcp
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:3000
+      - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
+    restart: always
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
