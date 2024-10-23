@@ -21,6 +21,7 @@ services:
     
   filebrowser:
     container_name: FileBrowser
+    network_mode: bridge
  #   networks:
 #      - br0
     environment:
