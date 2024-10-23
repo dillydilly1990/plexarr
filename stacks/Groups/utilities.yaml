@@ -22,6 +22,7 @@ services:
   filebrowser:
     image: filebrowser/filebrowser:s6
     container_name: filebrowser
+    network_mode: container:VPN
     volumes:
       - /mnt/user/:/srv #Change to match your directory
       - ${APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db:rw #Change to match your directory
@@ -29,8 +30,8 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-    ports:
-      - 8095:80 #Change the port if needed
+   # ports:
+   #   - 8095:80 #Change the port if needed
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:8095
