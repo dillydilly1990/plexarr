@@ -169,7 +169,9 @@ services:
     devices:
       - /dev/fuse:/dev/fuse:rwm
     depends_on:
-      - zurg
+      zurg:
+        condition: service_healthy
+        restart: true
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:5572
