@@ -172,7 +172,7 @@ services:
       - ZURG_UPDATE=true
       - RD_API_KEY=${REALDEBRID_API}
       - RCLONE_MOUNT_NAME=DMB
-      - ZILEAN_ENABLED=true
+      - ZILEAN_ENABLED=false
      # - RIVEN_ENABLED=true
       - RIVEN_FRONTEND_ENABLED=true
       - RIVEN_FRONTEND_UPDATE=true
