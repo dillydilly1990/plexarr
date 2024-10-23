@@ -165,7 +165,7 @@ services:
       - HOST_OS=Unraid
       - HOST_HOSTNAME=whiskeyshits
       - HOST_CONTAINERNAME=DMB
-      - COLOR_LOG_ENABLED=true
+      - COLOR_LOG_ENABLED=false
       - PLEX_TOKEN=${PLEX_CLAIM}
       - PLEX_ADDRESS=${SERVER_IP}:32400
       - ZURG_ENABLED=true
