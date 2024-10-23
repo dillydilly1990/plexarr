@@ -158,8 +158,8 @@ services:
       - TZ=${TIMEZONE:?err}
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
-      - ${APPDATA}/rclone:/config/rclone:rw
-    #  - ${APPDATA}/rclone/zurg/rclone.conf:/config/rclone/rclone.conf
+     # - ${APPDATA}/rclone:/config/rclone:rw
+      - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf
  #   ports:
  #     - 5572:5572/tcp
     cap_add:
