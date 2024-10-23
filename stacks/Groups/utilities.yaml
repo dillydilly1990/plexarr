@@ -25,7 +25,7 @@ services:
     volumes:
       - /mnt/user/:/srv #Change to match your directory
       - ${APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db:rw #Change to match your directory
-      - ${APPDATA}/filebrowser/settings.yaml:/config/settings.yaml:rw #Change to match your directory
+      - ${APPDATA}/filebrowser/settings.json:/config/settings.json:rw #Change to match your directory
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
