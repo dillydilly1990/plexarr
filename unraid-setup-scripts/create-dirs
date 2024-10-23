@@ -1,2 +1,2 @@
-mkdir -p /mnt/user/data/{downloads/{torrents/{tv,movies,music},symlinks{radarr,sonarr,lidarr}},media/{tv,movies,music,}}
+mkdir -p /mnt/user/data/{downloads/{torrents/{tv,movies,music},symlinks/{radarr,sonarr,lidarr}},media/{tv,movies,music,}}
 mkdir -p /mnt/user/DMB/{Zurg/mnt,Riven/mnt/{movies,shows}}
