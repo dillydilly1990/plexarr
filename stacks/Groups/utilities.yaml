@@ -1,7 +1,8 @@
 networks:
-  br1:
-    name: br1
+  br0:
+    name: br0
     driver: br0
+    exteenal: true
     ipam:
       driver: default
       config:
@@ -31,7 +32,7 @@ services:
   filebrowser:
     container_name: FileBrowser
     networks:
-      - br1
+      - br0
     environment:
       - TZ=America/Los_Angeles
       - HOST_OS=Unraid
