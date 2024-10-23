@@ -1,3 +1,7 @@
+networks:
+    br0:
+        external: true
+        name: br0
 services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
@@ -11,3 +15,21 @@ services:
       - ${APPDATA}/homepage:/app/config # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
+  filebrowser':
+    container_name: FileBrowser
+    networks:
+      - br0
+    environment:
+      - TZ=America/Los_Angeles
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=FileBrowser
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui='http://[IP]/files/'
+      - net.unraid.docker.icon='https://github.com/maschhoff/docker/raw/master/filebrowser/35781395.png'
+    volumes:
+      - /mnt/user/':'/srv':'rw
+      - /mnt/user/appdata/filebrowser/':'/db/':'rw
+    image: "'filebrowser/filebrowser'"
+    command: -d /db/database.db
