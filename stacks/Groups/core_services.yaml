@@ -150,11 +150,11 @@ services:
     restart: unless-stopped
     environment:
       TZ: Europe/Berlin
-      PUID: 1000
-      PGID: 1000
+      PUID: ${PUID}
+      PGID: ${PGID}
     volumes:
-      - /mnt/zurg:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
-      - ./rclone.conf:/config/rclone/rclone.conf
+      - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
+      - ${APPDATA}zurg/rclone.conf:/config/rclone/rclone.conf
     cap_add:
       - SYS_ADMIN
     security_opt:
