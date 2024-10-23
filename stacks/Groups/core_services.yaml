@@ -14,6 +14,7 @@ volumes:
   ts-state-radarr: null
   ts-state-sonarr: null
   ts-state-lidarr: null
+  zurgdata: null
 services:
   VPN:
     image: qmcgaw/gluetun:latest
@@ -27,9 +28,7 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
-      - 5050:5050/tcp # Zurg Port
-      - 8800:8800 # Riven backend
-      - ${WEBUI_PORT_RIVEN:?err}:3000/tcp # WebUI Portal: Riven
+      - 9999:9999 # Zurg Port
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
       - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Bazarr
@@ -134,65 +133,34 @@ services:
     # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
     networks:
       - VPN
-  DMB:
-    container_name: DMB
-    image: iampuid0/dmb:latest    ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0
-    network_mode: service:VPN #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
-    stdin_open: true
-    tty: true
-    devices:
-      - /dev/fuse:/dev/fuse:rwm
+    zurg:
+    image: ghcr.io/debridmediamanager/zurg-testing:latest    
+    container_name: zurg
+    restart: unless-stopped
+#    ports:
+#      - 9999:9999
+    volumes:
+      - ./plex_update.sh:/app/plex_update.sh
+      - ./config.yml:/app/config.yml
+      - zurgdata:/app/data
+
+  rclone:
+    image: rclone/rclone:latest
+    container_name: rclone
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Berlin
+      PUID: 1000
+      PGID: 1000
+    volumes:
+      - /mnt/zurg:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
+      - ./rclone.conf:/config/rclone/rclone.conf
     cap_add:
       - SYS_ADMIN
     security_opt:
       - apparmor:unconfined
-      - no-new-privileges
-    volumes:
-    # config dirs
-      - ${APPDATA}/DMB/config:/config:rw                     ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup.
-      - ${APPDATA}/DMB/log:/log:rw                           ## Location for logs
-      - ${APPDATA}/DMB/Zurg/RD:/zurg/RD:rw                   ## Location for Zurg RealDebrid active configuration
-      - ${APPDATA}/DMB/PostgreSQL/data:/postgres_data:rw     ## Location for PostgreSQL database if using Riven
-      - ${APPDATA}/DMB/Riven/data:/riven/backend/data        ## Location for Riven backend data
-    # media dirs
-      - /mnt/user/DMB/Zurg/mnt:/data:rw,shared               ## Location for rclone mount to host
-      - /mnt/user/DMB/Riven/mnt:/mnt:rw                      ## Location for Riven symlinks
-      - /mnt/user/DMB/zilean/data:/zilean/app/data:rw        ## Location for Zilean data if using Riven
-    environment:
-      - TZ=${TIMEZONE:?err}
-      - PUID=${PUID:?err}
-      - PGID=${PGID:?err}
-      - HOST_OS=Unraid
-      - HOST_HOSTNAME=whiskeyshits
-      - HOST_CONTAINERNAME=DMB
-      - COLOR_LOG_ENABLED=false
-      - PLEX_TOKEN=${PLEX_CLAIM}
-      - PLEX_ADDRESS=${SERVER_IP}:32400
-      - ZURG_ENABLED=true
-      - ZURG_UPDATE=true
-      - RD_API_KEY=${REALDEBRID_API}
-      - RCLONE_MOUNT_NAME=DMB
-      - ZILEAN_ENABLED=false
-     # - RIVEN_ENABLED=true
-      - RIVEN_FRONTEND_ENABLED=true
-      - RIVEN_FRONTEND_UPDATE=true
-      - FRONTEND_LOGS=ON
-      - RIVEN_BACKEND_ENABLED=true
-      - RIVEN_BACKEND_UPDATE=true
-      - ORIGIN=http://${SERVER_IP}:3000   ## See Riven documentation for more details
-      - PGADMIN_SETUP_EMAIL=
-      - PGADMIN_SETUP_PASSWORD=                                  
-      - HARD_RESET=false    
-#    ports:
-#      - 3000:3000/tcp
-#      - 5050:5050/tcp
-    labels:
-      - net.unraid.docker.managed=dockerman
-      - net.unraid.docker.webui=http://${SERVER_IP}:3000
-      - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
-      - homepage.group=Media Management
-      - homepage.name=Riven
- #     - homepage.icon=lidarr.png
-      - homepage.href=http://${SERVER_IP}:3000
-      - homepage.description=Media server
-
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+    depends_on:
+      - zurg
+    command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
