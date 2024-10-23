@@ -30,7 +30,7 @@ services:
       - HOST_CONTAINERNAME=FileBrowser
     labels:
       - net.unraid.docker.managed=dockerman
-      - net.unraid.docker.webui=http://${SERVER_IP}/files/
+      - net.unraid.docker.webui=http://${SERVER_IP}
       - net.unraid.docker.icon=https://github.com/maschhoff/docker/raw/master/filebrowser/35781395.png
     volumes:
       - /mnt/user/:/srv:rw
