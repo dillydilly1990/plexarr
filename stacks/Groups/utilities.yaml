@@ -1,13 +1,3 @@
-networks:
-  br0:
-    name: br0
-    driver: br0
-    external: true
-    ipam:
-      driver: default
-      config:
-        - subnet: ${DOCKER_SUBNET:?err}
-          gateway: ${DOCKER_GATEWAY:?err}
 services:
   homepage:
     container_name: homepage
