@@ -1,7 +1,12 @@
 networks:
     br0:
-        external: true
-        name: br0
+      name: br0
+      driver: br0
+      ipam:
+        driver: default
+        config:
+          - subnet: ${DOCKER_SUBNET:?err}
+            gateway: ${DOCKER_GATEWAY:?err}
 services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
