@@ -25,7 +25,9 @@ services:
  #   networks:
 #      - br0
     environment:
-      - TZ=America/Los_Angeles
+      - TZ=${TIMEZONE:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
       - HOST_OS=Unraid
       - HOST_HOSTNAME=whiskeyshits
       - HOST_CONTAINERNAME=FileBrowser
@@ -38,5 +40,7 @@ services:
     volumes:
       - /mnt/user/:/srv:rw
       - /mnt/user/appdata/filebrowser/:/db/:rw
-    image: filebrowser/filebrowser
+      - /mnt/user/appdata/filebrowser/settings.yaml:/config/settings.yaml
+    image: filebrowser/filebrowser:s6
     command: -d /db/database.db
+    user: "true"
