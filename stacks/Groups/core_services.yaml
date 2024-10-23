@@ -147,16 +147,15 @@ services:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
       - zurgdata:/app/data
-
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
     network_mode: service:VPN
     restart: unless-stopped
     environment:
-      TZ: Europe/Berlin
-      PUID: ${PUID}
-      PGID: ${PGID}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - TZ=${TIMEZONE:?err}
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
       - /${APPDATA}/rclone:/config/rclone:rw
@@ -176,5 +175,4 @@ services:
       - net.unraid.docker.webui=http://${SERVER_IP}:5572]/
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
     command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full" "rcd --rc-web-gui --rc-web-gui-update --rc-web-gui-force-update"
-      --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user rclone --rc-pass
-      rclone
+      --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user rclone --rc-pass rclone
