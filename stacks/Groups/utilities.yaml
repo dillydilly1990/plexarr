@@ -2,7 +2,7 @@ networks:
   br0:
     name: br0
     driver: br0
-    exteenal: true
+    external: true
     ipam:
       driver: default
       config:
