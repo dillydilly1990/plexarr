@@ -133,7 +133,7 @@ services:
     # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
     networks:
       - VPN
-    zurg:
+  zurg:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
     container_name: zurg
     restart: unless-stopped
