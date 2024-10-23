@@ -1,7 +1,7 @@
 services:
   homepage:
     container_name: homepage
-    network_mode: bridge
+    network_mode: container:VPN
     environment:
       - TZ=America/Los_Angeles
       - HOST_OS=Unraid
@@ -11,8 +11,8 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:3001
       - net.unraid.docker.icon=https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png
-    ports:
-      - 3001:3000/tcp
+    #ports:
+    #  - 3001:3000/tcp
     volumes:
       - /mnt/user/appdata/homepage:/app/config:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
