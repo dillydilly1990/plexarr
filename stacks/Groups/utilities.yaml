@@ -1,6 +1,6 @@
 networks:
-  br0:
-    name: br0
+  br1:
+    name: br1
     driver: br0
     ipam:
       driver: default
