@@ -1,24 +1,31 @@
 networks:
-    br0:
-      name: br0
-      driver: br0
-      ipam:
-        driver: default
-        config:
-          - subnet: ${DOCKER_SUBNET:?err}
-            gateway: ${DOCKER_GATEWAY:?err}
+  br0:
+    name: br0
+    driver: br0
+    ipam:
+      driver: default
+      config:
+        - subnet: ${DOCKER_SUBNET:?err}
+          gateway: ${DOCKER_GATEWAY:?err}
 services:
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
+    network_mode: bridge
     environment:
-      PUID: ${PUID} # optional, your user id
-      PGID: ${PGID} # optional, your group id
+      - TZ=America/Los_Angeles
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=homepage
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui='http://[IP]:[PORT:3000]'
+      - net.unraid.docker.icon='https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png'
     ports:
-      - 3001:3000
+      - 3001:3000/tcp
     volumes:
-      - ${APPDATA}/homepage:/app/config # Make sure your local config directory exists
-      - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
+      - /mnt/user/appdata/homepage':'/app/config':'rw
+      - /var/run/docker.sock':'/var/run/docker.sock':'ro
+    image: "'ghcr.io/gethomepage/homepage:latest"
     restart: unless-stopped
   filebrowser:
     container_name: FileBrowser
