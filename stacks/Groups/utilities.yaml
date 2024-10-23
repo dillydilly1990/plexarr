@@ -43,4 +43,4 @@ services:
       - /mnt/user/appdata/filebrowser/settings.yaml:/config/settings.yaml
     image: filebrowser/filebrowser:s6
     command: -d /db/database.db
-    user: "true"
+   # user: "true"
