@@ -31,3 +31,7 @@ services:
       - PGID=${PGID}
     ports:
       - 8095:80 #Change the port if needed
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:8095
+      - net.unraid.docker.icon=https://github.com/maschhoff/docker/raw/master/filebrowser/35781395.png
