@@ -28,6 +28,7 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
+      - 5572:5572/tcp # rclone ui
       - 3001:3000/tcp # homepage
       - 8095:80 # Filebrowser web ui
       - 9999:9999 # Zurg Port
@@ -158,7 +159,10 @@ services:
       PGID: ${PGID}
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
-      - ${APPDATA}zurg/rclone.conf:/config/rclone/rclone.conf
+      - /${APPDATA}/rclone:/config/rclone:rw
+      - ${APPDATA}/rclone/zurg/rclone.conf:/config/rclone/rclone.conf
+ #   ports:
+ #     - 5572:5572/tcp
     cap_add:
       - SYS_ADMIN
     security_opt:
@@ -167,4 +171,10 @@ services:
       - /dev/fuse:/dev/fuse:rwm
     depends_on:
       - zurg
-    command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:5572]/
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
+    command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full" "rcd --rc-web-gui --rc-web-gui-update --rc-web-gui-force-update"
+      --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user rclone --rc-pass
+      rclone
