@@ -32,7 +32,7 @@ services:
       - 3002:80
     labels:
       - net.unraid.docker.managed=dockerman
-      - net.unraid.docker.webui=http://127.0.0.1/files
+      - net.unraid.docker.webui=http://${SERVER_IP}:3002
       - net.unraid.docker.icon=https://github.com/maschhoff/docker/raw/master/filebrowser/35781395.png
     volumes:
       - /mnt/user/:/srv:rw
