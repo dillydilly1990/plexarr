@@ -137,6 +137,7 @@ services:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
     container_name: zurg
     restart: unless-stopped
+    network_mode: service:VPN
 #    ports:
 #      - 9999:9999
     volumes:
@@ -147,6 +148,7 @@ services:
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
+    network_mode: service:VPN
     restart: unless-stopped
     environment:
       TZ: Europe/Berlin
