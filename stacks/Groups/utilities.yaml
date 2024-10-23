@@ -31,7 +31,7 @@ services:
   filebrowser:
     container_name: FileBrowser
     networks:
-      - br0
+      - br1
     environment:
       - TZ=America/Los_Angeles
       - HOST_OS=Unraid
