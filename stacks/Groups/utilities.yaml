@@ -18,7 +18,6 @@ services:
       - /mnt/user/appdata/homepage:/app/config:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
     image: ghcr.io/gethomepage/homepage:latest
-    restart: unless-stopped
     
   filebrowser:
     image: filebrowser/filebrowser:s6
