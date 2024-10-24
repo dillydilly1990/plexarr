@@ -47,6 +47,9 @@ services:
     image: amir20/dozzle:latest
     restart: unless-stopped
     environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
       - DOZZLE_ENABLE_ACTIONS=true
       - DOZZLE_LEVEL=info
       - DOZZLE_TAILSIZE=300
