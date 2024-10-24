@@ -14,7 +14,7 @@ volumes:
   ts-state-radarr: null
   ts-state-sonarr: null
   ts-state-lidarr: null
-  zurgdata: null
+  zurgdata:
 services:
   VPN:
     image: qmcgaw/gluetun:latest
@@ -28,10 +28,10 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
-      - 5572:5572/tcp # rclone ui
+ #     - 5572:5572/tcp # rclone ui
       - 3001:3000/tcp # homepage
       - 8095:80 # Filebrowser web ui
-      - 9999:9999 # Zurg Port
+ #     - 9999:9999 # Zurg Port
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
       - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Bazarr
@@ -140,28 +140,23 @@ services:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
     container_name: zurg
     restart: unless-stopped
-    network_mode: service:VPN
-#    ports:
-#      - 9999:9999
+    ports:
+      - 9999:9999
     volumes:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
-      - zurgdata:/app/data
+      - zurgdata:/app/data    
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
-    network_mode: service:VPN
     restart: unless-stopped
     environment:
+      - TZ=${TIMEZONE:?err}
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
-      - TZ=${TIMEZONE:?err}
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
-     # - ${APPDATA}/rclone:/config/rclone:rw
-      - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf
- #   ports:
- #     - 5572:5572/tcp
+      - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf    
     cap_add:
       - SYS_ADMIN
     security_opt:
@@ -169,11 +164,10 @@ services:
     devices:
       - /dev/fuse:/dev/fuse:rwm
     depends_on:
-      zurg:
-        condition: service_healthy
-        restart: true
+      - zurg
+    command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
-      - net.unraid.docker.managed=dockerman
+    #  - net.unraid.docker.managed=dockerman
     #  - net.unraid.docker.webui=http://${SERVER_IP}:5572
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
-    command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
+  
