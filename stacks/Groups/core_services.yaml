@@ -134,7 +134,7 @@ services:
       - net.unraid.docker.webui=http://${SERVER_IP}:8000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png
       - homepage.group=Core Services
-      - homepage.name=VPN
+      - homepage.name=GluetunVPN
       - homepage.icon=gluetun.png
       - homepage.href=http://${SERVER_IP}:8000
       - homepage.description=Media server
