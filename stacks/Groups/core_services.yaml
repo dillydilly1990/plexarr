@@ -166,12 +166,14 @@ services:
     devices:
       - /dev/fuse:/dev/fuse:rwm
     depends_on:
-      - zurg
+      zurg:
+        condition: service_healthy
+        restart: true
     command:
       - rcd 
       - --rc-web-gui 
       - --rc-web-gui-no-open-browser
-      - --rc-addr=:5572 
+      - --rc-addr=${SERVER_IP}:5572 
       - --rc-user=admin 
       - --rc-pass=admin
       - "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
