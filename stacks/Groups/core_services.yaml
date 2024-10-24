@@ -63,6 +63,7 @@ services:
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
       - LOG_LEVEL=info
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER:?err}
@@ -150,7 +151,12 @@ services:
     volumes:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
-      - zurgdata:/app/data    
+      - zurgdata:/app/data   
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
     labels:
       - homepage.group=Core Services
       - homepage.name=Zurg
@@ -162,9 +168,10 @@ services:
     container_name: rclone
     restart: unless-stopped
     environment:
-      - TZ=${TIMEZONE:?err}
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
     ports:
       - "5572:5572"
     volumes:
