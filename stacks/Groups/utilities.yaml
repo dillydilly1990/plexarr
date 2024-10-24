@@ -36,3 +36,9 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:8095
       - net.unraid.docker.icon=https://github.com/maschhoff/docker/raw/master/filebrowser/35781395.png
+      - homepage.group=Utilites
+      - homepage.name=FileBrowser
+      - homepage.icon=FileBrowser.png
+      - homepage.href=http://${SERVER_IP}:8095
+      - homepage.description=Media server
+
