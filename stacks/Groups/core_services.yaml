@@ -174,7 +174,7 @@ services:
       - --rc-addr=:5572 
       - --rc-user=admin 
       - --rc-pass=admin
-      - mount zurg: /data 
+      - "mount zurg: /data" 
       - --allow-other 
       - --allow-non-empty 
       - --dir-cache-time 10s 
