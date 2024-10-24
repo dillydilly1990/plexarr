@@ -53,7 +53,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 8080:8080
-     - homepage.group=Utilites
+      - homepage.group=Utilites
       - homepage.name=Dozzle
       - homepage.icon=dozzle.png
       - homepage.href=http://${SERVER_IP}:8080
