@@ -167,7 +167,7 @@ services:
       - /dev/fuse:/dev/fuse:rwm
     depends_on:
       - zurg
-    command: mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full rcd --rc-web-gui --rc-addr :5572 --rc-user admin --rc-pass admin
+    command: mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full 
     labels:
     #  - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:5572
