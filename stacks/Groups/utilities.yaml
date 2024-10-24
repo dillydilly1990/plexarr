@@ -2,6 +2,7 @@ services:
   homepage:
     container_name: homepage
     network_mode: container:VPN
+    restart: unless-stopped
     environment:
       - TZ=America/Los_Angeles
       - HOST_OS=Unraid
@@ -22,6 +23,7 @@ services:
   filebrowser:
     image: filebrowser/filebrowser:s6
     container_name: filebrowser
+    restart: unless-stopped
     network_mode: container:VPN
     volumes:
       - /mnt/user/:/srv #Change to match your directory
@@ -44,6 +46,7 @@ services:
   dozzle:
     container_name: dozzle
     image: amir20/dozzle:latest
+    restart: unless-stopped
     environment:
       - DOZZLE_ENABLE_ACTIONS=true
       - DOZZLE_LEVEL= info
