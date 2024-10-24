@@ -174,7 +174,11 @@ services:
       - --rc-addr=:5572
       - --rc-user=admin
       - --rc-pass=admin
-      "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
+      - mount zurg: /data
+      - --allow-other 
+      - --allow-non-empty  
+      - --dir-cache-time 10s 
+      - --vfs-cache-mode full
     labels:
     #  - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:5572
