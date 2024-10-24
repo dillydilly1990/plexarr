@@ -174,5 +174,8 @@ services:
     #  - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:5572
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
-      
-      
+            - homepage.group=Utilites
+      - homepage.name=Rclone
+      - homepage.icon=rclone.png
+      - homepage.href=http://${SERVER_IP}:5572
+      - homepage.description=Media server
