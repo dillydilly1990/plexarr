@@ -168,7 +168,7 @@ services:
     depends_on:
       - zurg
     command:
-     - "rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr=:5572 --rc-user=admin --rc-pass=admin"
+      - "rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr=:5572 --rc-user=admin --rc-pass=admin"
       - "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
     #  - net.unraid.docker.managed=dockerman
