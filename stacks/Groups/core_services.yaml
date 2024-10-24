@@ -133,6 +133,11 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:8000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/qdm12/gluetun/master/doc/logo_256.png
+      - homepage.group=Core Services
+      - homepage.name=VPN
+      - homepage.icon=gluetun.png
+      - homepage.href=http://${SERVER_IP}:8000
+      - homepage.description=Media server
     # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
     networks:
       - VPN
@@ -146,6 +151,12 @@ services:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
       - zurgdata:/app/data    
+    labels:
+      - homepage.group=Core Services
+      - homepage.name=Zurg
+      - homepage.icon=zurg.png
+      - homepage.href=http://${SERVER_IP}:9999
+      - homepage.description=Media server
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
@@ -174,7 +185,7 @@ services:
     #  - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:5572
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
-            - homepage.group=Utilites
+      - homepage.group=Core Services
       - homepage.name=Rclone
       - homepage.icon=rclone.png
       - homepage.href=http://${SERVER_IP}:5572
