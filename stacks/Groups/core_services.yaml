@@ -170,7 +170,7 @@ services:
     command:
       - rcd 
       - --rc-web-gui 
-      - --rc-web-gui-no-open-browse
+      - --rc-web-gui-no-open-browser
       - --rc-addr=:5572 
       - --rc-user=admin 
       - --rc-pass=admin
