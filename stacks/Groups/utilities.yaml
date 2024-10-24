@@ -4,7 +4,10 @@ services:
     network_mode: container:VPN
     restart: unless-stopped
     environment:
-      - TZ=America/Los_Angeles
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
       - HOST_OS=Unraid
       - HOST_HOSTNAME=whiskeyshits
       - HOST_CONTAINERNAME=homepage
@@ -29,8 +32,10 @@ services:
       - ${APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db:rw #Change to match your directory
       - ${APPDATA}/filebrowser/settings.json:/config/settings.json:rw #Change to match your directory
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
    # ports:
    #   - 8095:80 #Change the port if needed
     labels:
@@ -50,6 +55,7 @@ services:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
       - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
       - DOZZLE_ENABLE_ACTIONS=true
       - DOZZLE_LEVEL=info
       - DOZZLE_TAILSIZE=300
