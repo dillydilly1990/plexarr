@@ -1,0 +1,37 @@
+services:
+  rdtclient:
+    image: rogerfar/rdtclient:latest
+    container_name: rdt-client
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA}/rdt-client/db:/data/db:rw
+      - ${DATA}:/data/downloads:rw
+      - ts-state-rdtclient:/var/lib/tailscale
+    environment:
+      - TZ=America/Detroit
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=rdt-client
+      - PUID=99
+      - PGID=100
+      - UMASK=022
+      - DOCKER_MODS=${DOCKER_MODS}
+      - TP_THEME=${TP_THEME}
+      - TAILSCALE_SERVE_PORT=8686
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=rdt-client
+      - TAILSCALE_AUTHKEY=${TS_KEY:?err}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+    ## Do Not Change Network for qBittorrent
+    ## qBittorrent MUST always use a VPN / Secure Internet connection
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:6500
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/fizzyfrys/unraid-templates/main/icons/premrealldebrid.png
+    network_mode: service:VPN
+    depends_on:
+      DMB:
+        condition: service_healthy
+        restart: true
