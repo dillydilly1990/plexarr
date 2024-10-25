@@ -2,15 +2,15 @@ services:
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
-    network_mode: service:VPN
+#    network_mode: service:VPN
     restart: unless-stopped
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
       - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
-#   ports:
-#      - "5572:5572"
+   ports:
+      - "5572:5572"
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
       - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf    
