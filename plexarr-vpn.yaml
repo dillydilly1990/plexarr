@@ -14,3 +14,4 @@ include:
   - compose/individual/filebrowser.yaml
   - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
+  - compose/individual/lidarr.yaml
