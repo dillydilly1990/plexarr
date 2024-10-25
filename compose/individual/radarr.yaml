@@ -29,3 +29,7 @@ services:
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
 #    ports:
 #      - "${WEBUI_PORT_RADARR:?err}:7878"      
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
