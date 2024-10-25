@@ -13,7 +13,7 @@ services:
       - HOST_HOSTNAME=whiskeyshits
       - HOST_CONTAINERNAME=homepage
     labels:
-      - net.unraid.docker.managed=dockerman
+#      - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:3001
       - net.unraid.docker.icon=https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png
 #    ports:
