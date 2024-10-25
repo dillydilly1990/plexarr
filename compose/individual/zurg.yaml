@@ -1,0 +1,22 @@
+services:  
+  zurg:
+    image: ghcr.io/debridmediamanager/zurg-testing:latest    
+    container_name: zurg
+    restart: unless-stopped
+    ports:
+      - 9999:9999
+    volumes:
+      - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
+      - ${APPDATA}/zurg/config.yml:/app/config.yml
+      - zurgdata:/app/data   
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+    labels:
+      - homepage.group=Core Services
+      - homepage.name=Zurg
+      - homepage.icon=zurg.png
+      - homepage.href=http://${SERVER_IP}:9999
+      - homepage.description=Media server
