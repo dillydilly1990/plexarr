@@ -1,4 +1,5 @@
 services:
   homepage:
-    ports:
-      - 3001:3000/tcp
+    network_mode: service:VPN
+#    ports:
+#      - 3001:3000/tcp
