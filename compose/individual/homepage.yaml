@@ -2,7 +2,7 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
-    network_mode: container:VPN
+#    network_mode: container:VPN
     restart: unless-stopped
     environment:
       - PUID=${PUID:?err}
