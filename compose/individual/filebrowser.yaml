@@ -24,3 +24,7 @@ services:
       - homepage.icon=filebrowser.png
       - homepage.href=http://${SERVER_IP}:8095
       - homepage.description=Media server
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
