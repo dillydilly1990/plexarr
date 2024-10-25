@@ -20,10 +20,10 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
-      - 5572:5572/tcp # rclone ui
+#      - 5572:5572/tcp # rclone
       - 3001:3000/tcp # homepage
       - 8095:80 # Filebrowser web ui
-      - 9999:9999 # Zurg Port
+#      - 9999:9999 # Zurg Port
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
       - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Bazarr
