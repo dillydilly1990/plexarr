@@ -10,5 +10,4 @@ networks:
 include:
   - compose/individual/gluetunVPN.yaml
   - compose/individual/homepage.yaml
-  - plexarr-vpn.overrides.yaml
     
