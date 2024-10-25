@@ -33,7 +33,6 @@ services:
       - 32413:32413/udp # Plex Network Port
       - 32414:32414/udp # Plex Network Port
       - 32469:32469 # Plex Network Port
-  homepage:
     network_mode: service:VPN
 #    ports:
 #      - 3001:3000/tcp
