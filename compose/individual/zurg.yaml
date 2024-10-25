@@ -1,3 +1,5 @@
+volumes:
+  zurgdata:
 services:  
   zurg:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
