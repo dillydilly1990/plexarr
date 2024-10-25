@@ -31,3 +31,7 @@ services:
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr-logo.png    
 #    ports:
 #      - ${WEBUI_PORT_LIDARR:?err}:8686
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
