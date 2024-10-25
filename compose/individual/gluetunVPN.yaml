@@ -1,13 +1,13 @@
-networks:
-  VPN:
-    name: VPN
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: ${DOCKER_SUBNET:?err}
-          gateway: ${DOCKER_GATEWAY:?err}
-#services:
+#networks:
+ # VPN:
+   # name: VPN
+   # driver: bridge
+   # ipam:
+    #  driver: default
+    #  config:
+     #   - subnet: ${DOCKER_SUBNET:?err}
+       #   gateway: ${DOCKER_GATEWAY:?err}
+services:
   VPN:
     image: qmcgaw/gluetun:latest
     container_name: VPN
