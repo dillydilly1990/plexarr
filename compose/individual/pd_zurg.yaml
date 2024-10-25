@@ -50,7 +50,7 @@ services:
       - RCLONE_VFS_READ_CHUNK_SIZE_LIMIT=1G
      # - RCLONE_TRANSFERS=8
       ## Plex Debrid Required Settings
-      - PD_ENABLED=false
+      - PD_ENABLED=true
       ## To utilize plex_debrid with Plex, the following environment variables are required
       #- PLEX_USER=
       #- PLEX_TOKEN=
@@ -60,7 +60,7 @@ services:
      # - JF_API_KEY
       ## Plex Debrid Optional Settings
      # - PD_UPDATE=true   
-     # - SHOW_MENU=false
+      - SHOW_MENU=true
      # - SEERR_API_KEY=
      # - SEERR_ADDRESS=
       ## Special Features
