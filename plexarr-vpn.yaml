@@ -10,4 +10,4 @@ networks:
 include:
   - compose/individual/gluetunVPN.yaml
   - compose/individual/homepage.yaml
-    
+  - compose/individual/zurg.yaml
