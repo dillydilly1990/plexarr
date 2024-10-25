@@ -8,4 +8,4 @@ networks:
         - subnet: ${DOCKER_SUBNET:?err}
           gateway: ${DOCKER_GATEWAY:?err}
 include:
-  - compose/individual/glutenVPN.yaml
+  - compose/individual/gluetunVPN.yaml
