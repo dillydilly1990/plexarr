@@ -23,6 +23,10 @@ services:
       - homepage.icon=zurg.png
       - homepage.href=http://${SERVER_IP}:9999
       - homepage.description=Media server
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
