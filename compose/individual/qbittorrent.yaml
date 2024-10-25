@@ -1,0 +1,35 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+    volumes:
+      - ${APPDATA}/qbittorrent:/config
+      - ${MEDIA}:/data
+      - ts-state-qbittorrent:/var/lib/tailscale
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+      - WEBUI_PORT=${WEBUI_PORT_QBITTORRENT}
+      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
+      - TP_THEME=${TP_THEME}
+      - TAILSCALE_SERVE_PORT=8686
+      - TAILSCALE_SERVE_MODE=https
+      - TAILSCALE_USE_SSH=1
+      - TAILSCALE_HOSTNAME=qbittorrent
+      - TAILSCALE_AUTHKEY=${TS_KEY}
+      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+     ports:
+      - 8088:8088/tcp
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:8088
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/qbittorrent-logo.png
+#    network_mode: service:VPN
+#    depends_on:
+#      VPN:
+#        condition: service_healthy
+#        restart: true
