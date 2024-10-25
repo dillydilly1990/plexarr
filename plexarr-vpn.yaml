@@ -10,6 +10,3 @@ networks:
 include:
   - compose/individual/gluetunVPN.yaml
   - compose/individual/homepage.yaml
-    network_mode: service:VPN
-#    ports:
-#     - 3001:3000/tcp
