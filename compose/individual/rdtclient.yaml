@@ -1,3 +1,5 @@
+volumes:
+  ts-state-rdtclient: null
 services:
   rdtclient:
     image: rogerfar/rdtclient:latest
