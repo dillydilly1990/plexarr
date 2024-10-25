@@ -4,6 +4,7 @@ services:
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
+    network_mode: service:VPN
     restart: unless-stopped
     volumes:
       - ${APPDATA:?err}/radarr:/config
@@ -26,5 +27,5 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
-    ports:
-      - "${WEBUI_PORT_RADARR:?err}:7878"      
+#    ports:
+#      - "${WEBUI_PORT_RADARR:?err}:7878"      
