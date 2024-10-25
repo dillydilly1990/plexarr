@@ -12,3 +12,5 @@ include:
   - compose/individual/homepage.yaml
   - compose/individual/zurg.yaml
   - compose/individual/filebrowser.yaml
+  - compose/individual/radarr.yaml
+  - compose/individual/sonarr.yaml
