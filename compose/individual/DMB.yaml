@@ -19,9 +19,9 @@
       - ${APPDATA}/DMB/PostgreSQL/data:/postgres_data:rw     ## Location for PostgreSQL database if using Riven
       - ${APPDATA}/DMB/Riven/data:/riven/backend/data        ## Location for Riven backend data
     # media dirs
-      - /mnt/user/DMB/Zurg/mnt:/data:rw,shared               ## Location for rclone mount to host
-      - /mnt/user/DMB/Riven/mnt:/mnt:rw                      ## Location for Riven symlinks
-      - /mnt/user/DMB/zilean/data:/zilean/app/data:rw        ## Location for Zilean data if using Riven
+      - /mnt/user/DMB/Zurg:/data:rw,shared               ## Location for rclone mount to host
+      - /mnt/user/DMB/Riven/:/mnt:rw                      ## Location for Riven symlinks
+      - /mnt/user/DMB/zilean:/zilean/app/data:rw        ## Location for Zilean data if using Riven
     environment:
       - TZ=${TIMEZONE:?err}
       - PUID=${PUID:?err}
