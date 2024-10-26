@@ -1,0 +1,41 @@
+services:
+  DMB:
+    container_name: DMB
+    image: iampuid0/dmb:latest                                       ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0 
+    stop_grace_period: 30s                                           ## Adjust as need to allow for graceful shutdown of the container
+    stdin_open: true                                                 ## docker run -i
+    tty: true                                                        ## docker run -t    
+    volumes:   
+      - ${APPDATA:?err}/DMB/config:/config                     ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup. 
+      - ${APPDATA:?err}/DMB/log:/log                           ## Location for logs
+      - /mnt/user/DMB/Zurg/RD:/zurg/RD                   ## Location for Zurg RealDebrid active configuration  
+      - /mnt/user/DMB/Zurg:/data:shared              ## Location for rclone mount to host
+      - ${APPDATA:?err}/DMB/Riven/data:/riven/backend/data     ## Location for Riven backend data
+      - /mnt/user/DMB/Riven/mnt:/mnt                     ## Location for Riven symlinks
+      - ${APPDATA:?err}/DMB/PostgreSQL/data:/postgres_data     ## Location for PostgreSQL database
+      - ${APPDATA:?err}/DMB/pgAdmin4/data:/pgadmin/data        ## Location for pgAdmin 4 data
+      - ${APPDATA:?err}/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+      - ZURG_ENABLED=true      
+      - RD_API_KEY=${REALDEBRID_API}
+      - RCLONE_MOUNT_NAME=DMB
+      - ZILEAN_ENABLED=true
+      - RIVEN_ENABLED=true
+      - ORIGIN=http://${SERVER_IP}:3000                                  ## See Riven documentation for more details
+      - PGADMIN_SETUP_EMAIL=                                        ## Set if using pgAdmin 4 - Ex. PGADMIN_SETUP_EMAIL=DMB@DMB.DMB
+      - PGADMIN_SETUP_PASSWORD=                                     ## Set if using pgAdmin 4
+    # network_mode: container:gluetun                               ## Example to attach to gluetun vpn container if realdebrid blocks IP address 
+    ports:
+      - "3000:3000"                                                 ## Riven frontend
+      - "5050:5050"                                                                                   ## pgAdmin 4
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+    cap_add:
+      - SYS_ADMIN     
+    security_opt:
+      - apparmor:unconfined    
+      - no-new-privileges
