@@ -1,7 +1,7 @@
 services:
   DMB:
     image: iampuid0/dmb:latest    ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0
-    network_mode: bridge #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
+    network_mode: service:VPN #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
     stdin_open: true
     tty: true
     devices:
@@ -46,10 +46,10 @@ services:
       - ORIGIN=http://${SERVER_IP}:3000   ## See Riven documentation for more details
       - PGADMIN_SETUP_EMAIL=
       - PGADMIN_SETUP_PASSWORD=                                  
-      - HARD_RESET=true    
-    ports:
-      - 3000:3000/tcp
-      - 5050:5050/tcp
+      - HARD_RESET=false    
+#    ports:
+#      - 3000:3000/tcp
+#      - 5050:5050/tcp
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:3000
