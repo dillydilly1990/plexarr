@@ -1,5 +1,5 @@
 services:
-  riven:
+  zurg:
 #    container_name: riven
     image: iampuid0/dmb:latest    ## Optionally, specify a specific version of DMB w/ image: iampuid0/dmb:2.0.0
     network_mode: bridge #container:gluetun   ## Example to attach to gluetun vpn container if realdebrid blocks IP address
