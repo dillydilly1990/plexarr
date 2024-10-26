@@ -4,10 +4,10 @@ services:
   zurg:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
     container_name: zurg
-#    network_mode: service:VPN
+    network_mode: service:VPN
     restart: unless-stopped
-    ports:
-      - 9999:9999
+#    ports:
+#      - 9999:9999
     volumes:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
