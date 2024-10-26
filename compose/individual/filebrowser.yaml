@@ -25,6 +25,6 @@ services:
       - homepage.href=http://${SERVER_IP}:8095
       - homepage.description=Media server
     depends_on:
-      zurg:
+      DMB:
         condition: service_healthy
         restart: true
