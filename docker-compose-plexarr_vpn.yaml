@@ -1,0 +1,17 @@
+networks:
+  VPN:
+    name: VPN
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${DOCKER_SUBNET:?err}
+          gateway: ${DOCKER_GATEWAY:?err}
+include:
+  - compose/individual/gluetunVPN.yaml
+#  - compose/individual/DMB.yaml
+#  - compose/individual/homepage.yaml
+#  - compose/individual/filebrowser.yaml
+#  - compose/individual/radarr.yaml
+#  - compose/individual/sonarr.yaml
+#  - compose/individual/lidarr.yaml
