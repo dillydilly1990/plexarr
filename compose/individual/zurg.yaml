@@ -60,7 +60,6 @@ services:
       - --rc-user=admin
       - --rc-pass=admin
       - --log-level=NOTICE
-      - --cache-dir=/vfsCache    
       - "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
       - net.unraid.docker.managed=dockerman
