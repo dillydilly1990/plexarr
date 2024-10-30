@@ -39,8 +39,10 @@ services:
 #    ports:
   #    - 5572:5572
     volumes:
+      - ${APPDATA}/zurg/rclone-logs:/logs
+      - ${APPDATA}/zurg/rclone-cache:/root/.cache/rclone # This is for the WebUI, not VFS
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
-      - ${APPDATA}zurg/rclone.conf:/config/rclone/rclone.conf    
+      - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf    
     cap_add:
       - SYS_ADMIN
     security_opt:
@@ -55,9 +57,9 @@ services:
       - rcd
       - --rc-web-gui
       - --rc-web-gui-no-open-browser
-      - --rc-addr=:5572
-      - --rc-user=
-      - --rc-pass=AGOODPASSWORD
+      - --rc-addr=${SERVER_IP}:5572
+      - --rc-user=admin
+      - --rc-pass=admin
       - --log-file=/logs/rclone.log
       - --log-level=NOTICE
       - --cache-dir=/vfsCache    
