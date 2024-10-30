@@ -19,8 +19,6 @@ services:
       - /mnt/user/:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
-    environment:
-   
     depends_on:
       VPN:
         condition: service_healthy
