@@ -12,6 +12,7 @@ include:
 #  - compose/individual/DMB.yaml
   - compose/individual/zurg.yaml
   - compose/individual/homepage.yaml
+  - compose/individual/dockge.yaml
   - compose/individual/filebrowser.yaml
 #  - compose/individual/radarr.yaml
 #  - compose/individual/sonarr.yaml
