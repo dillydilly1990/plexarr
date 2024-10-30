@@ -5,8 +5,8 @@ services:
     network_mode: service:VPN
     restart: unless-stopped
     environment:
-      - PUID=${PUID:?err}
-      - PGID=${PGID:?err}
+#      - PUID=${PUID:?err}
+#      - PGID=${PGID:?err}
 #      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     labels:
@@ -18,21 +18,9 @@ services:
     volumes:
       - /mnt/user/:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
-#      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
     depends_on:
       VPN:
         condition: service_healthy
         restart: true
-  dockerproxy:
-    image: ghcr.io/tecnativa/docker-socket-proxy:latest
-    container_name: dockerproxy
-    environment:
-      - CONTAINERS=1 # Allow access to viewing containers
-      - SERVICES=1 # Allow access to viewing services (necessary when using Docker Swarm)
-      - TASKS=1 # Allow access to viewing tasks (necessary when using Docker Swarm)
-      - POST=0 # Disallow any POST operations (effectively read-only)
-    ports:
-      - 127.0.0.1:2375:2375
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro # Mounted as read-only
-    restart: unless-stopped
+  
