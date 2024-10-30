@@ -5,9 +5,9 @@ services:
     network_mode: service:VPN
     restart: unless-stopped
     environment:
-      - PUID=${PUID:?err}
-      - PGID=${PGID:?err}
-      - UMASK=${UMASK:?err}
+#      - PUID=${PUID:?err}
+#      - PGID=${PGID:?err}
+#      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     labels:
       - net.unraid.docker.managed=dockerman
