@@ -22,9 +22,9 @@ services:
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
 #      - 3000:3000/tcp #dmb
 #      - 5050:5050/tcp #dmb
-#      - 5572:5572/tcp # rclone
-#      - 9999:9999 # Zurg Port
-      - 3001:3000/tcp # homepage
+      - 5572:5572/tcp # rclone
+      - 9999:9999 # Zurg Port
+#      - 3001:3000/tcp # homepage
       - 8095:80 # Filebrowser web ui
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
