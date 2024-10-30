@@ -9,9 +9,6 @@ services:
       - PGID=${PGID:?err}
       - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
-      - HOST_OS=Unraid
-      - HOST_HOSTNAME=whiskeyshits
-      - HOST_CONTAINERNAME=homepage
     labels:
 #      - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:3001
