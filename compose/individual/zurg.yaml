@@ -40,7 +40,7 @@ services:
   #    - 5572:5572
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
-      - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf    
+      - ${APPDATA}zurg/rclone.conf:/config/rclone/rclone.conf    
     cap_add:
       - SYS_ADMIN
     security_opt:
