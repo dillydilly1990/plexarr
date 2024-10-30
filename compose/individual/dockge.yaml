@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  dockge:
+    container_name: dockge
+    network_mode: bridge
+    environment:
+      - TZ=America/Los_Angeles
+      - HOST_OS=Unraid
+      - HOST_HOSTNAME=whiskeyshits
+      - HOST_CONTAINERNAME=dockge
+      - DOCKGE_STACKS_DIR'='/mnt/user/appdata/dockge/stacks
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui='http://${SERVER_IP}:5001/'
+      - net.unraid.docker.icon='https://raw.githubusercontent.com/alex3305/unraid-docker-templates/master/images/dockge.png'
+    ports:
+      - 5001:5001/tcp
+    volumes:
+      - /var/run/docker.sock':'/var/run/docker.sock':'rw
+      - /mnt/user/appdata/dockge/data':'/app/data':'rw
+      - /mnt/user/appdata/dockge/stacks':'/mnt/user/appdata/dockge/stacks':'rw
+    image: "'louislam/dockge:1'"
+networks: {}
