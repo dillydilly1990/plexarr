@@ -53,13 +53,6 @@ services:
         condition: service_healthy
         restart: true
     command: 
-      - rcd
-      - --rc-web-gui
-      - --rc-web-gui-no-open-browser
-      - --rc-addr=${SERVER_IP}:5572
-      - --rc-user=admin
-      - --rc-pass=admin
-      - --log-level=NOTICE
       - "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
       - net.unraid.docker.managed=dockerman
