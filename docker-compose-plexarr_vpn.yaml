@@ -13,6 +13,7 @@ include:
   - compose/individual/zurg.yaml
   - compose/individual/homepage.yaml
   - compose/individual/filebrowser.yaml
-#  - compose/individual/radarr.yaml
-#  - compose/individual/sonarr.yaml
-#  - compose/individual/lidarr.yaml
+  - compose/individual/prowlarr.yaml
+  - compose/individual/radarr.yaml
+  - compose/individual/sonarr.yaml
+  - compose/individual/lidarr.yaml
