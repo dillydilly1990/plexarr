@@ -4,6 +4,7 @@ services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
+    network_mode: service:VPN
     restart: unless-stopped
     volumes:
       - ${APPDATA}/prowlarr:/config
