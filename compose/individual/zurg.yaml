@@ -36,7 +36,7 @@ services:
       - PGID=${PGID:?err}
       - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
-   ports:
+    ports:
       - 5572:5572
     volumes:
       - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
