@@ -1,6 +1,6 @@
 volumes:
   zurgdata:
-services:  
+#services:  
   zurg:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
     container_name: zurg
