@@ -27,6 +27,15 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_PROWLARR:?err}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
+      - homepage.group=Media Management
+      - homepage.name=Prowlarr
+      - homepage.icon=prowlarr.png
+      - homepage.href=http://${SERVER_IP}:${WEBUI_PORT_PROWLARR}
+      - homepage.description=Media server
+      - homepage.widget.type=prowlarr
+      - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_PROWLARR}
+      - homepage.widget.key=${PROWLARR_API}
+      - homepage.widget.fields=["field1","field2"] # optional
  #   ports:
  #     - "${WEBUI_PORT_PROWLARR:?err}:9696"
   
