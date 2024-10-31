@@ -35,7 +35,7 @@ services:
       - homepage.widget.type=sonarr
       - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_SONARR}
       - homepage.widget.key=${SONARR_API}
-      - homepage.widget.fields=["field1","field2"] # optional
+#      - homepage.widget.fields=["field1","field2"] # optional
 #    ports:
 #      - "${WEBUI_PORT_SONARR:?err}:8989"             
     depends_on:
