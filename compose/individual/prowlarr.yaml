@@ -23,7 +23,10 @@ services:
       - TAILSCALE_AUTHKEY=${TS_KEY}
       - TS_EXTRA_ARGS=${TS_EX_ARGS}
       - TAILSCALE_STATE_DIR=/var/lib/tailscale
-      
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_PROWLARR:?err}
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
  #   ports:
  #     - "${WEBUI_PORT_PROWLARR:?err}:9696"
   
