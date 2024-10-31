@@ -10,9 +10,10 @@ networks:
 include:
   - compose/individual/gluetunVPN.yaml
   - compose/individual/dozzle.yaml
+  - compose/individual/filebrowser.yaml
   - compose/individual/zurg.yaml
   - compose/individual/homepage.yaml
-  - compose/individual/filebrowser.yaml
+  - compose/individual/plex.yaml
   - compose/individual/prowlarr.yaml
   - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
