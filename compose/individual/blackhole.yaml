@@ -2,9 +2,10 @@ services:
   blackhole:
     image: cy01/blackhole:latest # or cy01/blackhole:beta
     container_name: blackhole
-    ports:
-      - "8282:8282" # qBittorrent
-      - "8181:8181" # Proxy
+    network_mode: service:VPN
+#    ports:
+#      - "8282:8282" # qBittorrent
+#      - "8181:8181" # Proxy
     volumes:
       - ${APPDATA}logs:/app/logs
       - ${DATA}:/media
