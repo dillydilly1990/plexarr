@@ -27,6 +27,11 @@ services:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
+      - homepage.group=Media Management
+      - homepage.name=Radarr
+      - homepage.icon=radarr.png
+      - homepage.href=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
+      - homepage.description=Media server
 #    ports:
 #      - "${WEBUI_PORT_RADARR:?err}:7878"      
     depends_on:
