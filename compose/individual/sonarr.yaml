@@ -9,6 +9,7 @@ services:
     volumes:
       - ${APPDATA:?err}/sonarr:/config
       - ${MEDIA:?err}:/data
+      - ${DATA}/symlinks/:/media/symlinks/
       - ts-state-sonarr:/var/lib/tailscale
     environment:
       - PUID=${PUID:?err}
