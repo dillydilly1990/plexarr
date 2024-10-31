@@ -15,8 +15,8 @@ services:
       - PGID=${PGID:?err}
       - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
-#      - QBIT_PORT=8282 # qBittorrent Port. This is optional. You can set this in the config file
-#      - PORT=8181 # Proxy Port. This is optional. You can set this in the config file
+      - QBIT_PORT=8282 # qBittorrent Port. This is optional. You can set this in the config file
+      - PORT=8181 # Proxy Port. This is optional. You can set this in the config file
     restart: unless-stopped
     depends_on:
       - rclone # If you are using rcl
