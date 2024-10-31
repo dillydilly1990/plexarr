@@ -30,6 +30,6 @@ services:
 #    ports:
 #      - "${WEBUI_PORT_SONARR:?err}:8989"             
     depends_on:
-      DMB:
+      zurg:
         condition: service_healthy
         restart: true
