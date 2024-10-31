@@ -6,10 +6,10 @@ services:
       - "8282:8282" # qBittorrent
       - "8181:8181" # Proxy
     volumes:
-      - ./logs:/app/logs
-      - ~/plex/media:/media
-      - ~/plex/media/symlinks/:/media/symlinks/
-      - ~/plex/configs/blackhole/config.json:/app/config.json # Config file, see below
+      - ${APPDATA}logs:/app/logs
+      - ${DATA}:/media
+      - ${DATA}/symlinks/:/media/symlinks/
+      - ${APPDATA}/blackhole/config.json:/app/config.json # Config file, see below
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
