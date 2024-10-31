@@ -23,6 +23,8 @@ services:
 #      - 3000:3000/tcp #dmb
 #      - 5050:5050/tcp #dmb
 #      - 5572:5572/tcp # rclone
+      - 8282:8282 # qBittorrent blackhole
+      - 8181:8181 # Proxy blackhole
       - 9999:9999 # Zurg Port
       - 3001:3000/tcp # homepage
       - 8095:80 # Filebrowser web ui
