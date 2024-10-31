@@ -32,6 +32,10 @@ services:
       - homepage.icon=radarr.png
       - homepage.href=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - homepage.description=Media server
+      - homepage.widget.type=radarr
+      - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
+      - homepage.widget.key=${RADARR_API}
+      - homepage.widget.fields=["field1","field2"] # optional
 #    ports:
 #      - "${WEBUI_PORT_RADARR:?err}:7878"      
     depends_on:
