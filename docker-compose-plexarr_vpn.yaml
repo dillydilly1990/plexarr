@@ -18,3 +18,5 @@ include:
   - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
   - compose/individual/lidarr.yaml
+  - compose/individual/blackhole.yaml
+  
