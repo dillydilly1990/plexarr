@@ -32,6 +32,6 @@ services:
 #    ports:
 #      - ${WEBUI_PORT_LIDARR:?err}:8686
     depends_on:
-      DMB:
+      zurg:
         condition: service_healthy
         restart: true
