@@ -9,7 +9,7 @@ services:
     volumes:
       - ${APPDATA:?err}/sonarr:/config
       - ${MEDIA}/tv:/data/tv
-      - ${DOWNLOADS}/symlinks/sonarr:data/symlinks
+      - ${DOWNLOADS}/symlinks/sonarr:/data/symlinks
       - /mnt/user/RealDebrid/__all__:/data/torrents
       - ts-state-sonarr:/var/lib/tailscale
     environment:
