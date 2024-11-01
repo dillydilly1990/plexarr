@@ -2,7 +2,7 @@ volumes:
   ts-state-lidarr: null
 services:
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest
+    image: ghcr.io/dillydilly1990/lsio-docker-lidarr-plugins:sha256-220061fdc6b6a911f10471e57b7d0993a88600f145b92c7c3b22945616ed0c5a.sig
     container_name: lidarr
     network_mode: service:VPN
     restart: unless-stopped
