@@ -6,6 +6,7 @@ services:
 #    ports:
 #      - "8282:8282" # qBittorrent
 #      - "8181:8181" # Proxy
+    user: "${PUID:?err}:1000"
     volumes:
       - ${APPDATA}logs:/app/logs
       - /mnt/user/RealDebrid/__all__:/data/torrents
@@ -20,4 +21,13 @@ services:
       - PORT=8181 # Proxy Port. This is optional. You can set this in the config file
     restart: unless-stopped
     depends_on:
-      - rclone # If you are using rcl
+      zurg:
+        condition: service_healthy
+        restart: true
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f localhost:8181 || exit 1"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    command: ["./blackhole", "--config", "/app/config.json"]
