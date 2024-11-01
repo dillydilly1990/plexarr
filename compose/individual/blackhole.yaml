@@ -6,7 +6,7 @@ services:
 #    ports:
 #      - "8282:8282" # qBittorrent
 #      - "8181:8181" # Proxy
-#    user: "${PUID:?err}:1000"
+    user: "1000:1000"
     volumes:
       - ${APPDATA}logs:/app/logs
       - /mnt/user/RealDebrid/__all__:/media/torrents
