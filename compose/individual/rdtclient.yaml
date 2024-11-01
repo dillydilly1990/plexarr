@@ -8,7 +8,7 @@ services:
     volumes:
       - ${APPDATA}/rdt-client/db:/data/db:rw
 #      - ${DATA}/downloads/:/data/downloads:rw
-      - ${DATA}/downloads/symlinks:/data/symlinks:rw
+      - ${DOWNLOADS}/symlinks:/data/symlinks:rw
       - /mnt/user/RealDebrid/__all__:/mnt/RealDebrid/
       - ts-state-rdtclient:/var/lib/tailscale
     environment:
