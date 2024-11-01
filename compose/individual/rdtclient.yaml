@@ -8,6 +8,7 @@ services:
     volumes:
       - ${APPDATA}/rdt-client/db:/data/db:rw
       - ${DATA}:/data/downloads:rw
+      - ${DATA}/media/symlinks:/data/symlinks:rw
       - ts-state-rdtclient:/var/lib/tailscale
     environment:
       - TZ=America/Detroit
