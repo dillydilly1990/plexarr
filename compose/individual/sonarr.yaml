@@ -8,9 +8,9 @@ services:
     restart: unless-stopped
     volumes:
       - ${APPDATA:?err}/sonarr:/config
-      - ${DATA}:/data/downloads:rw
+#      - ${DATA}:/data/downloads:rw
       - ${DATA}/downloads/symlinks/sonarr:/data/symlinks:rw
-#      - ${MEDIA:?err}:/data
+      - ${MEDIA:?err}:/data
       - /mnt/user/RealDebrid/__all__:/media/torrents
   #    - ${DATA}/symlinks/:/media/symlinks
       - ts-state-sonarr:/var/lib/tailscale
