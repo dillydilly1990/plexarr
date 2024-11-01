@@ -19,4 +19,4 @@ include:
   - compose/individual/sonarr.yaml
   - compose/individual/lidarr.yaml
   - compose/individual/blackhole.yaml
-  
+  - compose/individual/rdtclient.yaml
