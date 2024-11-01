@@ -6,16 +6,16 @@ services:
     ports:
       - "8282:8282" # qBittorrent
       - "8181:8181" # Proxy
-    user: "1000:1000"
+#    user: "1000:1000"
     volumes:
       - ${APPDATA}logs:/app/logs
       - ${DATA}:/media
       - ${DATA}/symlinks/:/media/symlinks/
       - ${APPDATA}/blackhole/config.json:/app/config.json # Config file, see below
     environment:
-      - PUID=${PUID:?err}
-      - PGID=${PGID:?err}
-      - UMASK=${UMASK:?err}
+#      - PUID=${PUID:?err}
+#      - PGID=${PGID:?err}
+#      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
       - QBIT_PORT=8282 # qBittorrent Port. This is optional. You can set this in the config file
       - PORT=8181 # Proxy Port. This is optional. You can set this in the config file
