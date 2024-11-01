@@ -10,7 +10,7 @@ services:
     volumes:
       - ${APPDATA}logs:/app/logs
       - ${DATA}:/media
-      - ${DATA}/symlinks/:/media/symlinks/
+      - ${DATA}/media/symlinks/:/media/symlinks/
       - ${APPDATA}/blackhole/config.json:/app/config.json # Config file, see below
     environment:
 #      - PUID=${PUID:?err}
