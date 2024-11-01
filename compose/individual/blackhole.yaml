@@ -10,7 +10,7 @@ services:
     volumes:
       - ${APPDATA}logs:/app/logs
       - /mnt/user/RealDebrid/__all__:/data/torrents
-      - ${DATA}/symlinks/:/data/symlinks/
+      - ${DATA}/symlinks/:/data/symlinks
       - ${APPDATA}/blackhole/config.json:/app/config.json # Config file, see below
     environment:
       - PUID=${PUID:?err}
