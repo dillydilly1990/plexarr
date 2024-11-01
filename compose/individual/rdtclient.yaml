@@ -34,6 +34,6 @@ services:
       - net.unraid.docker.icon=https://raw.githubusercontent.com/fizzyfrys/unraid-templates/main/icons/premrealldebrid.png
     network_mode: service:VPN
     depends_on:
-      DMB:
+      zurg:
         condition: service_healthy
         restart: true
