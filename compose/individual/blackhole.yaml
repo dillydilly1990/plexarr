@@ -8,8 +8,8 @@ services:
 #      - "8181:8181" # Proxy
     volumes:
       - ${APPDATA}logs:/app/logs
-      - ${DATA}:/media
-      - ${DATA}/symlinks/:/media/symlinks/
+      - /mnt/user/RealDebrid/__all__:/data/torrents
+      - ${DATA}/symlinks/:/data/symlinks/
       - ${APPDATA}/blackhole/config.json:/app/config.json # Config file, see below
     environment:
       - PUID=${PUID:?err}
