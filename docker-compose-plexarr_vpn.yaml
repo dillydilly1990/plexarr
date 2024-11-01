@@ -15,8 +15,8 @@ include:
   - compose/individual/homepage.yaml
   - compose/individual/plex.yaml
   - compose/individual/prowlarr.yaml
-  - compose/individual/radarr.yaml
+#  - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
-  - compose/individual/lidarr.yaml
+#  - compose/individual/lidarr.yaml
 #  - compose/individual/blackhole.yaml
   - compose/individual/rdtclient.yaml
