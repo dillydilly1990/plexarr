@@ -9,8 +9,8 @@ services:
 #    user: "${PUID:?err}:1000"
     volumes:
       - ${APPDATA}logs:/app/logs
-      - /mnt/user/RealDebrid/__all__:/data/torrents
-      - ${DATA}/symlinks/:/data/symlinks
+      - /mnt/user/RealDebrid/__all__:/media/torrents
+      - ${DATA}/symlinks/:/media/symlinks
       - ${APPDATA}/blackhole/config.json:/app/config.json # Config file, see below
     environment:
       - PUID=${PUID:?err}
