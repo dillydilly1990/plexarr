@@ -21,7 +21,9 @@ services:
       - PORT=8181 # Proxy Port. This is optional. You can set this in the config file
     restart: unless-stopped
     networks:
-      - vpn
+      vpn:
+        external: true    
+    
     depends_on:
       zurg:
         condition: service_healthy
