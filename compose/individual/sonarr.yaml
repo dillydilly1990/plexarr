@@ -10,7 +10,7 @@ services:
       - ${APPDATA:?err}/sonarr:/config
 #      - ${DATA}:/data/downloads:rw
       - ${DATA}/downloads/symlinks/sonarr:/data/symlinks/sonarr:rw
-      - ${MEDIA:?err}:/data
+      - ${MEDIA:?err}/tv:/data
       - /mnt/user/RealDebrid/__all__:/media/torrents
   #    - ${DATA}/symlinks/:/media/symlinks
       - ts-state-sonarr:/var/lib/tailscale
