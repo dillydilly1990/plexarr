@@ -2,10 +2,10 @@ services:
   blackhole:
     image: cy01/blackhole:latest # or cy01/blackhole:beta
     container_name: blackhole
-    network_mode: service:VPN
-#    ports:
-#      - "8282:8282" # qBittorrent
-#      - "8181:8181" # Proxy
+  #  network_mode: service:VPN
+    ports:
+      - "8282:8282" # qBittorrent
+      - "8181:8181" # Proxy
     user: "1000:1000"
     volumes:
       - ${APPDATA}logs:/app/logs
@@ -20,6 +20,8 @@ services:
       - QBIT_PORT=8282 # qBittorrent Port. This is optional. You can set this in the config file
       - PORT=8181 # Proxy Port. This is optional. You can set this in the config file
     restart: unless-stopped
+    networks:
+      - vpn
     depends_on:
       zurg:
         condition: service_healthy
