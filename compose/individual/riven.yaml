@@ -23,7 +23,7 @@ services:
     container_name: riven
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8083:8080"
     tty: true
     environment:
       - PUID=${PUID:?err}
