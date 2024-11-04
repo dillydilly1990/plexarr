@@ -20,5 +20,5 @@ include:
 #  - compose/individual/lidarr.yaml
 #  - compose/individual/blackhole.yaml
   - compose/individual/rdtclient.yaml
-#  - compose/individual/riven.yaml
+  - compose/individual/riven.yaml
   
