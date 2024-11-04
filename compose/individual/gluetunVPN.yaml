@@ -26,7 +26,7 @@ services:
 #      - 8282:8282 # qBittorrent blackhole
 #      - 8181:8181 # Proxy blackhole
       - 9999:9999 # Zurg Port
-      - 3001:3000/tcp # homepage
+      - 3001:3001/tcp # homepage
       - 8095:80 # Filebrowser web ui
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
