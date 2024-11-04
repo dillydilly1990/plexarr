@@ -20,8 +20,8 @@ services:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
       - 8388:8388/tcp # Gluetun Local Network Shadowsocks
       - 8388:8388/udp # Gluetun Local Network Shadowsocks
-#      - 3000:3000/tcp #dmb
-#      - 5050:5050/tcp #dmb
+      - 3000:3000 #riven front
+      - 8080:8080 #riven bavk
 #      - 5572:5572/tcp # rclone
 #      - 8282:8282 # qBittorrent blackhole
 #      - 8181:8181 # Proxy blackhole
