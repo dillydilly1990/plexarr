@@ -62,3 +62,4 @@ services:
     depends_on:
       zurg:
         condition: service_healthy
+        restart: true
