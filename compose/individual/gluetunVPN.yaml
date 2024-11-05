@@ -24,11 +24,11 @@ services:
 #      - 8282:8282 # qBittorrent blackhole
 #      - 8181:8181 # Proxy blackhole
       - 9999:9999 # Zurg Port
-      - ${WEBUI_PORT_DOZZLE}:${WEBUI_PORT_DOZZLE} 
-      - ${WEBUI_PORT_HOMEPAGE}:${WEBUI_PORT_HOMEPAGE} # homepage
-      - ${WEBUI_PORT_FILEBROWSER}:80 # Filebrowser web ui
-      - ${WEBUI_PORT_RIVEN}:3000 # riven frontend
-      - ${BACKEND_PORT_RIVEN}:8080 # riven backend
+      - ${WEBUI_PORT_DOZZLE}:8080
+      - ${WEBUI_PORT_HOMEPAGE}:3000
+      - ${WEBUI_PORT_FILEBROWSER}:80
+      - ${WEBUI_PORT_RIVEN}:3000
+      - ${BACKEND_PORT_RIVEN}:8080
       - ${WEBUI_PORT_RDTCLIENT:?err}:6500 # WebUI Portal: RDTClient
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # WebUI Portal: Prowlarr
       - ${WEBUI_PORT_BAZARR:?err}:6767 # WebUI Portal: Bazarr
