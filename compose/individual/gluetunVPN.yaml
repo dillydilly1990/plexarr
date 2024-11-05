@@ -23,13 +23,21 @@ services:
 #      - 5572:5572/tcp # rclone
 #      - 8282:8282 # qBittorrent blackhole
 #      - 8181:8181 # Proxy blackhole
-      - 9999:9999 # Zurg Port
-      - ${WEBUI_PORT_DOZZLE}:8080
-      - ${WEBUI_PORT_HOMEPAGE}:3000
-      - ${WEBUI_PORT_FILEBROWSER}:80
-      - ${WEBUI_PORT_RIVEN}:3000
-      - ${BACKEND_PORT_RIVEN}:8080
-      - ${WEBUI_PORT_RDTCLIENT:?err}:6500
+    # Zurg
+      - 9999:9999
+    # Dozzle
+      - 8099:8080
+    # Homepage
+      - 3001:3000
+    # Filebrowser
+      - 8095:80
+    # Riven Frontend
+      - 3000:3000
+    # Riven Backend
+      - 8080:8080
+    # RDT client
+      - 6500:6500
+# The Arrs__________________________
       - ${WEBUI_PORT_PROWLARR:?err}:9696
       - ${WEBUI_PORT_BAZARR:?err}:6767
       - ${WEBUI_PORT_LIDARR:?err}:8686
