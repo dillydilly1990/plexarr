@@ -21,7 +21,7 @@ services:
       - homepage.group=Utilites
       - homepage.name=Dozzle
       - homepage.icon=dozzle.png
-      - homepage.href=http://${SERVER_IP}:8080
+      - homepage.href=http://${SERVER_IP}:8099
       - homepage.description=Media server
     healthcheck:
       test: ["CMD", "/dozzle", "healthcheck"]
