@@ -25,7 +25,7 @@ services:
 #      - 8181:8181 # Proxy blackhole
       - 9999:9999 # Zurg Port
       - ${WEBUI_PORT_DOZZLE}:8080
-      - ${WEBUI_PORT_HOMEPAGE}:3000/tcp # homepage
+      - ${WEBUI_PORT_HOMEPAGE}:3001/tcp # homepage
       - ${WEBUI_PORT_FILEBROWSER}:80 # Filebrowser web ui
       - ${WEBUI_PORT_RIVEN}:3000 # riven frontend
       - ${BACKEND_PORT_RIVEN}:8081 # riven backend
