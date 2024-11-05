@@ -2,6 +2,7 @@ services:
   dozzle:
     container_name: dozzle
     image: amir20/dozzle:latest
+    network_mode: service:VPN
     restart: unless-stopped
     environment:
       - PUID=${PUID:?err}
@@ -14,8 +15,8 @@ services:
       - DOZZLE_FILTER="status=running"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - 8080:8080
+#    ports:
+#      - 8080:8080
     labels:
       - homepage.group=Utilites
       - homepage.name=Dozzle
