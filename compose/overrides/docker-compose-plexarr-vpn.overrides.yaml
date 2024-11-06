@@ -46,9 +46,5 @@ services:
       - 32469:32469 # Plex Network Port
   zurg:  
     network_mode: service:VPN
-   # ports:
-    #  - 9999:9999
   rclone:
     network_mode: service:VPN
-   # ports:
-   #   - 5572:5572/tcp
