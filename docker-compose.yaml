@@ -1,3 +1,2 @@
 include:
  - compose/stacks/groups/docker-compose-services.yaml
- - compose/overrides/docker-compose-plexarr-vpn.overrides.yaml
