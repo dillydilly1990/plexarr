@@ -28,7 +28,6 @@ services:
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
-    network_mode: service:VPN
     restart: unless-stopped
     environment:
       - PUID=${PUID:?err}
