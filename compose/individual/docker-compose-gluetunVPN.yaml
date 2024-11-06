@@ -7,7 +7,7 @@
     #  config:
      #   - subnet: ${DOCKER_SUBNET:?err}
        #   gateway: ${DOCKER_GATEWAY:?err}
-#services:
+services:
   VPN:
     image: qmcgaw/gluetun:latest
     container_name: VPN
