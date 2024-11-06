@@ -1,3 +1,4 @@
+services:
   VPN:
     ports:
       - 8888:8888/tcp # Gluetun Local Network HTTP proxy
