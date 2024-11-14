@@ -10,7 +10,7 @@ services:
      # Zurg
       - 9999:9999
      # Dozzle
-      - 8099:8099
+      - 8099:8080
      # Homepage
       - 3001:3001
      # Filebrowser
