@@ -5,16 +5,16 @@ services:
     network_mode: service:VPN
     restart: unless-stopped
     environment:
-#      - PUID=${PUID:?err}
-#      - PGID=${PGID:?err}
-#      - UMASK=${UMASK:?err}
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:3001
       - net.unraid.docker.icon=https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png
-#    ports:
-#      - 3001:3000/tcp
+    ports:
+      - 3001:3000/tcp
     volumes:
       - /:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
