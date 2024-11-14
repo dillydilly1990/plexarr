@@ -1,3 +1,3 @@
 include:
  - compose/stacks/groups/docker-compose-services.yaml
- - compose/stacks/groups/docker-compose-utilites.yaml
+ - compose/stacks/groups/docker-compose-utilities.yaml
