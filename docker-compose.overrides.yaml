@@ -52,3 +52,15 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
+  homepage:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  filebrowser:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  dozzle:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
