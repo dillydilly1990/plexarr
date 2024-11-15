@@ -18,8 +18,4 @@ services:
       - /:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
-    depends_on:
-      VPN:
-        condition: service_healthy
-        restart: true
   
