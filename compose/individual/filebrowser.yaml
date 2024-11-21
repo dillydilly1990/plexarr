@@ -4,7 +4,7 @@ services:
     container_name: filebrowser
     restart: unless-stopped
     volumes:
-      - /mnt/user/:/srv #Change to match your directory
+      - /:/srv #Change to match your directory
       - ${APPDATA}/filebrowser/filebrowser.db:/database/filebrowser.db:rw #Change to match your directory
       - ${APPDATA}/filebrowser/settings.json:/config/settings.json:rw #Change to match your directory
     environment:
@@ -23,7 +23,3 @@ services:
       - homepage.icon=filebrowser.png
       - homepage.href=http://${SERVER_IP}:8095
       - homepage.description=Media server
-    depends_on:
-      zurg:
-        condition: service_healthy
-        restart: true
