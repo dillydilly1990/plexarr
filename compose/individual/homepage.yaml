@@ -15,7 +15,7 @@ services:
     ports:
       - 3001:3000
     volumes:
-      - /:/mnt
+      - /mnt/user/:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
   
