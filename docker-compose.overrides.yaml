@@ -12,11 +12,11 @@ services:
 #      Dozzle
       - 8099:8080
 #      Homepage
-      - 3001:3000
+      - 3000:3000
 #      Filebrowser
       - 8095:80
      # Riven Frontend
-      - 3000:3000
+     # - 3000:3000
      # Riven Backend
       - 8080:8080
      # RDT client
