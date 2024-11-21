@@ -10,7 +10,7 @@ services:
       - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     labels:
-      - net.unraid.docker.webui=http://${SERVER_IP}:3001
+      - net.unraid.docker.webui=http://${SERVER_IP}:3000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png
     ports:
       - 3001:3000
