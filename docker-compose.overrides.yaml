@@ -11,8 +11,8 @@ services:
       - 9999:9999
      # Dozzle
     #  - 8099:8080
-     # Homepage
-    #  - 3001:3000
+    #  Homepage
+      - 3001:3000
      # Filebrowser
     #  - 8095:80
      # Riven Frontend
