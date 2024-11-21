@@ -10,18 +10,18 @@ services:
      # Zurg
       - 9999:9999
      # Dozzle
-      - 8099:8080
+    #  - 8099:8080
      # Homepage
-      - 3001:3000
+    #  - 3001:3000
      # Filebrowser
-      - 8095:80
+    #  - 8095:80
      # Riven Frontend
       - 3000:3000
      # Riven Backend
       - 8080:8080
      # RDT client
       - 6500:6500
-     # The Arrs__________________________
+     # The Arrs_________________________
       - ${WEBUI_PORT_PROWLARR:?err}:9696
       - ${WEBUI_PORT_BAZARR:?err}:6767
       - ${WEBUI_PORT_LIDARR:?err}:8686
@@ -52,19 +52,15 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
-  homepage:
-    network_mode: service:VPN
-    ports: !reset
+#  homepage:
+#    network_mode: service:VPN
+#    ports: !reset
+#      - [] 
+ # filebrowser:
+#    network_mode: service:VPN
+#    ports: !reset
       - [] 
-    depends_on:
-      VPN:
-        condition: service_healthy
-        restart: true
-  filebrowser:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-  dozzle:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
+ # dozzle:
+ #   network_mode: service:VPN
+ #   ports: !reset
+ #     - [] 
