@@ -1,3 +1,4 @@
 include:
  - compose/stacks/groups/docker-compose-services.yaml
  - compose/stacks/groups/docker-compose-utilities.yaml
+ - compose/individual/homarr.yaml
