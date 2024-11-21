@@ -17,7 +17,7 @@ services:
     ports:
       - 8099:8080
     labels:
-      - net.unraid.docker.webui=http://${SERVER_IP}:8095
+      - net.unraid.docker.webui=http://${SERVER_IP}:8099
       - homepage.group=Utilites
       - homepage.name=Dozzle
       - homepage.icon=dozzle.png
