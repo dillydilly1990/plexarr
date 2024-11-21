@@ -13,7 +13,7 @@ services:
       - net.unraid.docker.webui=http://${SERVER_IP}:3000
       - net.unraid.docker.icon=https://raw.githubusercontent.com/gethomepage/homepage/main/public/android-chrome-512x512.png
     ports:
-      - 3001:3000/tcp
+      - 3000:3000/tcp
     volumes:
       - /:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
