@@ -47,7 +47,11 @@ services:
   zurg:  
     network_mode: service:VPN
     ports: !reset
-      - [] 
+      - []
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
   rclone:
     network_mode: service:VPN
     ports: !reset
@@ -56,10 +60,14 @@ services:
 #    network_mode: service:VPN
 #    ports: !reset
 #      - [] 
- # filebrowser:
+  filebrowser:
 #    network_mode: service:VPN
 #    ports: !reset
-      - [] 
+#      - []
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
  # dozzle:
  #   network_mode: service:VPN
  #   ports: !reset
