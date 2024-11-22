@@ -20,7 +20,6 @@ services:
       - LOG_LEVEL=debug
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
-      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     labels:
       - net.unraid.docker.webui=http://${SERVER_IP}:3001
