@@ -94,7 +94,7 @@ services:
       - VERSION_INFORMATION=on
       - HTTP_CONTROL_SERVER_LOG=on
     labels:
-      - homepage.group=Services
+      - homepage.group=Core Services
       - homepage.name=Gluetun
       - homepage.icon=gluetun.png
       - homepage.description=Media server
