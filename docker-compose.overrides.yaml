@@ -55,7 +55,7 @@ services:
 # homepage:
 #   network_mode: service:VPN
 #    ports: !reset
-      - [] 
+#      - [] 
 #  filebrowser:
 #    network_mode: service:VPN
 #    ports: !reset
