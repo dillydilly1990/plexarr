@@ -1,9 +1,6 @@
 services:
   VPN:
     ports:
-      - 8888:8888/tcp # Gluetun Local Network HTTP proxy
-      - 8388:8388/tcp # Gluetun Local Network Shadowsocks
-      - 8388:8388/udp # Gluetun Local Network Shadowsocks
       - 5572:5572/tcp # rclone
      # - 8282:8282 # qBittorrent blackhole
      # - 8181:8181 # Proxy blackhole
