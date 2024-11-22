@@ -54,8 +54,12 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
+  dockerproxy:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
   homepage:
-   network_mode: service:VPN
+    network_mode: service:VPN
     ports: !reset
       - [] 
 #  filebrowser:
