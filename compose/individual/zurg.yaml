@@ -1,0 +1,63 @@
+volumes:
+  zurgdata:
+services:
+  zurg:
+    image: ghcr.io/debridmediamanager/zurg-testing:latest    
+    container_name: zurg
+    restart: unless-stopped
+    ports:
+      - 9999:9999
+    volumes:
+      - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
+      - ${APPDATA}/zurg/config.yml:/app/config.yml
+      - zurgdata:/app/data   
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:9999
+    #  - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
+      - homepage.group=Core Services
+      - homepage.name=Zurg
+      - homepage.icon=zurg.png
+      - homepage.href=http://${SERVER_IP}:9999
+      - homepage.description=Media server
+  rclone:
+    image: rclone/rclone:latest
+    container_name: rclone
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID:?err}
+      - PGID=${PGID:?err}
+      - UMASK=${UMASK:?err}
+      - TZ=${TIMEZONE:?err}
+    ports:
+      - 5572:5572
+    volumes:
+      - ${APPDATA}/zurg/rclone-cache:/root/.cache/rclone # This is for the WebUI, not VFS
+      - /mnt/user/data/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
+      - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf    
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
+    command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
+    labels:
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:5572
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
+      - homepage.group=Core Services
+      - homepage.name=Rclone
+      - homepage.icon=rclone.png
+      - homepage.href=http://${SERVER_IP}:5572
+      - homepage.description=Media server  
+  
