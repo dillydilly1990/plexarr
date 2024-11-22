@@ -1,0 +1,3 @@
+include:
+  - compose/individual/homepage.yaml
+  - compose/individual/homarr.yaml
