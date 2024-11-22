@@ -34,8 +34,6 @@ services:
       - ${WEBUI_PORT_JELLYSEERR:?err}:5055
       - ${WEBUI_PORT_QBITTORRENT:?err}:${WEBUI_PORT_QBITTORRENT:?err}
       - ${FLARESOLVERR_PORT:?err}:8191
-      - ${TDARR_SERVER_PORT:?err}:${TDARR_SERVER_PORT:?err}
-      - ${WEBUI_PORT_TDARR:?err}:${WEBUI_PORT_TDARR:?err}
       - ${WEBUI_PORT_PLEX:?err}:32400
       - 1900:1900/udp # DNLA Service
       - 5343:5343/udp # Plex Network Port
