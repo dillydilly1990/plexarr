@@ -11,4 +11,4 @@ services:
     ports:
       - 7575:7575
     labels:
-      - net.unraid.docker.webui=http://${SERVER_IP}:3001
+      - net.unraid.docker.webui=http://${SERVER_IP}:7575
