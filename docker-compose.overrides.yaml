@@ -17,7 +17,7 @@ services:
 #      Filebrowser
       - 8095:80
      # Riven Frontend
-     # - 3000:3000
+      - 3000:3000
      # Riven Backend
       - 8080:8080
      # RDT client
