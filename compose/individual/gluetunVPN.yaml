@@ -92,6 +92,11 @@ services:
       - PUBLICIP_PERIOD=12h
       - VERSION_INFORMATION=on
       - HTTP_CONTROL_SERVER_LOG=on
+    labels:
+      - homepage.group=Services
+      - homepage.name=Gluetun
+      - homepage.icon=gluetun.png
+      - homepage.description=Media server
     # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
     networks:
       - VPN
