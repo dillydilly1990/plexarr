@@ -48,10 +48,6 @@ services:
     network_mode: service:VPN
     ports: !reset
       - []
-    depends_on:
-      VPN:
-        condition: service_healthy
-        restart: true
   rclone:
     network_mode: service:VPN
     ports: !reset
