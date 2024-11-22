@@ -1,4 +1,0 @@
-include:
-  - compose/individual/homepage.yaml
-  - compose/individual/dozzle.yaml
-  - compose/individual/filebrowser.yaml
