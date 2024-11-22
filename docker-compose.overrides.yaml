@@ -52,19 +52,19 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
-  homepage:
-    network_mode: service:VPN
-    ports: !reset
+# homepage:
+#   network_mode: service:VPN
+#    ports: !reset
       - [] 
-  filebrowser:
-    network_mode: service:VPN
-    ports: !reset
-      - []
-    depends_on:
-      zurg:
-        condition: service_healthy
-        restart: true
-  dozzle:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
+#  filebrowser:
+#    network_mode: service:VPN
+#    ports: !reset
+#      - []
+#    depends_on:
+#      zurg:
+#        condition: service_healthy
+#        restart: true
+#  dozzle:
+#    network_mode: service:VPN
+#    ports: !reset
+#      - [] 
