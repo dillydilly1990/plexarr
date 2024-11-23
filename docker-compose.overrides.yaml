@@ -51,4 +51,36 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
+  dockerproxy:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  homepage:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+    depends_on:
+      dockerproxy:
+        condition: service_started
+        restart: true
+  homarr:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  filebrowser:
+    network_mode: service:VPN
+    ports: !reset
+      - []
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
+  dozzle:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  prowlarr:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
   
