@@ -4,7 +4,6 @@ services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
-    network_mode: service:VPN
     restart: unless-stopped
     volumes:
       - ${APPDATA}/prowlarr:/config
@@ -36,6 +35,6 @@ services:
       - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_PROWLARR}
       - homepage.widget.key=${PROWLARR_API}
 #      - homepage.widget.fields=["field1","field2"] # optional
- #   ports:
- #     - "${WEBUI_PORT_PROWLARR:?err}:9696"
+    ports:
+      - "${WEBUI_PORT_PROWLARR:?err}:9696"
   
