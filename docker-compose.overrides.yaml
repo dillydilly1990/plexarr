@@ -17,9 +17,9 @@ services:
 #      Filebrowser
       - 8095:80
      # Riven Frontend
-      - 3000:3000
+     # - 3000:3000
      # Riven Backend
-      - 8080:8080
+     # - 8080:8080
      # RDT client
       - 6500:6500
      # The Arrs_________________________
@@ -85,13 +85,11 @@ services:
       - [] 
   riven-frontend:
     network_mode: service:VPN
-    ports: !reset
-      - [] 
+#    ports: !reset
+#      - [] 
   riven:
     network_mode: service:VPN
-    ports: !reset
-      - [] 
+ #   ports: !reset
+ #     - [] 
   riven_postgres:
     network_mode: service:VPN
-    ports: !reset
-      - [] 
