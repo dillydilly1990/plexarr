@@ -2,7 +2,6 @@ services:
   riven-frontend:
     image: spoked/riven-frontend:latest
     container_name: riven-frontend
-    network_mode: service:VPN
     restart: unless-stopped
     ports:
       - 3000:3000
@@ -22,7 +21,6 @@ services:
   riven:
     image: spoked/riven:latest
     container_name: riven
-    network_mode: service:VPN
     restart: unless-stopped
     ports:
       - 8080:8080
@@ -49,7 +47,6 @@ services:
   riven_postgres:
     image: postgres:16.3-alpine3.20
     container_name: riven-db
-    network_mode: service:VPN
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_USER: postgres
