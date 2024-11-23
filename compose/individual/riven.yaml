@@ -14,6 +14,12 @@ services:
       - BACKEND_URL=http://192.168.50.69:8080
       - DIALECT=postgres
       - DATABASE_URL=postgres://postgres:postgres@riven-db/riven
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Riven
+      - homepage.icon=riven.png
+      - homepage.href=http://${SERVER_IP}:3000
+      - homepage.description=Media server
     depends_on:
       riven:
         condition: service_healthy
@@ -40,6 +46,12 @@ services:
       - ${APPDATA:?err}/riven:/riven/data
       - ${DATA}:/mnt
       - /mnt/user/RealDebrid/__all__:/mnt/RealDebrid/__all__
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Riven Backend
+      - homepage.icon=riven.png
+      - homepage.href=http://${SERVER_IP}:8080
+      - homepage.description=Media server
     depends_on:
       riven_postgres:
         condition: service_healthy
@@ -54,6 +66,12 @@ services:
       POSTGRES_DB: riven
     volumes:
       - ./riven-db:/var/lib/postgresql/data/pgdata
+    labels:
+      - homepage.group=Media Management
+      - homepage.name=Riven
+      - homepage.icon=riven.png
+      - homepage.href=http://${SERVER_IP}:8080
+      - homepage.description=Media server
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
