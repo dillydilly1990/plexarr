@@ -1,0 +1,3 @@
+include:
+  - compose/individual/prowlarr.yaml
+  - compose/individual/riven.yaml
