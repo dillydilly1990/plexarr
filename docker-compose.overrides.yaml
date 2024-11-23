@@ -61,7 +61,7 @@ services:
       - [] 
     depends_on:
       dockerproxy:
-        condition: service_healthy
+        condition: service_started
         restart: true
   homarr:
     network_mode: service:VPN
