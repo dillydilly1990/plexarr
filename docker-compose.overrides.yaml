@@ -84,11 +84,11 @@ services:
     ports: !reset
       - [] 
   riven-frontend:
-    network_mode: service:VPN
+#    network_mode: service:VPN
 #    ports: !reset
 #      - [] 
   riven:
-    network_mode: service:VPN
+ #   network_mode: service:VPN
  #   ports: !reset
  #     - [] 
   riven_postgres:
