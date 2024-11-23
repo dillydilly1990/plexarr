@@ -79,3 +79,19 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
+  prowlarr:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  riven-frontend:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  riven:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
+  riven_postgres:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
