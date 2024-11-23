@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 8099:8080
+      - 8099:8099
     labels:
       - net.unraid.docker.webui=http://${SERVER_IP}:8099
       - homepage.group=Utilites
