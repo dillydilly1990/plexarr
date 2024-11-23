@@ -92,6 +92,7 @@ services:
       - PUBLICIP_FILE=/gluetun/ip
       - PUBLICIP_PERIOD=12h
       - VERSION_INFORMATION=on
+      - HTTP_CONTROL_SERVER_ADDRESS=:8001
       - HTTP_CONTROL_SERVER_LOG=on
     labels:
       - homepage.group=Core Services
