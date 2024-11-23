@@ -68,7 +68,7 @@ services:
       - ./riven-db:/var/lib/postgresql/data/pgdata
     labels:
       - homepage.group=Media Management
-      - homepage.name=Riven
+      - homepage.name=Riven-db
       - homepage.icon=riven.png
       - homepage.href=http://${SERVER_IP}:8080
       - homepage.description=Media server
