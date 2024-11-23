@@ -7,7 +7,7 @@ services:
 #      Zurg
       - 9999:9999
 #      Dozzle
-      - 8099:8080
+      - 8099:8080/udp
 #      Docker Proxy
       - 127.0.0.1:2375:2375
 #      Homepage
@@ -19,7 +19,7 @@ services:
      # Riven Frontend
       - 3000:3000
      # Riven Backend
-      - 8080:8080
+      - 8080:8080/tcp
      # RDT client
       - 6500:6500
      # The Arrs_________________________
