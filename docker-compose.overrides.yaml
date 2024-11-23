@@ -79,8 +79,5 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
-  prowlarr:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
+  
   
