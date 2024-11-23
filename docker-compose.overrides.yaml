@@ -19,7 +19,7 @@ services:
      # Riven Frontend
       - 3000:3000
      # Riven Backend
-      - 8080:8080/tcp
+      - 8080:8080
      # RDT client
       - 6500:6500
      # The Arrs_________________________
