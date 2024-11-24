@@ -7,7 +7,7 @@ services:
 #      Zurg
       - 9999:9999
 #      Dozzle
-      - 8080:8080
+      - 8099:8080
 #      Docker Proxy
       - 127.0.0.1:2375:2375
 #      Homepage
