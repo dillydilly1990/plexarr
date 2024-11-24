@@ -37,9 +37,5 @@ services:
       - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}
       - homepage.widget.key=${LIDARR_API}
 #      - homepage.widget.fields=["field1","field2"] # optional
-#    ports:
-#      - ${WEBUI_PORT_LIDARR:?err}:8686
-    depends_on:
-      zurg:
-        condition: service_healthy
-        restart: true
+    ports:
+      - ${WEBUI_PORT_LIDARR:?err}:8686
