@@ -30,4 +30,8 @@ services:
       - /mnt/user/:/mnt
       - /mnt/user/appdata/homepage:/app/config:rw
       - /var/run/docker.sock:/var/run/docker.sock:rw # (optional) For docker integrations, see alternative methods
+    depends_on:
+      dockerproxy:
+        condition: service_started
+        restart: true
   
