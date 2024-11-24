@@ -92,4 +92,4 @@ services:
  #   ports: !reset
  #     - [] 
   riven_postgres:
-    network_mode: service:VPN
+ #   network_mode: service:VPN
