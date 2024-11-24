@@ -31,7 +31,6 @@ services:
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
-      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     ports:
       - 5572:5572
