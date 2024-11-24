@@ -14,7 +14,6 @@ services:
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
-      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
     labels:
       - net.unraid.docker.managed=dockerman
