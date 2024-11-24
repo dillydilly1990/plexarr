@@ -4,7 +4,6 @@ services:
   lidarr:
     image: ghcr.io/dillydilly1990/lsio-docker-lidarr-plugins:master
     container_name: lidarr
-    network_mode: service:VPN
     restart: unless-stopped
     volumes:
       - ${APPDATA:?err}/lidarr:/config
