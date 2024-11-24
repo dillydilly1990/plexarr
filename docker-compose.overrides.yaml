@@ -1,21 +1,21 @@
 services:
   VPN:
     ports:
-      - 5572:5572/tcp # rclone
+    #  - 5572:5572/tcp # rclone
      # - 8282:8282 # qBittorrent blackhole
      # - 8181:8181 # Proxy blackhole
 #      Zurg
   #    - 9999:9999
 #      Dozzle
-      - 8099:8080
+   #   - 8099:8080
 #      Docker Proxy
-      - 127.0.0.1:2375:2375
+  #    - 127.0.0.1:2375:2375
 #      Homepage
-      - 3001:3000
+   #   - 3001:3000
 #      Homarr
-      - 7575:7575
+   #   - 7575:7575
 #      Filebrowser
-      - 8095:80
+ #     - 8095:80
      # Riven Frontend
      # - 3000:3000
      # Riven Backend
@@ -43,34 +43,34 @@ services:
       - 32413:32413/udp # Plex Network Port
       - 32414:32414/udp # Plex Network Port
       - 32469:32469 # Plex Network Port
-  zurg:  
-    network_mode: service:VPN
-    ports: !reset
-      - []
-  rclone:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-  dockerproxy:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-  homepage:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-  homarr:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-  filebrowser:
-    network_mode: service:VPN
-    ports: !reset
-      - []
-  dozzle:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
+ # zurg:  
+ #   network_mode: service:VPN
+#    ports: !reset
+ #     - []
+ # rclone:
+ #   network_mode: service:VPN
+ #   ports: !reset
+ #     - [] 
+#  dockerproxy:
+ #   network_mode: service:VPN
+ #   ports: !reset
+  #    - [] 
+ # homepage:
+ #   network_mode: service:VPN
+  #  ports: !reset
+  #    - [] 
+ # homarr:
+  #  network_mode: service:VPN
+  #  ports: !reset
+   #   - [] 
+  #filebrowser:
+  #  network_mode: service:VPN
+  #  ports: !reset
+ #     - []
+#  dozzle:
+  #  network_mode: service:VPN
+ #   ports: !reset
+  #    - [] 
   prowlarr:
     network_mode: service:VPN
     ports: !reset
