@@ -44,10 +44,10 @@ services:
       - apparmor:unconfined
     devices:
       - /dev/fuse:/dev/fuse:rwm
-   # depends_on:
-    #  zurg:
-      #  condition: service_healthy
-       # restart: true
+    depends_on:
+      zurg:
+        condition: service_healthy
+        restart: true
     command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
       - net.unraid.docker.managed=dockerman
