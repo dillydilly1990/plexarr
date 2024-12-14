@@ -10,7 +10,8 @@ services:
     volumes:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
-      - ${APPDATA}/zurg/data:/app/data   
+      - zurgdata:/app/data
+    #  - ${APPDATA}/zurg/data:/app/data   
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
