@@ -24,7 +24,7 @@ services:
       - homepage.icon=zurg.png
       - homepage.href=http://${SERVER_IP}:9999
       - homepage.description=Media server
-      - tsdproxy.enable=true
+ #     - tsdproxy.enable=true
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
@@ -51,12 +51,12 @@ services:
         restart: true
     command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
-      - net.unraid.docker.managed=dockerman
-      - net.unraid.docker.webui=http://${SERVER_IP}:5572
+#      - net.unraid.docker.managed=dockerman
+#      - net.unraid.docker.webui=http://${SERVER_IP}:5572
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
       - homepage.group=Core Services
       - homepage.name=Rclone
       - homepage.icon=rclone.png
-      - homepage.href=http://${SERVER_IP}:5572
+    #  - homepage.href=http://${SERVER_IP}:5572
       - homepage.description=Media server  
   
