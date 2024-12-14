@@ -1,3 +1,4 @@
+services:
   tsdproxy:
     image: almeidapaulopt/tsdproxy:latest
     container_name: tsdproxy
