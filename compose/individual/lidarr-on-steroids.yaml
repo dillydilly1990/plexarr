@@ -12,6 +12,7 @@ services:
       - ${DATA}/downloads/deemix:/downloads
       - ${DATA}/music:/music
     labels:
+    # lidarr
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr-logo.png    
@@ -24,3 +25,12 @@ services:
       - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}
       - homepage.widget.key=${LIDARR_API}
 #      - homepage.widget.fields=["field1","field2"] # optional
+    # deemix
+      - net.unraid.docker.managed=dockerman
+      - net.unraid.docker.webui=http://${SERVER_IP}:6595
+      - net.unraid.docker.icon=https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/img/deemix.png
+      - homepage.group=Media Management
+      - homepage.name=Deemix
+      - homepage.icon=deemix.png
+      - homepage.href=http://${SERVER_IP}:6595
+      - homepage.description=Media server
