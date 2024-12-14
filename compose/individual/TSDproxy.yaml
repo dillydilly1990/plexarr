@@ -1,0 +1,13 @@
+  tsdproxy:
+    image: almeidapaulopt/tsdproxy:latest
+    container_name: tsdproxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - - ${APPDATA}/TSDPROXY:/data
+    environment:
+      # Get AuthKey from your Tailscale account
+      - TSDPROXY_AUTHKEY=${TS_KEY}
+      # Address of docker server (access to example.com ports)
+      - TSDPROXY_HOSTNAME=${SERVER_IP}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    restart: unless-stopped
