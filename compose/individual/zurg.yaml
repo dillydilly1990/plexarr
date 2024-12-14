@@ -24,7 +24,7 @@ services:
       - homepage.icon=zurg.png
       - homepage.href=http://${SERVER_IP}:9999
       - homepage.description=Media server
-      - tsdproxy.enable: "true"
+      - tsdproxy.enable=true
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
