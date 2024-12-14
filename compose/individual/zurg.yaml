@@ -25,7 +25,7 @@ services:
       - homepage.icon=zurg.png
       - homepage.href=http://${SERVER_IP}:9999
       - homepage.description=Media server
- #     - tsdproxy.enable=true
+      - tsdproxy.enable=true
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
@@ -34,11 +34,9 @@ services:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
       - TZ=${TIMEZONE:?err}
-    ports:
-      - 5572:5572
     volumes:
       - ${APPDATA}/zurg/rclone-cache:/root/.cache/rclone # This is for the WebUI, not VFS
-      - /mnt/user/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
+      - /mnt/user/data/RealDebrid:/data:rshared # CHANGE /mnt/zurg WITH YOUR PREFERRED MOUNT PATH
       - ${APPDATA}/zurg/rclone.conf:/config/rclone/rclone.conf    
     cap_add:
       - SYS_ADMIN
@@ -53,11 +51,9 @@ services:
     command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
 #      - net.unraid.docker.managed=dockerman
-#      - net.unraid.docker.webui=http://${SERVER_IP}:5572
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
       - homepage.group=Core Services
       - homepage.name=Rclone
       - homepage.icon=rclone.png
-    #  - homepage.href=http://${SERVER_IP}:5572
       - homepage.description=Media server  
   
