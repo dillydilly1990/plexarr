@@ -26,6 +26,9 @@ services:
       - homepage.href=http://${SERVER_IP}:9999
       - homepage.description=Media server
       - tsdproxy.enable=true
+    depends_on:
+      tsdproxy:
+        condition: service_healthy
   rclone:
     image: rclone/rclone:latest
     container_name: rclone
