@@ -7,7 +7,7 @@ services:
       - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
       - "6595:6595" # Deemix web UI
     volumes:
-      - ${APPDATA:?err}/lidarr:/config
+      - ${APPDATA:?err}/lidarr-on-steroids:/config
       - ${APPDATA:?err}/deemix:/config_deemix
       - ${DATA}/downloads/deemix:/downloads
       - ${DATA}/music:/music
