@@ -1,6 +1,6 @@
 version: "3"
 services:
-  lidarr:
+  lidarr-on-steroids:
     image: youegraillot/lidarr-on-steroids
     restart: unless-stopped
     ports:
