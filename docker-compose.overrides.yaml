@@ -77,7 +77,7 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
-  lidarr:
+  lidarr-on-steroids:
     network_mode: service:VPN
     ports: !reset
       - [] 
