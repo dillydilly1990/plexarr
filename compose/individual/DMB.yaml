@@ -11,10 +11,10 @@ services:
       - ${APPDATA:?err}DMB/Zurg/RD:/zurg/RD                   ## Location for Zurg RealDebrid active configuration  
       - /mnt/user/data/DMB/Zurg:/data:shared              ## Location for rclone mount to host
       - ${APPDATA:?err}/DMB/Riven/data:/riven/backend/data     ## Location for Riven backend data
-      - /mnt/userdata/DMB/Riven/mnt:/mnt                     ## Location for Riven symlinks
+      - /mnt/user/data/DMB/Riven/mnt:/mnt                     ## Location for Riven symlinks
       - ${APPDATA:?err}/DMB/PostgreSQL/data:/postgres_data     ## Location for PostgreSQL database
       - ${APPDATA:?err}/DMB/pgAdmin4/data:/pgadmin/data        ## Location for pgAdmin 4 data
-      - /mnt/user/data/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data
+      - ${APPDATA}/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
