@@ -14,7 +14,7 @@ services:
       - /mnt/userdata/DMB/Riven/mnt:/mnt                     ## Location for Riven symlinks
       - ${APPDATA:?err}/DMB/PostgreSQL/data:/postgres_data     ## Location for PostgreSQL database
       - ${APPDATA:?err}/DMB/pgAdmin4/data:/pgadmin/data        ## Location for pgAdmin 4 data
-      - /mnt/user/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data
+      - /mnt/user/data/DMB/Zilean/data:/zilean/app/data       ## Location for Zilean data
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
