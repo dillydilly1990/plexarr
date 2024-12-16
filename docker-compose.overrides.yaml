@@ -4,8 +4,8 @@ services:
     #  - 5572:5572/tcp # rclone
      # - 8282:8282 # qBittorrent blackhole
      # - 8181:8181 # Proxy blackhole
-#      Zurg
-    #  - 9999:9999
+      Zurg
+      - 9999:9999
 #      Dozzle
    #   - 8099:8080
 #      Docker Proxy
