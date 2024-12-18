@@ -15,25 +15,20 @@ services:
       - /mnt/user/data/DMB/Zurg:/data:shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
       - /mnt/user/data/DMB/Riven/mnt:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
 #      - ts-state-plex:/var/lib/tailscale
-#    ports:
-#      - 32400:32400
-#      - 1900:1900/udp
-#      - 5353:5353/udp
-#      - 8324:8324
-#      - 32410:32410/udp
-#      - 32412:32412/udp
-#      - 32413:32413/udp
-#      - 32414:32414/udp
-#      - 32469:32469
+    ports:
+      - 32400:32400
+      - 1900:1900/udp
+      - 5353:5353/udp
+      - 8324:8324
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+      - 32469:32469
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-      - UMASK=022
       - TZ=${TIMEZONE}
-      - HOST_OS=Unraid
-      - HOST_HOSTNAME=whiskeyshits
-      - HOST_CONTAINERNAME=plex
-      - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
 #      - DOCKER_MODS=${DOCKER_MODS}
 #      - TAILSCALE_SERVE_PORT=8686
