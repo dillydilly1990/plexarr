@@ -12,8 +12,8 @@ services:
     volumes:
       - ${APPDATA}/plex/library:/config:rw
       - ${DATA}:/data:rw
-      - /mnt/user/RealDebrid:/RealDebrid:rw           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-#      - :/riven:rw            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - /mnt/user/data/DMB/Zurg:/data:shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - /mnt/user/data/DMB/Riven/mnt:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
       - ts-state-plex:/var/lib/tailscale
 #    ports:
 #      - 32400:32400
