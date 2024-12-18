@@ -54,7 +54,7 @@ services:
       retries: 3
       start_period: 1m00s
     depends_on:
-      zurg:
+      DMB:
         condition: service_healthy
         restart: true
 
