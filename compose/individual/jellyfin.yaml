@@ -9,9 +9,9 @@ services:
 #      - /dev/dri/card0:/dev/dri/card0
     volumes:
       - ${APPDATA:?err}/jellyfin:/config
-      - ${MEDIA:?err}:/data/media
-      - ${ZURG}:/data/media            ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-      - ${RIVEN}:/data/media            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - ${DATA}:/data:rw
+      - /mnt/user/data/DMB/Zurg/RealDebrid:/data:shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - /mnt/user/data/DMB/Riven/mnt:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
@@ -22,3 +22,5 @@ services:
       - ${WEBUI_PORT_JELLYFIN:?err}:8096
 #      - 7359:7359/udp                 # Enable for DLNA - Only works on HOST Network Mode
 #      - 1900:1900/udp                 # Enable for DLNA - Only works on HOST Network Mode
+    labels:
+      - tsdproxy.enable=true

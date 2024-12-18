@@ -12,7 +12,6 @@ services:
       - ${DATA}/music:/music
     labels:
     # lidarr
-      - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lidarr-logo.png    
       - homepage.group=Media Management
