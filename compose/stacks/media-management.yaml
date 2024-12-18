@@ -1,4 +1,4 @@
 include:
   - compose/individual/prowlarr.yaml
-  - compose/individual/lidarr-on-steroids.yaml
+  - compose/individual/lidarr.yaml
   - compose/individual/plex.yaml
