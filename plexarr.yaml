@@ -1,4 +1,5 @@
 include:
- - compose/stacks/services.yaml
- - compose/stacks/utilites.yaml
- - compose/stacks/media-management.yaml
+  - compose/stacks/services.yaml
+  - compose/stacks/utilites.yaml
+  - compose/stacks/media-management.yaml
+  - compose/stacks/media-servers.yaml
