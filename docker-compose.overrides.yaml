@@ -11,7 +11,7 @@ services:
 #      Docker Proxy
   #    - 127.0.0.1:2375:2375
  #     Homepage
-      - 3001:3000
+ #     - 3001:3000
 #      Homarr
    #   - 7575:7575
 #      Filebrowser
@@ -57,7 +57,9 @@ services:
  #   network_mode: service:VPN
  #   ports: !reset
   #    - [] 
- # homepage:
+  homepage:
+    nwtworks:
+      - VPN
  #   network_mode: service:VPN
   #  ports: !reset
   #    - [] 
