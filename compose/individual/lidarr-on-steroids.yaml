@@ -1,5 +1,5 @@
 services:
-  lidarr-on-steroids:
+  lidarr:
     image: youegraillot/lidarr-on-steroids
     restart: unless-stopped
     ports:
