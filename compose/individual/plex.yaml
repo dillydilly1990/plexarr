@@ -29,6 +29,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
       - PLEX_CLAIM=${PLEX_CLAIM}
+      - VERSION=docker
 #      - DOCKER_MODS=${DOCKER_MODS}
 #      - TAILSCALE_SERVE_PORT=8686
 #      - TAILSCALE_SERVE_MODE=https
