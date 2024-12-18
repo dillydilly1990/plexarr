@@ -58,7 +58,7 @@ services:
  #   ports: !reset
   #    - [] 
   homepage:
-    nwtworks:
+    networks:
       - VPN
  #   network_mode: service:VPN
   #  ports: !reset
