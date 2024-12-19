@@ -55,7 +55,6 @@ services:
       VPN:
         condition: service_healthy
         restart: true
-    depends_on:
       tsdproxy:
         condition: service_healthy
         restart: true
