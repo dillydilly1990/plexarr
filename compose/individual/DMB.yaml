@@ -8,7 +8,7 @@ services:
     volumes:   
       - ${APPDATA:?err}/DMB/config:/config                     ## Location of configuration files. If a Zurg config.yml and/or Zurg app is placed here, it will be used to override the default configuration and/or app used at startup. 
       - ${APPDATA:?err}/DMB/log:/log                           ## Location for logs
-      - ${APPDATA:?err}DMB/Zurg/RD:/zurg/RD                   ## Location for Zurg RealDebrid active configuration  
+      - ${APPDATA:?err}/DMB/Zurg/RD:/zurg/RD                   ## Location for Zurg RealDebrid active configuration  
       - /mnt/user/data/DMB/Zurg:/data:shared              ## Location for rclone mount to host
       - ${APPDATA:?err}/DMB/Riven/data:/riven/backend/data     ## Location for Riven backend data
       - /mnt/user/data/DMB/Riven/mnt:/mnt                     ## Location for Riven symlinks

@@ -32,27 +32,37 @@ services:
       - ${WEBUI_PORT_READARR:?err}:8787
       - ${WEBUI_PORT_SONARR:?err}:8989
       - ${WEBUI_PORT_WHISPARR:?err}:6969
- #     - ${WEBUI_PORT_JELLYFIN:?err}:8096
+      - ${WEBUI_PORT_JELLYFIN:?err}:8096
       - ${WEBUI_PORT_JELLYSEERR:?err}:5055
       - ${WEBUI_PORT_QBITTORRENT:?err}:${WEBUI_PORT_QBITTORRENT:?err}
       - ${FLARESOLVERR_PORT:?err}:8191
-  #    - ${WEBUI_PORT_PLEX:?err}:32400
-  #    - 1900:1900/udp # DNLA Service
-  #    - 5343:5343/udp # Plex Network Port
-  #    - 8324:8324 # Plex Network Port
-  #    - 32410:32410/udp # Plex Network Port
-  #    - 32412:32412/udp # Plex Network Port
-  #    - 32413:32413/udp # Plex Network Port
-  #    - 32414:32414/udp # Plex Network Port
-  #    - 32469:32469 # Plex Network Port
+      - ${WEBUI_PORT_PLEX:?err}:32400
+      - 1900:1900/udp # DNLA Service
+      - 5343:5343/udp # Plex Network Port
+      - 8324:8324 # Plex Network Port
+      - 32410:32410/udp # Plex Network Port
+      - 32412:32412/udp # Plex Network Port
+      - 32413:32413/udp # Plex Network Port
+      - 32414:32414/udp # Plex Network Port
+      - 32469:32469 # Plex Network Port
   DMB:
     network_mode: service:VPN
     ports: !reset
       - []
- # plex:
- #   network_mode: service:VPN
- #   ports: !reset
- #     - []    
+    labels:
+      - tsdproxy.enable=true
+  plex:
+    network_mode: service:VPN
+    ports: !reset
+      - []    
+    labels:
+      - tsdproxy.enable=true
+  jellyfin:
+    network_mode: service:VPN
+    ports: !reset
+      - []         
+    labels:
+      - tsdproxy.enable=true
  # rclone:
   #  network_mode: service:VPN
   #  ports: !reset

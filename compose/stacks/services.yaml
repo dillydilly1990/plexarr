@@ -2,4 +2,3 @@ include:
   - compose/individual/gluetunVPN.yaml
   - compose/individual/TSDproxy.yaml
   - compose/individual/DMB.yaml
-#  - compose/individual/zurg.yaml
