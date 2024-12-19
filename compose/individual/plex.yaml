@@ -9,7 +9,7 @@ services:
 #      - /dev/dri/renderD128:/dev/dri/renderD128
 #      - /dev/dri/card0:/dev/dri/card0
     volumes:
-      - ${APPDATA}/plex/library:/config:rw
+      - ${APPDATA}/plex:/config:rw
       - ${DATA}:/data:rw
       - /mnt/user/data/DMB/Zurg/RealDebrid:/data:shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
       - /mnt/user/data/DMB/Riven/mnt:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
