@@ -1,27 +1,10 @@
 services:
   VPN:
     ports:
-    #  - 5572:5572/tcp # rclone
-     # - 8282:8282 # qBittorrent blackhole
-     # - 8181:8181 # Proxy blackhole
-   #   Zurg
-   #   - 9999:9999
-#      Dozzle
-   #   - 8099:8080
-#      Docker Proxy
-  #    - 127.0.0.1:2375:2375
- #     Homepage
- #     - 3001:3000
-#      Homarr
-   #   - 7575:7575
-#      Filebrowser
- #     - 8095:80
      # Riven Frontend
       - 3000:3000
      # pg admin
       - 5050:5050
-     # Riven Backend
-     # - 8080:8080
      # RDT client
       - 6500:6500
      # The Arrs_________________________
@@ -58,7 +41,38 @@ services:
       tsdproxy:
         condition: service_healthy
         restart: true
-
+  plex:
+    network_mode: service:VPN
+    ports: !reset
+      - []
+    labels:
+      - tsdproxy.enable=true
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
+      tsdproxy:
+        condition: service_healthy
+        restart: true
+      DMB:
+        condition: service_healthy
+        restart: true  
+  jellyfin:
+    network_mode: service:VPN
+    ports: !reset
+      - []
+    labels:
+      - tsdproxy.enable=true
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
+      tsdproxy:
+        condition: service_healthy
+        restart: true
+      DMB:
+        condition: service_healthy
+        restart: true  
  # rclone:
   #  network_mode: service:VPN
   #  ports: !reset
