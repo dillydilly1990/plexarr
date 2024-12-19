@@ -1,0 +1,5 @@
+{
+    "git.allowNoVerifyCommit": true,
+    "git.autofetch": true,
+    "git.autoStash": true
+}
