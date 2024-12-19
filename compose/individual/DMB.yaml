@@ -38,3 +38,6 @@ services:
     security_opt:
       - apparmor:unconfined    
       - no-new-privileges
+    labels:
+      - net.unraid.docker.webui=http://${SERVER_IP}:3000
+      - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
