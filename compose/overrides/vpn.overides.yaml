@@ -32,7 +32,7 @@ services:
       - ${WEBUI_PORT_READARR:?err}:8787
       - ${WEBUI_PORT_SONARR:?err}:8989
       - ${WEBUI_PORT_WHISPARR:?err}:6969
-      - ${WEBUI_PORT_JELLYFIN:?err}:8096
+ #     - ${WEBUI_PORT_JELLYFIN:?err}:8096
       - ${WEBUI_PORT_JELLYSEERR:?err}:5055
       - ${WEBUI_PORT_QBITTORRENT:?err}:${WEBUI_PORT_QBITTORRENT:?err}
       - ${FLARESOLVERR_PORT:?err}:8191
