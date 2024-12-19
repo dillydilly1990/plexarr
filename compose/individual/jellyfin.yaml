@@ -22,5 +22,4 @@ services:
       - ${WEBUI_PORT_JELLYFIN:?err}:8096
 #      - 7359:7359/udp                 # Enable for DLNA - Only works on HOST Network Mode
 #      - 1900:1900/udp                 # Enable for DLNA - Only works on HOST Network Mode
-    labels:
-      - tsdproxy.enable=true
+    
