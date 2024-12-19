@@ -18,7 +18,6 @@ services:
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
-      - UMASK=${UMASK:?err}
       - TZ=${TIMEZONE:?err}
       - ZURG_ENABLED=true      
       - RD_API_KEY=${REALDEBRID_API}
