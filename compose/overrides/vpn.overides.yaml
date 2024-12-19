@@ -45,24 +45,7 @@ services:
       - 32413:32413/udp # Plex Network Port
       - 32414:32414/udp # Plex Network Port
       - 32469:32469 # Plex Network Port
-  DMB:
-    network_mode: service:VPN
-    ports: !reset
-      - []
-    labels:
-      - tsdproxy.enable=true
-  plex:
-    network_mode: service:VPN
-    ports: !reset
-      - []    
-    labels:
-      - tsdproxy.enable=true
-  jellyfin:
-    network_mode: service:VPN
-    ports: !reset
-      - []         
-    labels:
-      - tsdproxy.enable=true
+  
  # rclone:
   #  network_mode: service:VPN
   #  ports: !reset
