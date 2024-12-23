@@ -10,10 +10,15 @@ services:
 #      - /dev/dri/card0:/dev/dri/card0
     volumes:
       - ${APPDATA}/plex:/config:rw
-      - ${DATA}:/data:rw
-      - /mnt/user/data/DMB/Zurg/RealDebrid/__all__:/data:shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-      - /mnt/user/data/DMB/Riven/mnt:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - /mnt/user/data/DMB/Riven/mnt/shows/:/tv:rw
+      - /mnt/user/data/DMB/Riven/mnt/movies/:/movies:rw
+            
+      - /mnt/user/data/DMB/Zurg/:/data:rw,shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - /mnt/user/data/DMB/Riven/mnt/:/mnt:rw,shared            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
 #      - ts-state-plex:/var/lib/tailscale
+            
+            
+            - /mnt/user/appdata/plex':'/config':'rw
     ports:
       - 32400:32400
       - 1900:1900/udp
