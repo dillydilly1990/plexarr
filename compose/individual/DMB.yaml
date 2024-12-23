@@ -28,7 +28,7 @@ services:
       - PGID=100
       - HARD_RESET=false
     labels:
-      - net.unraid.docker.webui=http://[IP]:[PORT:3000]
+      - net.unraid.docker.webui=http://${SERVER_IP}:3000
       - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
     ports:
       - 3000:3000/tcp
