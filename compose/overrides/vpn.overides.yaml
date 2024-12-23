@@ -3,17 +3,22 @@ services:
     ports:
       - 3000:3000  ## Riven Frontend
       - 5050:5050  ## pgAdmin 4
+      - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
+      - 6595:6595 # Deemix web UI
   DMB:
     network_mode: service:VPN
     ports: !reset
       - [] 
     labels:
-      - homepage.group=Media Management
-      - homepage.name=DMB
-      - homepage.icon=DMB.png
-      - homepage.href=http://${SERVER_IP}:3000
-      - homepage.description=Media server
       - tsdproxy.enable=true
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
+  lidarr-on-steroids:
+    network_mode: service:VPN
+    ports: !reset
+      - []
     depends_on:
       VPN:
         condition: service_healthy
@@ -39,10 +44,6 @@ services:
  #   ports: !reset
   #    - [] 
 #  prowlarr:
-#    network_mode: service:VPN
-#    ports: !reset
-#      - [] 
-#  lidarr:
 #    network_mode: service:VPN
 #    ports: !reset
 #      - [] 
