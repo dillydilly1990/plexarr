@@ -50,8 +50,5 @@ services:
       timeout: 15s
       retries: 3
       start_period: 1m00s
-    depends_on:
-      DMB:
-        condition: service_healthy
-        restart: true
+  
 
