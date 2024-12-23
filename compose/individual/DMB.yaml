@@ -41,8 +41,8 @@ services:
             - /mnt/user/appdata/DMB/PostgreSQL/data:/postgres_data:rw
             - /mnt/user/appdata/DMB/Riven/data:/riven/backend/data:rw
             - /mnt/user/appdata/DMB/Zilean/data/:/zilean/app/data:rw
-            - /mnt/user/DMB/Zurg/:/data:rw,shared
-            - /mnt/user/DMB/Riven/mnt/:/mnt:rw,shared
+            - /mnt/user/data/DMB/Zurg/:/data:rw,shared
+            - /mnt/user/data/DMB/Riven/mnt/:/mnt:rw,shared
         devices:
             - /dev/fuse:/dev/fuse:rwm
         shm_size: 128MB
