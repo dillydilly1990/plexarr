@@ -18,9 +18,6 @@ services:
       VPN:
         condition: service_healthy
         restart: true
-      tsdproxy:
-        condition: service_healthy
-        restart: true
 #  dockerproxy:
 #    network_mode: service:VPN
 #    ports: !reset
