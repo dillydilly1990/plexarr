@@ -3,8 +3,6 @@ services:
     ports:
       - 3000:3000  ## Riven Frontend
       - 5050:5050  ## pgAdmin 4
-      - 127.0.0.1:2375:2375  ## Homepage Docker Proxy
-      - 3001:3000  ## Homepage
   DMB:
     network_mode: service:VPN
     ports: !reset
@@ -15,19 +13,22 @@ services:
       - homepage.icon=DMB.png
       - homepage.href=http://${SERVER_IP}:3000
       - homepage.description=Media server
-#      - tsdproxy.enable=true
+      - tsdproxy.enable=true
     depends_on:
       VPN:
         condition: service_healthy
         restart: true
-  dockerproxy:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-  homepage:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
+      tsdproxy:
+        condition: service_healthy
+        restart: true
+#  dockerproxy:
+#    network_mode: service:VPN
+#    ports: !reset
+#      - [] 
+#  homepage:
+#    network_mode: service:VPN
+#    ports: !reset
+#      - [] 
  # homarr:
   #  network_mode: service:VPN
   #  ports: !reset
