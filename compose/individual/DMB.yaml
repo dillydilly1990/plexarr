@@ -1,6 +1,6 @@
 services:
-    dmb:
-        container_name: dmb
+    DMB:
+        container_name: DMB
 #        network_mode: bridge
         environment:
             - TZ=America/Los_Angeles
