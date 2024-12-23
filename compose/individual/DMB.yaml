@@ -29,8 +29,8 @@ services:
       - PGADMIN_SETUP_PASSWORD=                                     ## Set if using pgAdmin 4
     # network_mode: container:gluetun                               ## Example to attach to gluetun vpn container if realdebrid blocks IP address 
     ports:
-      - 3000:3000                                                 ## Riven frontend
-      - 5050:5050                                                                                   ## pgAdmin 4
+      - 3000:3000                                    ## Riven frontend
+      - 5050:5050                                    ## pgAdmin 4
     devices:
       - /dev/fuse:/dev/fuse:rwm
     cap_add:

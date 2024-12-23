@@ -1,9 +1,12 @@
-
-  
- # rclone:
-  #  network_mode: service:VPN
-  #  ports: !reset
-   #   - [] 
+services:
+  VPN:
+    ports:
+      - 3000:3000  ## Riven frontend
+      - 5050:5050  ## pgAdmin 4
+  DMB:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
 #  dockerproxy:
  #   network_mode: service:VPN
  #   ports: !reset
