@@ -3,11 +3,10 @@ services:
         container_name: DMB
 #        network_mode: bridge
         environment:
-            - TZ=America/Los_Angeles
             - HOST_OS=Unraid
             - HOST_HOSTNAME=whiskeyshits
             - HOST_CONTAINERNAME=dmb
-            - TZ'=America/Detroit
+            - TZ=America/Detroit
             - RCLONE_MOUNT_NAME=DMB
             - ZILEAN_ENABLED=true
             - ORIGIN=http://192.168.50.69:3000
