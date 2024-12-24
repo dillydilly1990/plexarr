@@ -1,5 +1,5 @@
 #!/bin/bash
 mkdir -p /mnt/user/appdata/lidarr/custom-cont-init.d
-mkdir -p /mnt/user/appdata/rliarr/custom-services.d
+mkdir -p /mnt/user/appdata/lidarr/custom-services.d
 cd /mnt/user/appdata/lidarr/custom-cont-init.d
 wget https://raw.githubusercontent.com/RandomNinjaAtk/arr-scripts/main/lidarr/scripts_init.bash

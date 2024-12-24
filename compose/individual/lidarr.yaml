@@ -2,7 +2,7 @@
 #  ts-state-lidarr: null
 services:
   lidarr:
-    image: ghcr.io/dillydilly1990/lsio-docker-lidarr-plugins:master
+    image: lscr.io/linuxserver/lidarr:latest #ghcr.io/dillydilly1990/lsio-docker-lidarr-plugins:master
     container_name: lidarr
     restart: unless-stopped
     volumes:
