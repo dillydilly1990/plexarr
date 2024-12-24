@@ -4,6 +4,7 @@ services:
       - 3000:3000  ## Riven Frontend
       - 5050:5050  ## pgAdmin 4
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # Prowlarr web UI
+      - ${WEBUI_PORT_SONARR:?err}:8989 # Sonarr web UI
       - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
       - 6595:6595 # Deemix web UI
   DMB:
@@ -31,6 +32,14 @@ services:
         condition: service_healthy
         restart: true
   radarr:
+    network_mode: service:VPN
+    ports: !reset
+      - []
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
+  sonarr:
     network_mode: service:VPN
     ports: !reset
       - []
