@@ -10,6 +10,7 @@ services:
       - ${APPDATA}/radarr/custom-cont-init.d:/custom-cont-init.d
       - ${APPDATA}/radarr/custom-services.d:/custom-services.d
       - ${DATA}:/data:rw
+      - ${DATA}/downloads/symlinks/radarr
 #      - ts-state-radarr:/var/lib/tailscale
     environment:
       - PUID=${PUID}
