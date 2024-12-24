@@ -1,30 +1,28 @@
-volumes:
-  ts-state-radarr: null
+#volumes:
+#  ts-state-radarr: null
 services:
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
-    network_mode: service:VPN
     restart: unless-stopped
     volumes:
       - ${APPDATA:?err}/radarr:/config
       - ${MEDIA}:/data
-      - ts-state-radarr:/var/lib/tailscale
+#      - ts-state-radarr:/var/lib/tailscale
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TIMEZONE}
-      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/themepark-dev/theme.park:radarr
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:radarr #|${DOCKER_MODS}
       - TP_THEME=${TP_THEME}
-      - TAILSCALE_SERVE_PORT=8686
-      - TAILSCALE_SERVE_MODE=https
-      - TAILSCALE_USE_SSH=1
-      - TAILSCALE_HOSTNAME=Radarr
-      - TAILSCALE_AUTHKEY=${TS_KEY}
-      - TS_EXTRA_ARGS=${TS_EX_ARGS}
-      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+#      - TAILSCALE_SERVE_PORT=8686
+#      - TAILSCALE_SERVE_MODE=https
+#      - TAILSCALE_USE_SSH=1
+#      - TAILSCALE_HOSTNAME=Radarr
+#      - TAILSCALE_AUTHKEY=${TS_KEY}
+#      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+#      - TAILSCALE_STATE_DIR=/var/lib/tailscale
     labels:
-      - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr-logo.png
       - homepage.group=Media Management
@@ -35,10 +33,5 @@ services:
       - homepage.widget.type=radarr
       - homepage.widget.url=http://${SERVER_IP}:${WEBUI_PORT_RADARR}
       - homepage.widget.key=${RADARR_API}
-#      - homepage.widget.fields=["field1","field2"] # optional
-#    ports:
-#      - "${WEBUI_PORT_RADARR:?err}:7878"      
-    depends_on:
-      zurg:
-        condition: service_healthy
-        restart: true
+    ports:
+      - ${WEBUI_PORT_RADARR:?err}:7878
