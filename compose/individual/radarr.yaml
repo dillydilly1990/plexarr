@@ -7,7 +7,9 @@ services:
     restart: unless-stopped
     volumes:
       - ${APPDATA:?err}/radarr:/config
-      - ${MEDIA}:/data
+      - ${APPDATA}/radarr/custom-cont-init.d:/custom-cont-init.d
+      - ${APPDATA}/radarr/custom-services.d:/custom-services.d
+      - ${DATA}:/data:rw
 #      - ts-state-radarr:/var/lib/tailscale
     environment:
       - PUID=${PUID}

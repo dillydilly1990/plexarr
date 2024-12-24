@@ -8,7 +8,9 @@ services:
     restart: unless-stopped
     volumes:
       - ${APPDATA:?err}/sonarr:/config
-      - ${DATA}:/data
+      - ${APPDATA}/sonarr/custom-cont-init.d:/custom-cont-init.d
+      - ${APPDATA}/sonarr/custom-services.d:/custom-services.d
+      - ${DATA}:/data:rw
 #      - ts-state-sonarr:/var/lib/tailscale
     environment:
       - PUID=${PUID:?err}
