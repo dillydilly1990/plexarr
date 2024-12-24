@@ -1,9 +1,9 @@
 services:
-  lidarr:
+  lidarr-on-steroids:
     image: youegraillot/lidarr-on-steroids
     restart: unless-stopped
     ports:
-      - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
+      - ${WEBUI_PORT_LIDARR_ON_STEROIDS:?err}:8686 # Lidarr web UI
       - 6595:6595 # Deemix web UI
     volumes:
       - ${APPDATA:?err}/lidarr-on-steroids:/config
