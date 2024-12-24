@@ -36,7 +36,7 @@ services:
     volumes:
       - /mnt/user/appdata/DMB:/config:rw
       - /mnt/user/appdata/DMB/log:/log:rw
-      - /mnt/user/appdata/DMB/Zurg/RD':/zurg/RD:rw
+      - /mnt/user/appdata/DMB/Zurg/RD:/zurg/RD:rw
       - /mnt/user/appdata/DMB/PostgreSQL/data:/postgres_data:rw
       - /mnt/user/appdata/DMB/Riven/data:/riven/backend/data:rw
       - /mnt/user/appdata/DMB/Zilean/data/:/zilean/app/data:rw
