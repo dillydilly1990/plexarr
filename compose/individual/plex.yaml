@@ -4,6 +4,7 @@ services:
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
+    network_mode: host
 # Add Configurations for GPU Hardware Rendering Here:
 #    devices:
 #      - /dev/dri/renderD128:/dev/dri/renderD128
@@ -12,7 +13,6 @@ services:
       - ${APPDATA}/plex:/config:rw
       - /mnt/user/data/DMB/Riven/mnt/shows/:/tv:rw
       - /mnt/user/data/DMB/Riven/mnt/movies/:/movies:rw
-            
       - /mnt/user/data/DMB/Zurg/:/data:rw,shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
       - /mnt/user/data/DMB/Riven/mnt/:/mnt:rw,shared            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
 #      - ts-state-plex:/var/lib/tailscale

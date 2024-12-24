@@ -3,7 +3,7 @@ services:
     ports:
       - 3000:3000  ## Riven Frontend
       - 5050:5050  ## pgAdmin 4
-      - ${WEBUI_PORT_LIDARR_ON_STEROIDS:?err}:8686 # Lidarr web UI
+      - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
       - 6595:6595 # Deemix web UI
   DMB:
     network_mode: service:VPN
@@ -15,7 +15,7 @@ services:
       VPN:
         condition: service_healthy
         restart: true
-  lidarr-on-steroids:
+  lidarr:
     network_mode: service:VPN
     ports: !reset
       - []

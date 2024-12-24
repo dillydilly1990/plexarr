@@ -2,6 +2,7 @@ services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
+    network_mode: host
     restart: unless-stopped
 # Add Configurations for GPU Hardware Rendering Here:
 #    devices:
@@ -9,19 +10,20 @@ services:
 #      - /dev/dri/card0:/dev/dri/card0
     volumes:
       - ${APPDATA:?err}/jellyfin:/config
-      - ${DATA}:/data:rw
-      - /mnt/user/data/DMB/Zurg/RealDebrid/__all__:/data:shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
-      - /mnt/user/data/DMB/Riven/mnt:/mnt            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
+      - /mnt/user/data/DMB/Riven/mnt/shows/:/tv:rw
+      - /mnt/user/data/DMB/Riven/mnt/movies/:/movies:rw
+      - /mnt/user/data/DMB/Zurg/:/data:rw,shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
+      - /mnt/user/data/DMB/Riven/mnt/:/mnt:rw,shared            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
       - TZ=${TIMEZONE:?err}
-#      - JELLYFIN_PublishedServerUrl=${LOCAL_DOCKER_IP:?err}  # Enable for DLNA - Only works on HOST Network Mode
+      - JELLYFIN_PublishedServerUrl=${SERVER_IP:?err}  # Enable for DLNA - Only works on HOST Network Mode
 
     ports:
       - ${WEBUI_PORT_JELLYFIN:?err}:8096
-#      - 7359:7359/udp                 # Enable for DLNA - Only works on HOST Network Mode
-#      - 1900:1900/udp                 # Enable for DLNA - Only works on HOST Network Mode
+      - 7359:7359/udp                 # Enable for DLNA - Only works on HOST Network Mode
+      - 1900:1900/udp                 # Enable for DLNA - Only works on HOST Network Mode
     labels:
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_JELLYFIN}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png
