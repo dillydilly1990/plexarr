@@ -1,5 +1,5 @@
-volumes:
-  ts-state-prowlarr: null
+#volumes:
+#  ts-state-prowlarr: null
 services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -8,20 +8,20 @@ services:
     volumes:
       - ${APPDATA}/prowlarr:/config
       - ${APPDATA}/prowlarr/Custom:/config/Definitions/Custom
-      - ts-state-prowlarr:/var/lib/tailscale
+#      - ts-state-prowlarr:/var/lib/tailscale
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
       - TZ=${TIMEZONE:?err}
-      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/themepark-dev/theme.park:prowlarr
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:prowlarr #|${DOCKER_MODS}
       - TP_THEME=${TP_THEME:?err}
-      - TAILSCALE_SERVE_PORT=8686
-      - TAILSCALE_SERVE_MODE=https
-      - TAILSCALE_USE_SSH=1
-      - TAILSCALE_HOSTNAME=Prowlarr
-      - TAILSCALE_AUTHKEY=${TS_KEY}
-      - TS_EXTRA_ARGS=${TS_EX_ARGS}
-      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+#      - TAILSCALE_SERVE_PORT=8686
+#      - TAILSCALE_SERVE_MODE=https
+#      - TAILSCALE_USE_SSH=1
+#      - TAILSCALE_HOSTNAME=Prowlarr
+#      - TAILSCALE_AUTHKEY=${TS_KEY}
+#      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+#      - TAILSCALE_STATE_DIR=/var/lib/tailscale
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_PROWLARR:?err}
@@ -36,5 +36,5 @@ services:
       - homepage.widget.key=${PROWLARR_API}
 #      - homepage.widget.fields=["field1","field2"] # optional
     ports:
-      - "${WEBUI_PORT_PROWLARR:?err}:9696"
+      - ${WEBUI_PORT_PROWLARR:?err}:9696
   
