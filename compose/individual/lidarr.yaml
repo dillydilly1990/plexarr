@@ -1,5 +1,5 @@
-volumes:
-  ts-state-lidarr: null
+#volumes:
+#  ts-state-lidarr: null
 services:
   lidarr:
     image: ghcr.io/dillydilly1990/lsio-docker-lidarr-plugins:master
@@ -9,21 +9,22 @@ services:
       - ${APPDATA:?err}/lidarr:/config
       - ${APPDATA}/lidarr/custom-cont-init.d:/custom-cont-init.d
       - ${APPDATA}/lidarr/custom-services.d:/custom-services.d
-      - ${DATA}:/data:rw
-      - ts-state-lidarr:/var/lib/tailscale
+      - ${DATA}/media/music:/data:rw
+      - ${DATA}/downloads:/data:rw
+#      - ts-state-lidarr:/var/lib/tailscale
     environment:
       - PUID=${PUID:?err}
       - PGID=${PGID:?err}
       - TZ=${TIMEZONE:?err}
-      - DOCKER_MODS=${DOCKER_MODS}|ghcr.io/themepark-dev/theme.park:lidarr
+      - DOCKER_MODS=ghcr.io/themepark-dev/theme.park:lidarr #|${DOCKER_MODS}
       - TP_THEME=${TP_THEME}
-      - TAILSCALE_SERVE_PORT=8686
-      - TAILSCALE_SERVE_MODE=https
-      - TAILSCALE_USE_SSH=1
-      - TAILSCALE_HOSTNAME=lidarr
-      - TAILSCALE_AUTHKEY=${TS_KEY}
-      - TS_EXTRA_ARGS=${TS_EX_ARGS}
-      - TAILSCALE_STATE_DIR=/var/lib/tailscale
+#      - TAILSCALE_SERVE_PORT=8686
+#      - TAILSCALE_SERVE_MODE=https
+#      - TAILSCALE_USE_SSH=1
+#      - TAILSCALE_HOSTNAME=lidarr
+#      - TAILSCALE_AUTHKEY=${TS_KEY}
+#      - TS_EXTRA_ARGS=${TS_EX_ARGS}
+#      - TAILSCALE_STATE_DIR=/var/lib/tailscale
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_LIDARR}

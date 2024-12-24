@@ -9,8 +9,6 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
-    labels:
-      - tsdproxy.enable=true
     depends_on:
       VPN:
         condition: service_healthy
