@@ -23,7 +23,7 @@ services:
   prowlarr:
     network_mode: service:VPN
     ports: !reset
-      - []
+      - []nn
   lidarr:
     network_mode: service:VPN
     ports: !reset
