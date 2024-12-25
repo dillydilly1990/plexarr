@@ -1,0 +1,5 @@
+include:
+  - compose/stacks/services.yaml
+  - compose/stacks/media-servers.yaml
+  - compose/stacks/utilites.yaml
+  - compose/stacks/media-management.yaml
