@@ -17,8 +17,6 @@ services:
       VPN:
         condition: service_healthy
         restart: true
-    labels:
-      - tsdproxy.enable="true"
   flaresolverr:
     network_mode: service:VPN
     ports: !reset
@@ -59,10 +57,10 @@ services:
       VPN:
         condition: service_healthy
         restart: true
-#  dockerproxy:
-#    network_mode: service:VPN
-#    ports: !reset
-#      - [] 
+  tsdpproxy:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
 #  homepage:
 #    network_mode: service:VPN
 #    ports: !reset
