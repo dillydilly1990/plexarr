@@ -26,7 +26,7 @@ services:
       - []
     depends_on:
       flaresolverr:
-        condition: service_healthy
+        condition: service_started
         restart: true
   lidarr:
     network_mode: service:VPN
