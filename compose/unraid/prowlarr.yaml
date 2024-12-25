@@ -1,9 +1,6 @@
 services:
     prowlarr:
         container_name: prowlarr
-        entrypoint:
-            - /opt/unraid/tailscale
-        network_mode: container:PortainerCE
         deploy:
             resources:
                 limits:
@@ -21,5 +18,4 @@ services:
             - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
         volumes:
             - /mnt/user/appdata/prowlarr:/config:rw
-            - /usr/local/share/docker/tailscale_container_hook:/opt/unraid/tailscale
         image: lscr.io/linuxserver/prowlarr
