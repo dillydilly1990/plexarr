@@ -13,6 +13,7 @@ services:
       - ${APPDATA}/plex:/config:rw
       - /mnt/user/data/DMB/Riven/mnt/shows/:/tv:rw
       - /mnt/user/data/DMB/Riven/mnt/movies/:/movies:rw
+      - /mnt/user/data/media/music:/music
       - /mnt/user/data/DMB/Zurg/:/data:rw,shared           ## rclone mount location from DMB must be shared to Plex container. Don't add to plex library
       - /mnt/user/data/DMB/Riven/mnt/:/mnt:rw,shared            ## Riven symlink location from DMB must be shared to Plex container. Add to plex library
 #      - ts-state-plex:/var/lib/tailscale
