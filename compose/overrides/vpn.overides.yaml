@@ -18,7 +18,7 @@ services:
         condition: service_healthy
         restart: true
     labels:
-      tsdproxy.enable: "true"
+      - tsdproxy.enable: "true"
   flaresolverr:
     network_mode: service:VPN
     ports: !reset
