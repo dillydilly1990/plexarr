@@ -1,11 +1,14 @@
-volumes:
-  ts-state-sonarr: null
+#volumes:
+#  ts-state-sonarr: null
 services:
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
-    network_mode: service:VPN
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          pids: 2048
     volumes:
       - ${APPDATA:?err}/sonarr:/config
       - ${APPDATA}/sonarr/custom-cont-init.d:/custom-cont-init.d

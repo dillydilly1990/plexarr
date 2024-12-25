@@ -2,6 +2,10 @@ services:
   tsdproxy:
     image: almeidapaulopt/tsdproxy:latest
     container_name: tsdproxy
+    deploy:
+      resources:
+        limits:
+          pids: 2048
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${APPDATA}/TSDproxy:/data
