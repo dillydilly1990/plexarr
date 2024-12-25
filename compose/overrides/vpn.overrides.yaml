@@ -26,8 +26,6 @@ services:
       - []
     depends_on:
       flaresolverr:
-        condition: service_started
-        restart: true
   lidarr:
     network_mode: service:VPN
     ports: !reset
