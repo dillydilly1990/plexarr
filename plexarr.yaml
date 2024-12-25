@@ -1,5 +1,10 @@
 include:
-  - compose/stacks/services.yaml
-  - compose/stacks/media-servers.yaml
-  - compose/stacks/utilites.yaml
-  - compose/stacks/media-management.yaml
+  - compose/individual/gluetunVPN.yaml
+  - compose/individual/TSDproxy.yaml
+  - compose/individual/DMB.yaml
+  - compose/individual/prowlarr.yaml
+  - compose/individual/lidarr.yaml
+  - compose/individual/radarr.yaml
+  - compose/individual/sonarr.yaml
+  - compose/individual/plex.yaml
+  - compose/individual/jellyfin.yaml
