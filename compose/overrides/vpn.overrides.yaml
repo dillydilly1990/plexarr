@@ -9,6 +9,7 @@ services:
       - ${WEBUI_PORT_SONARR:?err}:8989 # Sonarr web UI
       - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
       - 6595:6595 # Deemix web UI
+      - ${WEBUI_PORT_JELLYFIN:?err}:8096
   DMB:
     network_mode: service:VPN
     ports: !reset
@@ -61,6 +62,14 @@ services:
     network_mode: service:VPN
     ports: !reset
       - [] 
+  jellyfin:
+    network_mode: service:VPN
+    ports: !reset
+      - []
+    depends_on:
+      VPN:
+        condition: service_healthy
+        restart: true
 #  homepage:
 #    network_mode: service:VPN
 #    ports: !reset
