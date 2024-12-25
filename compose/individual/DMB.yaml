@@ -1,6 +1,6 @@
 name: <your project name>
 services:
-    dmb:
+    DMB:
         container_name: DMB
         network_mode: container:VPN
         deploy:
