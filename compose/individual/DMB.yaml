@@ -1,0 +1,57 @@
+name: <your project name>
+services:
+    dmb:
+        container_name: DMB
+        network_mode: container:VPN
+        deploy:
+            resources:
+                limits:
+                    pids: 2048
+        environment:
+            - TZ=America/Los_Angeles
+            - HOST_OS=Unraid
+            - HOST_HOSTNAME=Whiskeyshits
+            - HOST_CONTAINERNAME=DMB
+            - TZ=America/Detroit
+            - RCLONE_MOUNT_NAME=DMB
+            - ZILEAN_ENABLED=true
+            - ORIGIN=http://192.168.50.69:3000
+            - PLEX_ADDRESS=http://192.168.50.69:32400
+            - PLEX_TOKEN=
+            - RD_API_KEY=3EM3VDDKYJICIM3QZJ4PUQQHLTEIVV3I7FVGZJOXAUHNV3AQPVQQ
+            - PGADMIN_SETUP_EMAIL=
+            - PGADMIN_SETUP_PASSWORD=
+            - RCLONE_DIR=/data
+            - ZURG_ENABLED=true
+            - ZURG_UPDATE=true
+            - RIVEN_BACKEND_UPDATE=true
+            - RIVEN_FRONTEND_UPDATE=true
+            - FRONTEND_LOGS=ON
+            - BACKEND_LOGS=ON
+            - RIVEN_FRONTEND_ENABLED=true
+            - RIVEN_BACKEND_ENABLED=true
+            - PUID=99
+            - PGID=100
+            - HARD_RESET=false
+        labels:
+            - net.unraid.docker.webui=http://192.168.50.69:3000
+            - net.unraid.docker.icon=https://github.com/I-am-PUID-0/DMB/assets/36779668/d0cbc785-2e09-41da-b226-924fdfcc1f21?raw=1
+        volumes:
+            - /mnt/user/appdata/DMB:/config:rw
+            - /mnt/user/appdata/DMB/log:/log:rw
+            - /mnt/user/appdata/DMB/Zurg/RD:/zurg/RD:rw
+            - /mnt/user/appdata/DMB/PostgreSQL/data:/postgres_data:rw
+            - /mnt/user/appdata/DMB/Riven/data:/riven/backend/data:rw
+            - /mnt/user/data/DMB/zilean/data:/zilean/app/data:rw
+            - /mnt/user/data/DMB/Zurg/mnt:/data:rw,shared
+            - /mnt/user/data/DMB/Riven/mnt:/mnt:rw
+        devices:
+            - /dev/fuse:/dev/fuse:rwm
+        shm_size: 128MB
+        stdin_open: true
+        tty: true
+        cap_add:
+            - SYS_ADMIN
+        security_opt:
+            - apparmor:unconfined
+        image: iampuid0/dmb:latest
