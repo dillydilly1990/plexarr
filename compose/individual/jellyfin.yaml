@@ -27,4 +27,4 @@ services:
     labels:
       - net.unraid.docker.webui=http://${SERVER_IP}:${WEBUI_PORT_JELLYFIN}
       - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png
-      - tsdproxy.enable=true
+      - tsdproxy.enable: "true"
