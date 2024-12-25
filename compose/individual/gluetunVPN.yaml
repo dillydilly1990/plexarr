@@ -100,7 +100,9 @@ services:
       - homepage.group=Core Services
       - homepage.name=Gluetun
       - homepage.icon=gluetun.png
-      - homepage.description=Media server
+      - homepage.description=Media server 
+      - tsdproxy.enable=true
+
     # NOTE: Gluetun VPN container MUST ONLY connect to the "VPN" network
     networks:
       - VPN
