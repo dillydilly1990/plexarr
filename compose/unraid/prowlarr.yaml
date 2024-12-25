@@ -1,0 +1,34 @@
+services:
+    prowlarr:
+        container_name: prowlarr
+        entrypoint:
+            - /opt/unraid/tailscale
+        network_mode: container:PortainerCE
+        deploy:
+            resources:
+                limits:
+                    pids: 2048
+        environment:
+            - TZ=America/Los_Angeles
+            - HOST_OS=Unraid
+            - HOST_HOSTNAME=Whiskeyshits
+            - HOST_CONTAINERNAME=prowlarr
+            - PUID=99
+            - PGID=100
+            - UMASK=022
+            - TAILSCALE_ALLOW_LAN_ACCESS=false
+            - TAILSCALE_USE_SSH=true
+            - TAILSCALE_USERSPACE_NETWORKING=false
+            - TAILSCALE_SERVE_PORT=9696
+        labels:
+            - net.unraid.docker.webui=http://192.168.50.69:9696/system/status
+            - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
+            - net.unraid.docker.tailscale.webui=https://[hostname][magicdns]/system/status
+        volumes:
+            - /mnt/user/appdata/prowlarr:/config:rw
+            - /usr/local/share/docker/tailscale_container_hook:/opt/unraid/tailscale
+        cap_add:
+            - NET_ADMIN
+        devices:
+            - /dev/net/tun
+        image: lscr.io/linuxserver/prowlarr

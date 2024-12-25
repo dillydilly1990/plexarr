@@ -1,0 +1,19 @@
+services:
+    flaresolverr:
+        container_name: flaresolverr
+        network_mode: bridge
+        deploy:
+            resources:
+                limits:
+                    pids: 2048
+        environment:
+            - TZ=America/Detroit
+            - HOST_OS=Unraid
+            - HOST_HOSTNAME=Whiskeyshits
+            - HOST_CONTAINERNAME=flaresolverr
+            - LOG_LEVEL=info
+        labels:
+            - net.unraid.docker.icon=https://raw.githubusercontent.com/FlareSolverr/FlareSolverr/master/resources/flaresolverr_logo.png
+        ports:
+            - 8191:8191/tcp
+        image: flaresolverr/flaresolverr

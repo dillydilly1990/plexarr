@@ -1,8 +1,9 @@
 include:
   - compose/individual/gluetunVPN.yaml
   - compose/individual/tsdproxy.yaml
-  - compose/individual/DMB.yaml
-  - compose/individual/prowlarr.yaml
+  - compose/unraid/flaresolverr.yaml
+  - compose/unraid/DMB.yaml
+  - compose/unraid/prowlarr.yaml
   - compose/individual/lidarr.yaml
   - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
