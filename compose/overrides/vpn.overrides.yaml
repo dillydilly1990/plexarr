@@ -10,14 +10,14 @@ services:
       - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
       - 6595:6595 # Deemix web UI
       - ${WEBUI_PORT_JELLYFIN:?err}:8096
-  DMB:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
-    depends_on:
-      VPN:
-        condition: service_healthy
-        restart: true
+#  DMB:
+#    network_mode: service:VPN
+#    ports: !reset
+ #     - [] 
+#    depends_on:
+#      VPN:
+ #       condition: service_healthy
+#        restart: true
   flaresolverr:
     network_mode: service:VPN
     ports: !reset
