@@ -1,0 +1,18 @@
+#!/bin/bash
+mkdir -p /mnt/user/appdata/lidarr/custom-cont-init.d
+mkdir -p /mnt/user/appdata/lidarr/custom-services.d
+cd /mnt/user/appdata/lidarr/custom-cont-init.d
+wget https://raw.githubusercontent.com/RandomNinjaAtk/arr-scripts/main/lidarr/scripts_init.bash
+mkdir -p /mnt/user/appdata/radarr/custom-cont-init.d
+mkdir -p /mnt/user/appdata/radarr/custom-services.d
+cd /mnt/user/appdata/radarr/custom-cont-init.d
+wget https://raw.githubusercontent.com/RandomNinjaAtk/arr-scripts/main/radarr/scripts_init.bash
+mkdir -p /mnt/user/appdata/sonarr/custom-cont-init.d
+mkdir -p /mnt/user/appdata/sonarr/custom-services.d
+cd /mnt/user/appdata/sonarr/custom-cont-init.d
+wget https://raw.githubusercontent.com/RandomNinjaAtk/arr-scripts/main/sonarr/scripts_init.bash
+mkdir -p /mnt/user/appdata/prowlarr
+cd /mnt/user/appdata/prowlarr
+git clone https://github.com/dreulavelle/Prowlarr-Indexers.git
+cp -r /mnt/user/appdata/prowlarr/Prowlarr-Indexers/Custom /mnt/user/appdata/prowlarr
+rm -r /mnt/user/appdata/prowlarr/Prowlarr-Indexers

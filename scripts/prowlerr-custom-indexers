@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir -p /mnt/user/appdata/prowlarr
+cd /mnt/user/appdata/prowlarr
+git clone https://github.com/dreulavelle/Prowlarr-Indexers.git
+cp -r /mnt/user/appdata/prowlarr/Prowlarr-Indexers/Custom /mnt/user/appdata/prowlarr
+rm -r /mnt/user/appdata/prowlarr/Prowlarr-Indexers
