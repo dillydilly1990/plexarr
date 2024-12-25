@@ -57,7 +57,7 @@ services:
       VPN:
         condition: service_healthy
         restart: true
-  tsdpproxy:
+  tsdproxy:
     network_mode: service:VPN
     ports: !reset
       - [] 
