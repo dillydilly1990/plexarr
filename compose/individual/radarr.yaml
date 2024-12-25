@@ -11,6 +11,7 @@ services:
       - ${APPDATA}/radarr/custom-services.d:/custom-services.d
       - ${DATA}:/data:rw
       - ${DATA}/downloads/symlinks/radarr
+      - ${DATA}/DMB/Riven/mnt/movies/
 #      - ts-state-radarr:/var/lib/tailscale
     environment:
       - PUID=${PUID}
