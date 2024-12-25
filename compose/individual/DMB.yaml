@@ -11,7 +11,7 @@ services:
       - ZILEAN_ENABLED=true
       - ORIGIN=http://192.168.50.69:3000
       - PLEX_ADDRESS=http://192.168.50.69:32400
-      - PLEX_TOKEN=${PLEX_CLAIM}
+#      - PLEX_TOKEN=${PLEX_CLAIM}
       - RD_API_KEY=${REALDEBRID_API}
       - PGADMIN_SETUP_EMAIL=
       - PGADMIN_SETUP_PASSWORD=
