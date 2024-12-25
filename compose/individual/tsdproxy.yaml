@@ -9,6 +9,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${APPDATA}/TSDproxy:/data
+      - ${APPDATA}/TSDproxy/config:/config
     environment:
       # Get AuthKey from your Tailscale account
       - TSDPROXY_AUTHKEY=${TS_KEY}
