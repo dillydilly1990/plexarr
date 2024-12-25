@@ -24,8 +24,8 @@ services:
       - BACKEND_LOGS=ON
       - RIVEN_FRONTEND_ENABLED=true
       - RIVEN_BACKEND_ENABLED=true
-      - PUID=99
-      - PGID=100
+      - PUID=1000
+      - PGID=1000
       - HARD_RESET=false
     labels:
       - net.unraid.docker.webui=http://${SERVER_IP}:3000
