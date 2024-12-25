@@ -7,9 +7,9 @@ services:
     restart: unless-stopped
     volumes:
       - ${APPDATA}/rdt-client/db:/data/db:rw
-#      - ${DOWNLOADS}:/data/downloads:rw
-      - ${DOWNLOADS}/symlinks:/data/symlinks:rw
-      - /mnt/user/RealDebrid/__all__:/mnt/RealDebrid/
+      - ${DOWNLOADS}:/data/downloads:rw
+      - ${DATA}/media:/data/media:rw
+      - /mnt/user/data/DMB/Zurg/__all__:/mnt/DMB/
       - ts-state-rdtclient:/var/lib/tailscale
     environment:
       - TZ=America/Detroit
