@@ -6,6 +6,5 @@ include:
   - compose/individual/lidarr.yaml
   - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
-  - compose/individual/rdtclient.yaml
   - compose/individual/plex.yaml
   - compose/individual/jellyfin.yaml
