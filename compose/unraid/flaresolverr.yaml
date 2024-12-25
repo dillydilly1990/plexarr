@@ -1,7 +1,6 @@
 services:
     flaresolverr:
         container_name: flaresolverr
-        network_mode: bridge
         deploy:
             resources:
                 limits:
