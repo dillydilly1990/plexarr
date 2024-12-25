@@ -38,7 +38,7 @@ services:
     ports: !reset
       - []
     depends_on:
-      DMB:
+      VPN:
         condition: service_healthy
         restart: true
   radarr:
@@ -46,7 +46,7 @@ services:
     ports: !reset
       - []
     depends_on:
-      DMB:
+      VPN:
         condition: service_healthy
         restart: true
   sonarr:
@@ -54,7 +54,7 @@ services:
     ports: !reset
       - []
     depends_on:
-      DMB:
+      VPN:
         condition: service_healthy
         restart: true
 #  dockerproxy:
