@@ -1,18 +1,11 @@
 services:
   tsdproxy:
     image: almeidapaulopt/tsdproxy:latest
-    container_name: tsdproxy
-    ports:
-      - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /mnt/user/appdata/tsdproxy/config:/config
-      - /mnt/user/appdata/tsdproxy/data:/data
+      - datadir:/data
+      - /mnt/user/appdata/tsdproxy:/config
     restart: unless-stopped
-    environment:
-      - TS_AUTHKEY=${TS_KEY}
-      - TSDPROXY_DATADIR:/data
-      - DOCKER_HOST=unix:///var/run/docker.sock
 
-#volumes:
-#  datadir:
+volumes:
+  datadir:
