@@ -1,5 +1,3 @@
-volumes:
-  ts-state-rdtclient: null
 services:
   rdtclient:
     image: rogerfar/rdtclient:latest
@@ -10,7 +8,6 @@ services:
       - ${DOWNLOADS}:/data/downloads:rw
       - ${DATA}/media:/data/media:rw
       - /mnt/user/data/DMB/Zurg/__all__:/mnt/DMB/
-      - ts-state-rdtclient:/var/lib/tailscale
     environment:
       - TZ=America/Detroit
       - HOST_OS=Unraid
@@ -31,11 +28,5 @@ services:
     ## Do Not Change Network for qBittorrent
     ## qBittorrent MUST always use a VPN / Secure Internet connection
     labels:
-      - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:6500
       - net.unraid.docker.icon=https://raw.githubusercontent.com/fizzyfrys/unraid-templates/main/icons/premrealldebrid.png
-    network_mode: service:VPN
-    depends_on:
-      zurg:
-        condition: service_healthy
-        restart: true

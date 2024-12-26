@@ -1,5 +1,3 @@
-#volumes:
-#  zurgdata:
 services:
   zurg:
     image: ghcr.io/debridmediamanager/zurg-testing:latest    
@@ -10,7 +8,6 @@ services:
     volumes:
       - ${APPDATA}/zurg/plex_update.sh:/app/plex_update.sh
       - ${APPDATA}/zurg/config.yml:/app/config.yml
-    #  - zurgdata:/app/data
       - ${APPDATA}/zurg/data:/app/data   
     environment:
       - PUID=${PUID:?err}
@@ -19,7 +16,6 @@ services:
     labels:
       - net.unraid.docker.managed=dockerman
       - net.unraid.docker.webui=http://${SERVER_IP}:9999
-    #  - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
       - homepage.group=Core Services
       - homepage.name=Zurg
       - homepage.icon=zurg.png
@@ -50,7 +46,6 @@ services:
         restart: true
     command: "mount zurg: /data --allow-other --allow-non-empty --dir-cache-time 10s --vfs-cache-mode full"
     labels:
-#      - net.unraid.docker.managed=dockerman
       - net.unraid.docker.icon=https://raw.githubusercontent.com/rclone/rclone/master/graphics/logo/logo_symbol/logo_symbol_color_256px.png
       - homepage.group=Core Services
       - homepage.name=Rclone
