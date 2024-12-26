@@ -9,4 +9,3 @@ include:
   - compose/individual/sonarr.yaml
   - compose/individual/plex.yaml
   - compose/individual/jellyfin.yaml
-  - compose/individual/zurg.yaml
