@@ -2,7 +2,6 @@ services:
   VPN:
     ports:
       - 3000:3000  ## Riven Frontend
-      - 3001:3000
       - 5050:5050  ## pgAdmin 4
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # Prowlarr web UI
       - ${FLARESOLVERR_PORT:?err}:8191  
