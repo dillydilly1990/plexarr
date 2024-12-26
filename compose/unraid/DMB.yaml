@@ -1,7 +1,6 @@
 services:
     DMB:
         container_name: DMB
-        network_mode: container:VPN
         deploy:
             resources:
                 limits:
