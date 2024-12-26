@@ -1,6 +1,16 @@
 services:
   VPN:
-    ports:
+    ports: 
+      - 32400:32400     #####
+      - 1900:1900/udp   #
+#      - 5353:5353/udp  #
+      - 8324:8324       #
+      - 32410:32410/udp #    PLEX PORTS
+      - 32412:32412/udp #
+      - 32413:32413/udp #
+      - 32414:32414/udp #
+      - 32469:32469     #####
+
       - 3000:3000  ## Riven Frontend
       - 5050:5050  ## pgAdmin 4
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # Prowlarr web UI
@@ -37,10 +47,10 @@ services:
     network_mode: service:VPN
     ports: !reset
       - []
- # homarr:
-  #  network_mode: service:VPN
-  #  ports: !reset
-   #   - [] 
+  plex:
+    network_mode: service:VPN
+    ports: !reset
+      - [] 
   #filebrowser:
   #  network_mode: service:VPN
   #  ports: !reset
