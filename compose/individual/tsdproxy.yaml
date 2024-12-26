@@ -3,7 +3,7 @@ services:
     image: almeidapaulopt/tsdproxy:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - datadir:/data
+      - /mnt/user/appdata/tsdproxy/data:/data
       - /mnt/user/appdata/tsdproxy:/config
     restart: unless-stopped
 
