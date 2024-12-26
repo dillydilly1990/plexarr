@@ -38,10 +38,6 @@ services:
     network_mode: service:VPN
     ports: !reset
       - []
-  homepage:
-    network_mode: service:VPN
-    ports: !reset
-      - [] 
  # homarr:
   #  network_mode: service:VPN
   #  ports: !reset
