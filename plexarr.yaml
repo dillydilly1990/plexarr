@@ -1,6 +1,5 @@
 include:
   - compose/individual/gluetunVPN.yaml
-  - compose/individual/tsdproxy.yaml
   - compose/unraid/flaresolverr.yaml
   - compose/unraid/DMB.yaml
   - compose/unraid/prowlarr.yaml

@@ -1,5 +1,0 @@
-#!/bin/bash
-mkdir -p /mnt/user/appdata/sonarr/custom-cont-init.d
-mkdir -p /mnt/user/appdata/sonarr/custom-services.d
-cd /mnt/user/appdata/sonarr/custom-cont-init.d
-wget https://raw.githubusercontent.com/RandomNinjaAtk/arr-scripts/main/sonarr/scripts_init.bash

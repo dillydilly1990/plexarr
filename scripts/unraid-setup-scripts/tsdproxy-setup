@@ -1,7 +1,0 @@
-#!/bin/bash
-mkdir -p /mnt/user/appdata/tsdproxy/config
-cd /mnt/user/appdata/tsdproxy/config
-git clone https://github.com/almeidapaulopt/tsdproxy.git
-cp -r /mnt/user/appdata/tsdproxy/config/tsdproxy/config /mnt/user/appdata/tsdproxy
-rm -r /mnt/user/appdata/tsdproxy/config/tsdproxy
-chown -R 99:100 /mnt/user/appdata/tsdproxy
