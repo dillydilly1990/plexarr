@@ -21,6 +21,7 @@ services:
             - PGADMIN_SETUP_EMAIL=
             - PGADMIN_SETUP_PASSWORD=
             - RCLONE_DIR=/data
+            - RCLONE_ALLOW_NON_EMPTY=true
             - ZURG_ENABLED=true
             - ZURG_UPDATE=true
             - RIVEN_BACKEND_UPDATE=true
