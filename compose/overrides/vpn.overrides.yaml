@@ -28,34 +28,18 @@ services:
     network_mode: service:VPN
     ports: !reset
       - []
-    depends_on:
-      DMB:
-        condition: service_healthy
-        restart: true
   radarr:
     network_mode: service:VPN
     ports: !reset
       - []
-    depends_on:
-      DMB:
-        condition: service_healthy
-        restart: true
   sonarr:
     network_mode: service:VPN
     ports: !reset
       - []
-    depends_on:
-      DMB:
-        condition: service_healthy
-        restart: true
   jellyfin:
     network_mode: service:VPN
     ports: !reset
       - []
-    depends_on:
-      DMB:
-        condition: service_healthy
-        restart: true
 #  homepage:
 #    network_mode: service:VPN
 #    ports: !reset
