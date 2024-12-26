@@ -10,7 +10,6 @@ services:
       - /mnt/user/appdata/tsdproxy/data:/data
     restart: unless-stopped
     environment:
-      #- TSDPROXY_AUTHKEYFILE=/run/secrets/authkey
       - TS_AUTHKEY=${TS_KEY}
       - TSDPROXY_DATADIR:/data
       - DOCKER_HOST=unix:///var/run/docker.sock
