@@ -8,8 +8,8 @@ services:
           pids: 2048
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${APPDATA}/tsdproxy:/data
-      - ${APPDATA}/tsdproxy/config:/config
+      - ${APPDATA}/tsdproxy:/data,rw
+      - ${APPDATA}/tsdproxy/config:/config,rw
     environment:
       # Get AuthKey from your Tailscale account
       - TSDPROXY_AUTHKEY=${TS_KEY}
