@@ -5,6 +5,7 @@ services:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
     network_mode: host
+    restart: unless-stopped
 # Add Configurations for GPU Hardware Rendering Here:
 #    devices:
 #      - /dev/dri/renderD128:/dev/dri/renderD128

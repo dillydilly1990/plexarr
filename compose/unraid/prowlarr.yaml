@@ -1,6 +1,7 @@
 services:
     prowlarr:
         container_name: prowlarr
+        restart: unless-stopped
         deploy:
             resources:
                 limits:

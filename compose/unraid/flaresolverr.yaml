@@ -1,6 +1,7 @@
 services:
     flaresolverr:
         container_name: flaresolverr
+        restart: unless-stopped
         deploy:
             resources:
                 limits:

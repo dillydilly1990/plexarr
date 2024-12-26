@@ -1,6 +1,7 @@
 services:
     DMB:
         container_name: DMB
+        restart: unless-stopped
         deploy:
             resources:
                 limits:
