@@ -3,15 +3,17 @@ services:
     ports:
       - 3000:3000  ## Riven Frontend
       - 5050:5050  ## pgAdmin 4
+      - 8080:8080 # Tsd Proxy
       - ${WEBUI_PORT_PROWLARR:?err}:9696 # Prowlarr web UI
       - ${FLARESOLVERR_PORT:?err}:8191  
       - ${WEBUI_PORT_RADARR:?err}:7878 # Radarr web UI
       - ${WEBUI_PORT_SONARR:?err}:8989 # Sonarr web UI
       - ${WEBUI_PORT_LIDARR:?err}:8686 # Lidarr web UI
-      - 6595:6595 # Deemix web UI
-      - ${WEBUI_PORT_JELLYFIN:?err}:8096
+      - ${WEBUI_PORT_JELLYFIN:?err}:8096 # Jellyfin web UI
   tsdproxy:
     network_mode: service:VPN
+    ports: !reset
+      - [] 
   DMB:
     network_mode: service:VPN
     ports: !reset

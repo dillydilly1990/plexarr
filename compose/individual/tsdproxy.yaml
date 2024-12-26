@@ -2,18 +2,18 @@ services:
   tsdproxy:
     image: almeidapaulopt/tsdproxy:latest
     container_name: tsdproxy
-    deploy:
-      resources:
-        limits:
-          pids: 2048
+    ports:
+      - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${APPDATA}/tsdproxy:/data,rw
-      - ${APPDATA}/tsdproxy/config:/config,rw
-    environment:
-      # Get AuthKey from your Tailscale account
-      - TSDPROXY_AUTHKEY=${TS_KEY}
-      # Address of docker server (access to example.com ports)
-      - TSDPROXY_HOSTNAME=${SERVER_IP}
-      - DOCKER_HOST=unix:///var/run/docker.sock
+      - /mnt/user/appdata/tsdproxy/config:/config
+      - /mnt/user/appdata/tsdproxy/data:/data
     restart: unless-stopped
+    environment:
+      #- TSDPROXY_AUTHKEYFILE=/run/secrets/authkey
+      - TS_AUTHKEY=${TS_KEY}
+      - TSDPROXY_DATADIR:/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+
+#volumes:
+#  datadir:
