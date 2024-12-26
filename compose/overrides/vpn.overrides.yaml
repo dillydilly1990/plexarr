@@ -35,10 +35,10 @@ services:
     network_mode: service:VPN
     ports: !reset
       - []
-  radarr:
-    network_mode: service:VPN
-    ports: !reset
-      - []
+#  radarr:
+#    network_mode: service:VPN
+#    ports: !reset
+#      - []
   sonarr:
     network_mode: service:VPN
     ports: !reset
