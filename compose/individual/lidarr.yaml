@@ -9,8 +9,8 @@ services:
       - ${APPDATA:?err}/lidarr:/config
       - ${APPDATA}/lidarr/custom-cont-init.d:/custom-cont-init.d
       - ${APPDATA}/lidarr/custom-services.d:/custom-services.d
-      - ${DATA}/music:/data:rw
-      - ${DATA}/downloads/lidarr:/data/downloads/lidarr:rw
+      - ${DATA}/media/music:/data/media/music:rw
+      - ${DATA}/downloads:/data/downloads/lidarr:rw
       
 #      - ts-state-lidarr:/var/lib/tailscale
     environment:
