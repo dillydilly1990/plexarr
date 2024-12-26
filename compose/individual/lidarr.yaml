@@ -10,6 +10,8 @@ services:
       - ${APPDATA}/lidarr/custom-cont-init.d:/custom-cont-init.d
       - ${APPDATA}/lidarr/custom-services.d:/custom-services.d
       - ${DATA}:/data:rw
+      - ${DATA}/downloads:/data/downloads/lidarr:rw
+      
 #      - ts-state-lidarr:/var/lib/tailscale
     environment:
       - PUID=${PUID:?err}
