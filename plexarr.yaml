@@ -4,7 +4,7 @@ include:
   - compose/unraid/DMB.yaml
   - compose/unraid/prowlarr.yaml
   - compose/individual/lidarr.yaml
-  - compose/individual/radarr.yaml
+ # - compose/individual/radarr.yaml
   - compose/individual/sonarr.yaml
   - compose/individual/plex.yaml
   - compose/individual/jellyfin.yaml
