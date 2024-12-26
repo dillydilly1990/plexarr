@@ -10,7 +10,7 @@ services:
       - ${APPDATA}/radarr/custom-cont-init.d:/custom-cont-init.d
       - ${APPDATA}/radarr/custom-services.d:/custom-services.d
       - ${DATA}:/data:rw
-      - /mnt/user/data/media/downloads/symlinks/radarr:/data/downloads/radarr:rw,shared
+      - /mnt/user/data/downloads/symlinks/radarr:/data/downloads/radarr:rw,shared
       - /mnt/user/data/DMB/Zurg/mnt/DMB/__all__:/zurg:rw,shared
 #      - ts-state-radarr:/var/lib/tailscale
     environment:
