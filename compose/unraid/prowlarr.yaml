@@ -18,5 +18,5 @@ services:
             - net.unraid.docker.icon=https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/prowlarr-logo.png
         volumes:
             - /mnt/user/appdata/prowlarr:/config:rw
-            - /mnt/user/appdata/Custom:/config/Definitions/Custom
+            - /mnt/user/appdata/prowlarr/Custom:/config/Definitions/Custom
         image: lscr.io/linuxserver/prowlarr
