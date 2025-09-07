@@ -1,3 +1,2 @@
 include:
-  - compose/individual/jellyfin.yaml
-  - compose/stacks/services.yaml
+  - compose/individual/ProtonVPN.yaml
