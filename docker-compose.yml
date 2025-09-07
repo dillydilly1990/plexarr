@@ -1,2 +1,2 @@
 include:
-  - compose/individual/ProtonVPN.yaml
+  - compose/stacks/services.yaml
