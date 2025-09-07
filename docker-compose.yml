@@ -1,2 +1,2 @@
 include:
-  - compose/stacks/services.yaml
+  - compose/stacks/media-servers.yaml
