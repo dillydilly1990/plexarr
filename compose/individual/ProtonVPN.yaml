@@ -8,9 +8,9 @@ networks:
         - subnet: ${DOCKER_SUBNET:?err}
           gateway: ${DOCKER_GATEWAY:?err}
 services:
-  VPN:
+  Gluetun:
     image: qmcgaw/gluetun:latest
-    container_name: VPN
+    container_name: ProtonVPN
     restart: always
     cap_add:
       - NET_ADMIN
