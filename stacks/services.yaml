@@ -1,3 +1,0 @@
-include:
-  - compose/individual/ProtonVPN.yaml
-  - compose/individual/tsdproxy.yaml

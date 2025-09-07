@@ -1,2 +1,2 @@
 include:
-  - compose/stacks/media-servers.yaml
+  - compose/individual/jellyfin

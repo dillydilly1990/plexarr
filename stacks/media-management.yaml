@@ -1,5 +1,0 @@
-include:
-  - compose/individual/prowlarr.yaml
-  - compose/individual/lidarr.yaml
-  - compose/individual/radarr.yaml
-  - compose/individual/sonarr.yaml

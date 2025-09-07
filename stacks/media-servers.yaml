@@ -1,3 +1,0 @@
-include:
-  - compose/individual/plex.yaml
-  - compose/individual/jellyfin.yaml

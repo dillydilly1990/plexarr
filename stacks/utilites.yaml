@@ -1,5 +1,0 @@
-include:
-#  - compose/individual/homepage.yaml
-#  - compose/individual/homarr.yaml
-#  - compose/individual/filebrowser.yaml
-#  - compose/individual/dozzle.yaml
